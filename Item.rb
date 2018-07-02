@@ -10,6 +10,7 @@ class Item
   end  
   
   def show (a=0) 
+	puts " "
     print "#{@name}: #{@attack} dmg, #{@defence} def"
 	if(a==1)
 		print " - #{@value} coins"
