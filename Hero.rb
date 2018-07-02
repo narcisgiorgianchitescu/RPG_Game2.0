@@ -2,7 +2,7 @@ load 'Character.rb'
 #require 'Character.rb'
 
 class Hero < Character
-	def initialize(money, my_name, hp, att, defe , head, chest, boots, weapon, pos)
+	def initialize(money=10, my_name="noname", hp=100, att=1, defe=1 , head=1, chest=1, boots=1, weapon=1, pos=[1,1])
 		super(money,my_name,hp,att,defe)
 		@Head = head
 		@Chest = chest
@@ -19,7 +19,3 @@ class Hero < Character
 		print "Position: ", @Position, "\n"
 	end
 end
-
-
-Hr = Hero.new(10,"Narcis",1,1,1,1,1,1,1,1)
-Hr.showstats
