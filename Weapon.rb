@@ -1,6 +1,6 @@
-require_relative 'Item'
+require_relative 'Equipment'
 
-class Weapon < Item
+class Weapon < Equipment
 	
 	def initialize(att=0, defe=0, val=0, nume="Weapon")  
 		super(att, defe, val, nume)
