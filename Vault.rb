@@ -1,22 +1,52 @@
 require './Room'
+require './Hero'
+require './Item'
 
 class Vault < Room
 
 	def initialize items = []
-		@items = Array.new
-		@hidden = false
-
-		#TODO : generate random items
-		@items.push("Helmet", "Mace", "Catana", "Breastplate");
+		@items = items
+		@hidden = true
+		@got_item = 0
 	end
 
 	def show()
-		system 'cls'
+		system 'cls' or system 'clear'
 		puts "Chose one item :"
-		@items.each_with_index {|item, index| puts "#{index}. " + item}
+
+		@items.each_with_index {|item, index| puts item.show(1, index)}
 	end
 
 	def action(hero)
-		puts "Good choice"
+		if @got_item == 1 then
+			puts "You already chose your item."
+			return
+		end
+
+		@hidden = false
+		option = -1
+
+		until option == 0
+			show()
+			puts "Chose wisely."
+			puts "0 to exit vault."
+			
+			option = gets.chomp
+			check_option(option)
+		end
+	end
+
+	def check_option(option)
+		if option == 0 then
+			return
+		end
+
+		if option > 0 and option < @items.size then
+			hero.useitem(@items[option])
+			@got_item = 1
+			return
+		else
+			puts "We don't have that option."
+		end
 	end
 end

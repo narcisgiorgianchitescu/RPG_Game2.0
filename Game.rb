@@ -15,7 +15,7 @@ class Game
     else
       @hero = hero
     end
-    @movement = Movement.new hero, map.size
+    @movement = Movement.new @hero, @map.size
   end
 
   def clear_screen
@@ -24,7 +24,7 @@ class Game
 
   def start_game
     @game_over = false
-    until game_over
+    until @game_over
       clear_screen
       @map.show
       movement.do_move
@@ -33,3 +33,6 @@ class Game
   end
 
 end
+
+game = Game.new
+game.start_game

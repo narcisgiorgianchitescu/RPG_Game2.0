@@ -1,14 +1,18 @@
 require_relative "Room"
 
 class Map
-
+  attr_accessor :size
   def initialize size = 10
     @size = size
-    @slots = Array.new(size){Array.new(size)}
+    create_map size
+  end
+
+  def create_map size
+    @slots = Array.new(size){Array.new(size,Room.new)}
   end
 
   def print_slot slot
-    if slot.nil? or slot.hidden
+    if slot.hidden
       print "   "
     else
       print " #{slot.class.to_s[0]}"

@@ -1,7 +1,11 @@
 class Room
-	@hidden = true
+	attr_accessor :hidden
+	def initialize
+		@hidden = true
+	end
 
 	def action()
+		@hidden = false
 	end
 
 	def show()

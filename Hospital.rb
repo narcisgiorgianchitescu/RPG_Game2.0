@@ -1,7 +1,10 @@
 require './Room'
+require './Hero'
 
 class Hospital < Room
-	def initializa
+	def initializae
+		@heal = [5, 10, 20, 50]
+		@cost = [5,  9, 16, 35]
 		@hidden = false
 	end
 
@@ -16,6 +19,32 @@ class Hospital < Room
 	end
 
 	def action(hero)
-		puts "Hero got healed"
+		@hidden = false
+		option = -1
+
+		until option == 0
+			show()
+			puts "0 to exit hospital."
+			
+			option = gets.chomp
+			check_option(option)
+		end
+	end
+
+	def check_option(option)
+		if option == 0 then
+			return
+		end
+
+		if option > 0 and option < @heal.size then
+			if hero.money >= @cost[option]
+				hero.hp += @heal[option]
+				hero.money -= @cost[option]
+			else
+				puts "Not enough money"
+			end
+		else
+			puts "We don't have that option."
+		end
 	end
 end
