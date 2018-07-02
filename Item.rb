@@ -7,12 +7,16 @@ class Item
 	@name = nume
   end  
   
-  def show (a=0) 
+  def show (a=0, index=99) 
 	puts " "
-    print "#{@name}: #{@attack} dmg, #{@defence} def"
+    print "#{index}. " if index!=99 
+	print "#{@name}: #{@attack} dmg, #{@defence} def"
 	if(a==1)
 		print " - #{@value} coins"
 	end
   end  
    
 end
+
+a=Item.new
+a.show(0,1)
