@@ -4,31 +4,49 @@ load 'Character.rb'
 class Hero < Character
 	def initialize(money=10, my_name="noname", hp=100, att=1, defe=1 , head=1, chest=1, boots=1, weapon=1, pos=[1,1])
 		super(money,my_name,hp,att,defe)
-		@Head = head
-		@Chest = chest
-		@Boots = boots
-		@Weapon = weapon
-		@Position = pos
+		@mead = head
+		@chest = chest
+		@boots = boots
+		@weapon = weapon
+		@position = pos
 	end
 
 	def showstats
 		super
-		print "Head: ", @Head, "\n"
-		print "Chest: ",@Chest, "\n"
-		print "Boots: ", @Boots, "\n"
-		print "Position: ", @Position, "\n"
+		print "Head: ", @head, "\n"
+		print "Chest: ",@chest, "\n"
+		print "Boots: ", @boots, "\n"
+		print "Position: ", @position, "\n"
 	end
+
+	def useitem(item)
+		case item.class
+		when Consumable
+			@attack += item.attack
+			@defence += item.defence
+		when Head
+			@head = item
+		when Chest
+			@chest = item
+		when Weapon
+			@weapon = item
+		when Boots
+			@boots = item
+		end
+	end
+
 	def goup
-		@Position[0] -= 1
+		@position[0] -= 1
 	end
 	def godown 
-		@Position[0] += 1
+		@position[0] += 1
 	end
 	def goleft
-		@Position[1] -= 1
+		@position[1] -= 1
 	end
 	def goright
-		@Position[1] += 1
+		@position[1] += 1
 	end
 end
+
 

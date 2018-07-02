@@ -1,19 +1,18 @@
-load 'Character.rb'
-
-
-class Monster < Character
-	def initialize(money=0, my_name="noname", hp=100, att=1, defe=1, escpch=1 )
-		super(money, my_name, hp, att, defe)
-		@EscapeChance = escpch
+class Character
+	def initialize(money=0, my_name="noname", hp=100, att=1, defe=1 )
+		@money = money;
+		@name = my_name;
+		@hp = hp;
+		@attack = att;
+		@defence = defe;
 	end
 	def showstats
-		super
-		print "Escape Chance: ", @EscapeChance, "\n"
+		print "Character ", @name,  " has: \n"
+		print @money, " Coins \n"
+		print @hp , " HP\n"
+		print "Attac: ", @attack, "\nDefence: ", @defence, "\n"
 	end
 end
-
-
-
 
 
 
