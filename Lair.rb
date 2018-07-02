@@ -1,4 +1,5 @@
 require './Room'
+require './Monster'
 
 class Lair < Room
 	def initialize monster = nil
@@ -7,11 +8,16 @@ class Lair < Room
 	end
 
 	def show()
-		system 'cls'
-		puts "Room that contains various monsters"
+		system 'cls' or system 'clear'
+		puts "Room that contains a hideous monster. Please be careful, the monster has the folowing stats:"
+		@monster.showstats
 	end
 
 	def action(hero)
-		puts "Hero fight monster"
+		show()
+		puts "The hero has the folowing stats:"
+		hero.showstats
+		
+		Combat.new.fight(hero, @monster)
 	end
 end
