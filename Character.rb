@@ -1,5 +1,5 @@
 class Character
-	def initialize(money, my_name, hp, att, defe )
+	def initialize(money=0, my_name="noname", hp=100, att=1, defe=1 )
 		@Money = money;
 		@Name = my_name;
 		@HP = hp;
