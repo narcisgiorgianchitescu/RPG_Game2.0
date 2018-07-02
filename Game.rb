@@ -15,6 +15,7 @@ class Game
     else
       @hero = hero
     end
+    @movement = Movement.new hero, map.size
   end
 
   def clear_screen
@@ -26,8 +27,7 @@ class Game
     until game_over
       clear_screen
       @map.show
-      #movement occurs here
-      #needs work
+      movement.do_move
       map.do_action hero.position
     end
   end
