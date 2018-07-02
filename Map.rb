@@ -1,3 +1,5 @@
+require_relative "Room"
+
 class Map
   def initialize size = 10
     @size = size
