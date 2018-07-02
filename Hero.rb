@@ -2,6 +2,7 @@ load 'Character.rb'
 require_relative 'Character.rb'
 
 class Hero < Character
+	attr_accessor :position
 	def initialize(money=10, my_name="noname", hp=100, att=1, defe=1 , head=1, chest=1, boots=1, weapon=1, pos=[1,1])
 		super(money,my_name,hp,att,defe)
 		@mead = head
@@ -38,7 +39,7 @@ class Hero < Character
 	def goup
 		@position[0] -= 1
 	end
-	def godown 
+	def godown
 		@position[0] += 1
 	end
 	def goleft
@@ -48,5 +49,3 @@ class Hero < Character
 		@position[1] += 1
 	end
 end
-
-

@@ -34,7 +34,7 @@ class Map
   end
 
   def do_action position
-    @slots[poisition.first][position.last].action
+    @slots[position.first][position.last].action
   end
 
 end
