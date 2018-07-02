@@ -1,5 +1,3 @@
-Dir["lib/**.*"].each { |file| require_relative file }
-
 class Item  
   def initialize(att=0, defe=0, val=0, nume="noname")  
      
