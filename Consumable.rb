@@ -11,8 +11,6 @@ class Consumable < Item
 	def show(i=0)
 		super(0)
 		print ", #{@hp} hp"
-		if(i==1)
-			print " - #{@value} coins"
-		end
+		print " - #{@value} coins" if (i==1)
 	end
 end
