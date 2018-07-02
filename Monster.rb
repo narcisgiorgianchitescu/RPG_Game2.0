@@ -2,7 +2,7 @@ load 'Character.rb'
 
 
 class Monster < Character
-	def initialize(money, my_name, hp, att, defe, escpch )
+	def initialize(money=0, my_name="noname", hp=100, att=1, defe=1, escpch=1 )
 		super(money, my_name, hp, att, defe)
 		@EscapeChance = escpch
 	end
@@ -12,8 +12,7 @@ class Monster < Character
 	end
 end
 
-Mon = Monster.new(100,"Narcis", 1, 1, 1 , 4)
-Mon.showstats
+
 
 
 
