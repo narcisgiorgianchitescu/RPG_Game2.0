@@ -1,25 +1,36 @@
 require_relative "Room"
 
 class Map
+
   def initialize size = 10
     @size = size
     @slots = Array.new(size){Array.new(size)}
   end
+
+  def print_slot slot
+    if slot.nil? or slot.hidden
+      print "   "
+    else
+      print " #{slot.class.to_s[0]}"
+    end
+    print "|"
+  end
+
   def show
     puts " -"*@size*2
     @size.times do |i|
       print "|"
       @size.times do |j|
         current_slot = @slots[i][j]
-        if current_slot.nil? or current_slot.hidden
-          print "   "
-        else
-          print " #{current_slot.class.to_s[0]}"
-        end
-        print "|"
+        print_slot current_slot
       end
       puts
       puts " -"*@size*2
     end
   end
+
+  def do_action position
+    @slots[poisition.first][position.last].action
+  end
+
 end
