@@ -2,7 +2,7 @@ require './Room'
 require './Hero'
 
 class Hospital < Room
-	def initializae
+	def initialize
 		@heal = [5, 10, 20, 50]
 		@cost = [5,  9, 16, 35]
 		@hidden = false
