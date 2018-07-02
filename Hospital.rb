@@ -11,7 +11,7 @@ class Hospital < Room
 	def show()
 		system 'cls'
 		#No need for arrays
-		puts "Here you cam heal your wound. Type :"
+		puts "Here you can heal your wound. Type :"
 		puts "1.  5 HP -  5 coins"
 		puts "2. 10 HP -  9 coins"
 		puts "3. 20 HP - 16 coins"
@@ -27,11 +27,11 @@ class Hospital < Room
 			puts "0 to exit hospital."
 			
 			option = gets.chomp
-			check_option(option)
+			check_option(option,hero)
 		end
 	end
 
-	def check_option(option)
+	def check_option(option,hero)
 		if option == 0 then
 			return
 		end
