@@ -13,7 +13,7 @@ class Shop < Room
 		system 'cls'
 		puts "Have a look :"
 
-		@items.each {|name| puts name}
+		@items.each_with_index {|item, index| item.show(1, index)}
 	end
 
 	def action(hero)
