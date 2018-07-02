@@ -1,16 +1,18 @@
-class Character
-	def initialize(money=0, my_name="noname", hp=100, att=1, defe=1 )
-		@money = money;
-		@name = my_name;
-		@hp = hp;
-		@attack = att;
-		@defence = defe;
+load 'Character.rb'
+require_relative 'Character.rb'
+
+class Monster < Character
+	def initialize(money, my_name, hp, att, defe, escpch )
+		@money = money
+		@name = my_name
+		@hp = hp
+		@attack = att
+		@defence = defe
+		@escape_chance = escpch
 	end
 	def showstats
-		print "Character ", @name,  " has: \n"
-		print @money, " Coins \n"
-		print @hp , " HP\n"
-		print "Attac: ", @attack, "\nDefence: ", @defence, "\n"
+		super
+		print "Escape Chance: ", @escape_chance, "\n"
 	end
 end
 

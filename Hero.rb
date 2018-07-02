@@ -1,5 +1,5 @@
 load 'Character.rb'
-#require 'Character.rb'
+require_relative 'Character.rb'
 
 class Hero < Character
 	def initialize(money=10, my_name="noname", hp=100, att=1, defe=1 , head=1, chest=1, boots=1, weapon=1, pos=[1,1])

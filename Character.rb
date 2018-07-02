@@ -10,7 +10,7 @@ class Character
 		print "Character ", @name,  " has: \n"
 		print @money, " Coins \n"
 		print @hp , " HP\n"
-		print "Attac: ", @attack, "\nDefence: ", @defence, "\n"
+		print "Attack: ", @attack, "\nDefence: ", @defence, "\n"
 	end
 end
 
