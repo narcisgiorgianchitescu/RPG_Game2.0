@@ -1,4 +1,5 @@
 require './Room'
+require './Hero'
 
 class Hospital < Room
 	def initializae

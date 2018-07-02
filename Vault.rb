@@ -1,4 +1,6 @@
 require './Room'
+require './Hero'
+require './Item'
 
 class Vault < Room
 
