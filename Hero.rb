@@ -32,9 +32,3 @@ class Hero < Character
 	end
 end
 
-Hero = Hero.new
-Hero.goright
-Hero.goleft
-Hero.godown
-Hero.goup
-Hero.showstats
