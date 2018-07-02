@@ -3,11 +3,7 @@ load 'Character.rb'
 
 class Monster < Character
 	def initialize(money, my_name, hp, att, defe, escpch )
-		@Money = money
-		@Name = my_name
-		@HP = hp
-		@ATT = att
-		@DEF = defe
+		super(money, my_name, hp, att, defe)
 		@EscapeChance = escpch
 	end
 	def showstats

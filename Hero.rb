@@ -3,11 +3,7 @@ load 'Character.rb'
 
 class Hero < Character
 	def initialize(money, my_name, hp, att, defe , head, chest, boots, weapon, pos)
-		@Money = money
-		@Name = my_name
-		@HP = hp
-		@ATT = att
-		@DEF = defe
+		super(money,my_name,hp,att,defe)
 		@Head = head
 		@Chest = chest
 		@Boots = boots
