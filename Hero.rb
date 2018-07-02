@@ -18,4 +18,23 @@ class Hero < Character
 		print "Boots: ", @Boots, "\n"
 		print "Position: ", @Position, "\n"
 	end
+	def goup
+		@Position[0] -= 1
+	end
+	def godown 
+		@Position[0] += 1
+	end
+	def goleft
+		@Position[1] -= 1
+	end
+	def goright
+		@Position[1] += 1
+	end
 end
+
+Hero = Hero.new
+Hero.goright
+Hero.goleft
+Hero.godown
+Hero.goup
+Hero.showstats
