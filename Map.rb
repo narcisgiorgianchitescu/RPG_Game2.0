@@ -1,7 +1,7 @@
 require_relative "Room"
 
 class Map
-
+  attr_accessor :size
   def initialize size = 10
     @size = size
     create_map size

@@ -1,4 +1,5 @@
 class Room
+	attr_accessor :hidden
 	def initialize
 		@hidden = true
 	end
