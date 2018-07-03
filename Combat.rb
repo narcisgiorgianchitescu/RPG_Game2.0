@@ -25,7 +25,7 @@ class Combat
 		return "Game Over" if hero.hp < 1
 
 		hero.money += monster.money
-
+		puts "You Win"
 		return "Dead Monster"
 	end
 
