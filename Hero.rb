@@ -19,10 +19,11 @@ class Hero < Character
 
 	def showstats
 		super
-		print "Head: ", @head.show, "\n"
-		print "Chest: ",@chest.show, "\n"
-		print "Boots: ", @boots.show, "\n"
-		print "Weapon: ", @weapon.show, "\n"
+		#print "Head: ",#
+	   	print @head.show, "\n"
+		print @chest.show, "\n"
+		print @boots.show, "\n"
+		print @weapon.show, "\n"
 		print "Position: ", @position, "\n"
 	end
 
