@@ -24,6 +24,7 @@ class Vault < Room
 	def action(hero)
 		if @got_item == 1 then
 			puts "You already chose your item."
+			sleep(1)
 			return
 		end
 

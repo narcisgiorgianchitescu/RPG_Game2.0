@@ -31,16 +31,14 @@ class Combat
 
 	def print(hero, monster)
 		system 'cls' or system 'clear'
-		puts "Hero has the folowing stats:"
-		puts ""
-		hero.showstats
 
-		puts ""
-		puts "Monster has the folowing stats:"
-		puts ""
+		puts "Monster has the folowing stats:\n\n"
 		monster.showstats
 
+		puts "\nHero has the folowing stats:\n\n"
+		hero.showstats
 		puts ""
+
 		puts "1 for attack or 2 for defence"
 	end
 
