@@ -1,4 +1,4 @@
-require_relative "CustomGame"
+require_relative "CustomMap"
 
 puts "Enter a hero name"
 name = gets.chomp
@@ -10,8 +10,8 @@ choice = gets.chomp
 case choice
 when "random"
 when "custom"
-    map = CustomGame.new.getmap
+    map = CustomMap.new.getmap
 end
 
 game = Game.new map, hero
-game.start
+game.start_game

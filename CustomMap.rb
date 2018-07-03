@@ -1,4 +1,5 @@
 require_relative "Game"
+require_relative "MapGenerator"
 
 class CustomMap < MapGenerator
   def getmap
