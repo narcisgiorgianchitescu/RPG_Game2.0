@@ -10,7 +10,8 @@ class Lair < Room
 
 	def show()
 		system 'cls' or system 'clear'
-		puts "Room that contains a hideous monster. Please be careful, the monster has the folowing stats:"
+		puts "Lair. Room that contains a hideous monster."
+		puts "Please be careful, the monster has the folowing stats:"
 		puts ""
 		@monster.showstats
 		puts ""
@@ -26,7 +27,7 @@ class Lair < Room
 
 		puts "Press a key and tap enter to start combat."
 		gets
-		
+
 		return Combat.new.fight(hero, @monster)
 	end
 end

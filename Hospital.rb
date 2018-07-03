@@ -12,7 +12,7 @@ class Hospital < Room
 	def show()
 		system 'cls' or system 'clear'
 		#No need for arrays
-		puts "Here you can heal your wound. Type :"
+		puts "Hospital. Here you can heal your wound. :"
 		puts "0. To exit"
 		@heal.each_with_index {|h, index|
 			puts "#{index + 1}. #{h} HP - #{@cost[index]} coins"}
