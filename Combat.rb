@@ -25,6 +25,8 @@ class Combat
 		return "Game Over" if hero.hp < 1
 
 		hero.money += monster.money
+
+		return "Dead Monster"
 	end
 
 	def print(hero, monster)

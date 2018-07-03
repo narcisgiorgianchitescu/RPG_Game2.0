@@ -26,9 +26,7 @@ class Lair < Room
 
 		puts "Press a key and tap enter to start combat."
 		gets
-		Combat.new.fight(hero, @monster)
-
-		puts "Press a key and tap enter to start combat."
-		gets
+		
+		return Combat.new.fight(hero, @monster)
 	end
 end
