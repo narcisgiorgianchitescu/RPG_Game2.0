@@ -19,7 +19,7 @@ class Combat
 
 			break if monster.hp < 1
 
-			sleep(2)
+			sleep(1)
 		end
 
 		return "Game Over" if hero.hp < 1
