@@ -28,20 +28,20 @@ class Hero < Character
 	end
 
 	def useitem(item)
-		case item.class
-		when Consumable
+		case item.class.to_s
+		when "Consumable"
 			@attack += item.attack
 			@defence += item.defence
-		when Head
+		when "Head"
 			equip @head, item
 			@head = item
-		when Chest
+		when "Chest"
 			equip @chest, item
 			@chest = item
-		when Weapon
+		when "Weapon"
 			equip @weapon, item
 			@weapon = item
-		when Boots
+		when "Boots"
 			equip @weapon, item
 			@boots = item
 		end
