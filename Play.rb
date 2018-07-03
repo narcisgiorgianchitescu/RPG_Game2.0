@@ -26,5 +26,7 @@ loop do
   end
 end
 
+map.clear_room hero.position
+
 game = Game.new map, hero
 game.start_game
