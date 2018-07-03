@@ -18,5 +18,8 @@ map.add_room hospital, [2,1]
 vault = Vault.new [boots,sword]
 map.add_room vault, [0,1]
 
+lair = Lair.new
+map.add_room lair, [2,2]
+
 game = Game.new map,hero
 game.start_game

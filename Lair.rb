@@ -2,7 +2,7 @@ require './Room'
 require './Monster'
 
 class Lair < Room
-	def initialize monster = nil
+	def initialize monster = Monster.new
 		@monster = monster
 		@hidden = false
 	end
