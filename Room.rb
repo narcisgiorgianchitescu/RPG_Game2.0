@@ -5,6 +5,7 @@ class Room
 	end
 
 	def action(hero)
+<<<<<<< HEAD
 		@hidden = false
 		option = -1
 
@@ -15,6 +16,8 @@ class Room
 			option = gets.chomp
 			check_option(option,hero)
 		end
+=======
+>>>>>>> master
 	end
 
 	def show()

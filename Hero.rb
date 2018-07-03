@@ -27,19 +27,28 @@ class Hero < Character
 	end
 
 	def useitem(item)
-		case item.class
-		when Consumable
+		case item.class.to_s
+		when "Consumable"
 			@attack += item.attack
 			@defence += item.defence
-		when Head
+		when "Head"
+			equip @head, item
 			@head = item
-		when Chest
+		when "Chest"
+			equip @chest, item
 			@chest = item
-		when Weapon
+		when "Weapon"
+			equip @weapon, item
 			@weapon = item
-		when Boots
+		when "Boots"
+			equip @weapon, item
 			@boots = item
 		end
+	end
+
+	def equip old_item, new_item
+		@attack = @attack - old_item.attack + new_item.attack
+		@defence = @defence - old_item.defence + new_item.defence
 	end
 
 	def goup
