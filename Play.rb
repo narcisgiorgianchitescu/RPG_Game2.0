@@ -10,6 +10,8 @@ hero = Hero.new 50, name
 puts "Enter game mode: random/custom"
 choice = gets.chomp
 
+map = nil
+
 loop do
   case choice
   when "random"
