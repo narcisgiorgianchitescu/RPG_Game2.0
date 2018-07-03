@@ -29,7 +29,7 @@ class Combat
 	def combat(hero, monster, option)
 		monster_option = rand(2) + 1
 		puts "Monster chose to attack" if monster_option == 1
-		puts "Monster chose to defend" if monster_option == 0
+		puts "Monster chose to defend" if monster_option == 2
 		
 		if monster_option == 1 and option == 1 then
 			both_attack(hero, monster)
@@ -49,12 +49,14 @@ class Combat
 
 	def hero_attack(hero, monster)
 			dmg = monster.attack - hero.defence
+			puts "Hero dealt #{dmg} damage"
 			if dmg < 0 then dmg = 0 end
 			hero.hp -= dmg
 	end
 
 	def monster_attack(hero, monster)
 			dmg = hero.attack - monster.defence
+			puts "Monster dealt #{dmg} damage"
 			if dmg < 0 then dmg = 0 end
 			monster.hp -= dmg
 	end
