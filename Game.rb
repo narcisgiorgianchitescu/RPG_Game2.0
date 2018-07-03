@@ -39,7 +39,13 @@ class Game
       case result
       when "Game Over"
         @game_over = true
-        puts "You lost, tough luck"
+        puts "End of the game"
+
+        if hero.hp <= 0
+          puts "You win!"
+        else
+          puts "You lose!"
+        end
         hero.showstats
         sleep 3
       when "Dead Monster"
