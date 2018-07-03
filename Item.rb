@@ -1,6 +1,7 @@
 class Item
   attr_accessor :attack
   attr_accessor :defence
+  attr_accessor :value
   def initialize(att=0, defe=0, val=0, nume="noname")
 
     @attack = att

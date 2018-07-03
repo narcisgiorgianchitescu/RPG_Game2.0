@@ -42,9 +42,9 @@ class Shop < Room
 		end
 
 		if option > 0 and option <= @items.size then
-			if hero.money >= @item[option-1].value then
+			if hero.money >= @items[option-1].value then
 				hero.useitem(@items[option-1])
-				hero.money -= @item[option-1].value
+				hero.money -= @items[option-1].value
 				@items.delete_at(option - 1)
 			else
 				puts "Not enough money"
