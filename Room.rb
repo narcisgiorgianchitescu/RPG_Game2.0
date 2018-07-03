@@ -5,6 +5,7 @@ class Room
 	end
 
 	def action(hero)
+		@hidden = false
 	end
 
 	def show()
