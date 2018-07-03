@@ -1,4 +1,4 @@
-load 'Character.rb'
+
 require_relative 'Character.rb'
 
 class Hero < Character
