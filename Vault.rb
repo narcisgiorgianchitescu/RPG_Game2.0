@@ -33,6 +33,8 @@ class Vault < Room
 
 		until option == 0 or @got_item == 1
 			show()
+			puts "\nYou have:\n\n"
+			hero.showstats
 
 			option = gets.chomp.to_i
 			check_option(option,hero)
