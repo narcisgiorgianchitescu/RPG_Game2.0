@@ -31,6 +31,7 @@ class Game
     until @game_over
       clear_screen
       @map.show @hero
+      @hero.showstats
       @movement.do_move
       @map.do_action @hero
     end
