@@ -7,7 +7,6 @@ class Movement
     end
 
     def print_message
-		@hero.showstats
 		puts "Press 'a' to go left, 'w' to go up, 's' to go down and 'd' to go right"
     end
 
