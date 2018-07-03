@@ -5,7 +5,7 @@ class Hospital < Room
 	def initialize (heal = [5, 10, 20, 50] , cost = [5,  9, 16, 35])
 		@heal = heal
 		@cost = cost
-		@hidden = false
+		@hidden = true
 		@hadmoney = 1
 	end
 
