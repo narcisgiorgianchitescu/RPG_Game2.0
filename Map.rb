@@ -20,13 +20,17 @@ class Map
     print "|"
   end
 
-  def show
+  def show hero
     puts " -"*@size*2
     @size.times do |i|
       print "|"
       @size.times do |j|
-        current_slot = @slots[i][j]
-        print_slot current_slot
+        if i == hero.position.first and j == hero.position.last
+          print " X |"
+        else
+          current_slot = @slots[i][j]
+          print_slot current_slot
+        end
       end
       puts
       puts " -"*@size*2

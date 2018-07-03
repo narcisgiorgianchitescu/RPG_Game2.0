@@ -26,7 +26,7 @@ class Game
     @game_over = false
     until @game_over
       clear_screen
-      @map.show
+      @map.show @hero
       @movement.do_move
       @map.do_action @hero
     end
