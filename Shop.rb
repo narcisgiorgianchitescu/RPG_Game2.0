@@ -11,7 +11,7 @@ class Shop < Room
 
 	def show()
 		system 'cls' or system 'clear'
-		puts "Have a look :"
+		puts "Shop's open. Have a look :"
 		puts "0 to exit"
 
 		@items.each_with_index do |item, index|

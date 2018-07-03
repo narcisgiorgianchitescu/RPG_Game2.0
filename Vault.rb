@@ -11,7 +11,7 @@ class Vault < Room
 
 	def show()
 		system 'cls' or system 'clear'
-		puts "Chose one item :"
+		puts "Chose one item from the vault :"
 		puts "0 to exit"
 
 		@items.each_with_index {|item, index|

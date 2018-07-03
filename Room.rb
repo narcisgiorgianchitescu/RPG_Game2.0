@@ -1,7 +1,7 @@
 class Room
 	attr_accessor :hidden
-	def initialize
-		@hidden = true
+	def initialize hidden = true
+		@hidden = hidden
 	end
 
 	def action(hero)
