@@ -3,7 +3,6 @@ require './Hero'
 require './Item'
 
 class Vault < Room
-
 	def initialize items = []
 		@items = items
 		@hidden = true
@@ -14,7 +13,11 @@ class Vault < Room
 		system 'cls' or system 'clear'
 		puts "Chose one item :"
 
-		@items.each_with_index {|item, index| puts item.show(1, index+1)}
+		@items.each_with_index {|item, index| 
+			print "#{index + 1} "
+			item.show(1)
+			puts
+		}
 	end
 
 	def action(hero)
@@ -23,20 +26,10 @@ class Vault < Room
 			return
 		end
 
-		@hidden = false
-		option = -1
-
-		until option == 0
-			show()
-			puts "Choose wisely."
-			puts "0 to exit vault."
-			
-			option = gets.chomp
-			check_option(option,hero)
-		end
+		super
 	end
 
-	def check_option(option,hero)
+	def check_option(option, hero)
 		if option == 0 then
 			return
 		end

@@ -12,21 +12,15 @@ class Shop < Room
 		system 'cls' or system 'clear'
 		puts "Have a look :"
 
-		@items.each_with_index {|item, index| item.show(1, index+1)}
+		@items.each_with_index {|item, index| 
+			print "#{index + 1} "
+			item.show(1)
+			puts
+		}
 	end
 
 	def action(hero)
-		@hidden = false
-		option = -1
-
-		until option == 0
-			show()
-			puts "Happy shopping."
-			puts "0 to exit shop."
-			
-			option = gets.chomp
-			check_option(option,hero)
-		end
+		super
 	end
 
 	def check_option(option,hero)
