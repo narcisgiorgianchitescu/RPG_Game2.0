@@ -1,4 +1,3 @@
-
 require_relative 'Item'
 
 class Consumable < Item
@@ -9,8 +8,8 @@ class Consumable < Item
 	end
 
 	def show(i=0)
-		super(0)
+		super(1)
 		print ", #{@hp} hp"
-		print " - #{@value} coins" if (i==1)
+		print " - #{@value} coins" if (i==0)
 	end
 end
