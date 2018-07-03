@@ -21,6 +21,10 @@ class Map
     end
   end
 
+  def clear_room position
+    @slots[position.first][position.last] = Room.new
+  end
+
   def print_slot slot
     if slot.hidden
       print "   "
