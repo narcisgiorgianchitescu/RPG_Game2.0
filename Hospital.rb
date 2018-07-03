@@ -12,6 +12,7 @@ class Hospital < Room
 		system 'cls' or system 'clear'
 		#No need for arrays
 		puts "Here you can heal your wound. Type :"
+		puts "0. To exit"
 		puts "1.  5 HP -  5 coins"
 		puts "2. 10 HP -  9 coins"
 		puts "3. 20 HP - 16 coins"
@@ -23,10 +24,10 @@ class Hospital < Room
 		option = -1
 
 		until option == 0
-			puts "0 to exit"
 			show()
+			puts "You have #{hero.hp}HP and #{hero.money} coins."
 			
-			option = gets.chomp
+			option = gets.chomp.to_i
 			check_option(option,hero)
 		end
 	end

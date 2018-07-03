@@ -24,6 +24,11 @@ class Shop < Room
 		@hidden = false
 		option = -1
 
+		if @items.size < 1 then
+			puts "No more items to sell."
+			return
+		end
+
 		until option == 0
 			show()
 			option = gets.chomp.to_i

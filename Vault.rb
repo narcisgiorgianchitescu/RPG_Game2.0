@@ -12,6 +12,7 @@ class Vault < Room
 	def show()
 		system 'cls' or system 'clear'
 		puts "Chose one item :"
+		puts "0 to exit"
 
 		@items.each_with_index {|item, index| 
 			print "#{index + 1} "
@@ -30,10 +31,9 @@ class Vault < Room
 		option = -1
 
 		until option == 0
-			puts "0 to exit"
 			show()
 			
-			option = gets.chomp
+			option = gets.chomp.to_i
 			check_option(option,hero)
 		end
 	end
