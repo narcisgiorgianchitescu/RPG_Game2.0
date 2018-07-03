@@ -34,6 +34,8 @@ class Shop < Room
 
 		until option == 0
 			show()
+			puts
+			hero.showstats
 			option = gets.chomp.to_i
 			check_option(option,hero)
 		end
