@@ -15,7 +15,7 @@ class Hospital < Room
 		puts "Here you can heal your wound. Type :"
 		puts "0. To exit"
 		@heal.each_with_index {|h, index|
-			puts "#{index + 1}. #{h} HP - #{cost[index]} coins"}
+			puts "#{index + 1}. #{h} HP - #{@cost[index]} coins"}
 	end
 
 	def action(hero)
