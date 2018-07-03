@@ -5,7 +5,7 @@ system 'clear' or system 'cls'
 
 puts "Enter a hero name"
 name = gets.chomp
-hero = Hero.new 50, name
+hero = Hero.new 50, name, 100, 10, 6
 
 puts "Enter game mode: random/custom"
 choice = gets.chomp
