@@ -33,14 +33,23 @@ class Hero < Character
 			@attack += item.attack
 			@defence += item.defence
 		when Head
+			equip @head, item
 			@head = item
 		when Chest
+			equip @chest, item
 			@chest = item
 		when Weapon
+			equip @weapon, item
 			@weapon = item
 		when Boots
+			equip @weapon, item
 			@boots = item
 		end
+	end
+
+	def equip old_item, new_item
+		@attack = @attack - old_item.attack + new_item.attack
+		@defence = @defence - old_item.defence + new_item.defence
 	end
 
 	def goup
