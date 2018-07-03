@@ -5,6 +5,7 @@ require_relative "Shop"
 require_relative "Hospital"
 require_relative "Lair"
 require_relative "Vault"
+require_relative "Victory_Room"
 
 class Game
 
