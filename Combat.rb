@@ -14,6 +14,8 @@ class Combat
 		end
 
 		return "Game Over" if hero.hp < 1
+
+		hero.money += monster.money
 	end
 
 	def combat(attacker, target)
