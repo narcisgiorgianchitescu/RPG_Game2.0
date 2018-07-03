@@ -15,7 +15,7 @@ class Map
     if slot.hidden
       print "   "
     else
-      print " #{slot.class.to_s[0]}"
+      print " #{slot.class.to_s[0]} "
     end
     print "|"
   end
