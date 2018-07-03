@@ -14,7 +14,7 @@ class Shop < Room
 
 		@items.each_with_index {|item, index| 
 			print "#{index + 1} "
-			item.show(1)
+			item.show(0)
 			puts
 		}
 	end
