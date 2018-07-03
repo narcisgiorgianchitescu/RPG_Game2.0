@@ -33,8 +33,8 @@ class Map
     end
   end
 
-  def do_action position
-    @slots[position.first][position.last].action
+  def do_action hero
+    @slots[hero.position.first][hero.position.last].action hero
   end
 
 end

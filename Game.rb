@@ -28,7 +28,7 @@ class Game
       clear_screen
       @map.show
       @movement.do_move
-      @map.do_action @hero.position
+      @map.do_action @hero
     end
   end
 
