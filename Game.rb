@@ -35,7 +35,13 @@ class Game
       @hero.showstats
       puts
       @movement.do_move
-      @map.do_action @hero
+      result = @map.do_action @hero
+      case result
+      when "Game Over"
+        @game_over = true
+      when "Dead Monster"
+        @map.clear_room @hero.position
+      end
     end
   end
 

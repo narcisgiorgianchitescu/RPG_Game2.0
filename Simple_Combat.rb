@@ -16,7 +16,7 @@ class Simple_Combat
 			dmg = (monster.attack.to_f / hero.defence).round
 			if dmg < 0 then dmg = 0 end
 			puts "Hero dealt #{dmg} damage"
-			moster.hp -= dmg
+			monster.hp -= dmg
 	end
 
 	def monster_attack(hero, monster)
