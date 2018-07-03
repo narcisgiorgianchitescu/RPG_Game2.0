@@ -55,6 +55,3 @@ class Hero < Character
 		@position[1] += 1
 	end
 end
-
-chr = Hero.new(100,"Gigel")
-chr.showstats
