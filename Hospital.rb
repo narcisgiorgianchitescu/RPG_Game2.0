@@ -2,9 +2,9 @@ require './Room'
 require './Hero'
 
 class Hospital < Room
-	def initialize
-		@heal = [5, 10, 20, 50]
-		@cost = [5,  9, 16, 35]
+	def initialize (heal = [5, 10, 20, 50] , cost = [5,  9, 16, 35])
+		@heal = heal
+		@cost = cost
 		@hidden = false
 		@hadmoney = 1
 	end
@@ -14,10 +14,8 @@ class Hospital < Room
 		#No need for arrays
 		puts "Here you can heal your wound. Type :"
 		puts "0. To exit"
-		puts "1.  5 HP -  5 coins"
-		puts "2. 10 HP -  9 coins"
-		puts "3. 20 HP - 16 coins"
-		puts "4. 50 HP - 35 coins"
+		@heal.each_with_index {|h, index|
+			puts "#{index + 1}. #{h} HP - #{cost[index]} coins"}
 	end
 
 	def action(hero)
