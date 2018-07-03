@@ -39,6 +39,9 @@ class Game
       case result
       when "Game Over"
         @game_over = true
+        puts "You lost, tough luck"
+        hero.showstats
+        sleep 3
       when "Dead Monster"
         @map.clear_room @hero.position
       end
