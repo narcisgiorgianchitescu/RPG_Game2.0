@@ -7,7 +7,7 @@ class Movement
     end
 
     def print_message
-		puts "Press 'a' to go left, 'w' to go up, 's' to go down and 'd' to go right"
+		puts "Press 'a' to go left, 'w' to go up, 's' to go down and 'd' to go right or 'x' to exit"
     end
 
     def do_move
@@ -15,6 +15,7 @@ class Movement
       until moved
         print_message
         input = gets.chomp
+        exit if input == 'x'
         case input
         when "a"
           if @hero.position.last > 0
