@@ -1,4 +1,5 @@
 require_relative "Room"
+require_relative "Hero"
 
 class Map
   attr_accessor :size
@@ -8,7 +9,12 @@ class Map
   end
 
   def create_map size
-    @slots = Array.new(size){Array.new(size,Room.new)}
+    @slots = Array.new(size){Array.new(size)}
+    size.times do |i|
+      size.times do |j|
+        @slots[i][j] = Room.new
+      end
+    end
   end
 
   def print_slot slot
