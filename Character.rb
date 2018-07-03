@@ -13,6 +13,3 @@ class Character
 		print "Attack: ", @attack, "\nDefence: ", @defence, "\n"
 	end
 end
-
-
-
