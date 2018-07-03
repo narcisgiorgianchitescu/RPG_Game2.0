@@ -18,6 +18,6 @@ class Lair < Room
 		puts "The hero has the folowing stats:"
 		hero.showstats
 		
-		Combat.new.fight(hero, @monster)
+		#Combat.new.fight(hero, @monster)
 	end
 end
