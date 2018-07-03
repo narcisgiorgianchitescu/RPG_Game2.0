@@ -7,7 +7,7 @@ require_relative 'Weapon'
 class Hero < Character
 	attr_accessor :position
 	def initialize(money=10, my_name="noname", hp=100, att=1, defe=1,
-		head=Head.new, chest=Chest.new, boots=Boots.new, weapon=Weapon.new, pos=[1,1])
+		head=Head.new, chest=Chest.new, boots=Boots.new, weapon=Weapon.new, pos=0,0])
 
 		super(money,my_name,hp,att,defe)
 		@head = head
