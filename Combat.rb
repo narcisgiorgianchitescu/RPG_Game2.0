@@ -26,6 +26,7 @@ class Combat
 
 		hero.money += monster.money
 		puts "You Win"
+		sleep(1)
 		return "Dead Monster"
 	end
 
