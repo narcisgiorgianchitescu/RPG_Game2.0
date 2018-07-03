@@ -8,6 +8,10 @@ class Map
     create_map size
   end
 
+  def add_room room, position
+    @slots[position.first][position.last] = room
+  end
+
   def create_map size
     @slots = Array.new(size){Array.new(size)}
     size.times do |i|
