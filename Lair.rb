@@ -18,6 +18,8 @@ class Lair < Room
 		puts "The hero has the folowing stats:"
 		hero.showstats
 		
-		#Combat.new.fight(hero, @monster)
+		puts "Press a key and tap enter to start combat."
+		next = gets
+		Combat.new.fight(hero, @monster)
 	end
 end
