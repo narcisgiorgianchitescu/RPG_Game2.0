@@ -1,6 +1,6 @@
 require './Room'
 
-class Victory_Room < Room
+class Wictory_Room < Room
 	def initialize
 	end
 

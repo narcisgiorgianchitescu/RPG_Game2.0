@@ -40,14 +40,14 @@ class Game
       case result
       when "Game Over"
         @game_over = true
+        clear_screen
         puts "End of the game"
-
-        if hero.hp <= 0
+        if @hero.hp > 0
           puts "You win!"
         else
           puts "You lose!"
         end
-        hero.showstats
+        @hero.showstats
         sleep 3
       when "Dead Monster"
         @map.clear_room @hero.position

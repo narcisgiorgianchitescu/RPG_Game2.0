@@ -20,9 +20,9 @@ class CustomMap < MapGenerator
     lair = Lair.new
     map.add_room lair, [2,2]
 
-    victory = Victory.new
+    victory = Wictory_Room.new
     map.add_room victory, [3,3]
-    
+
     map
   end
 end

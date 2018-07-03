@@ -10,6 +10,9 @@ class RandomMap < MapGenerator
 
   def getmap hero
     map = gen_random_map hero
+    ob = Wictory_Room.new
+    map.add_room(ob,[0,1])
+  #  map.add_room(ob, [map.size-rand(map.size/4+1),map.size-rand(map.size/4+1)] )
     return map
   end
 
@@ -64,5 +67,4 @@ class RandomMap < MapGenerator
     end
     return room_new
   end
-
 end
