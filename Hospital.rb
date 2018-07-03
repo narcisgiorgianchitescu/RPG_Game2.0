@@ -36,10 +36,10 @@ class Hospital < Room
 			return
 		end
 
-		if option > 0 and option < @heal.size then
-			if hero.money >= @cost[option]
-				hero.hp += @heal[option]
-				hero.money -= @cost[option]
+		if option > 0 and option <= @heal.size then
+			if hero.money >= @cost[option-1]
+				hero.hp += @heal[option-1]
+				hero.money -= @cost[option-1]
 			else
 				puts "Not enough money"
 			end

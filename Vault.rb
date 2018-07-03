@@ -14,7 +14,7 @@ class Vault < Room
 		system 'cls' or system 'clear'
 		puts "Chose one item :"
 
-		@items.each_with_index {|item, index| puts item.show(1, index)}
+		@items.each_with_index {|item, index| puts item.show(1, index+1)}
 	end
 
 	def action(hero)
@@ -28,21 +28,21 @@ class Vault < Room
 
 		until option == 0
 			show()
-			puts "Chose wisely."
+			puts "Choose wisely."
 			puts "0 to exit vault."
 			
 			option = gets.chomp
-			check_option(option)
+			check_option(option,hero)
 		end
 	end
 
-	def check_option(option)
+	def check_option(option,hero)
 		if option == 0 then
 			return
 		end
 
-		if option > 0 and option < @items.size then
-			hero.useitem(@items[option])
+		if option > 0 and option <= @items.size then
+			hero.useitem(@items[option-1])
 			@got_item = 1
 			return
 		else

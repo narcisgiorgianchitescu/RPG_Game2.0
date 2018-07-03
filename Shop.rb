@@ -12,7 +12,7 @@ class Shop < Room
 		system 'cls' or system 'clear'
 		puts "Have a look :"
 
-		@items.each_with_index {|item, index| item.show(1, index)}
+		@items.each_with_index {|item, index| item.show(1, index+1)}
 	end
 
 	def action(hero)
@@ -25,19 +25,19 @@ class Shop < Room
 			puts "0 to exit shop."
 			
 			option = gets.chomp
-			check_option(option)
+			check_option(option,hero)
 		end
 	end
 
-	def check_option(option)
+	def check_option(option,hero)
 		if option == 0 then
 			return
 		end
 
-		if option > 0 and option < @items.size then
-			if hero.money >= @item[option].value
-				hero.useitem(@items[option])
-				hero.money -= @item[option].value
+		if option > 0 and option <= @items.size then
+			if hero.money >= @item[option-1].value
+				hero.useitem(@items[option-1])
+				hero.money -= @item[option-1].value
 				@items.delete_at(option - 1)
 			else
 				puts "Not enough money"
