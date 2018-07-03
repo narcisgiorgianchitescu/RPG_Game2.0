@@ -4,7 +4,7 @@ class Room
 		@hidden = true
 	end
 
-	def action()
+	def action(hero)
 		@hidden = false
 		option = -1
 
