@@ -1,6 +1,6 @@
 require_relative "Game"
 
 class MapGenerator
-  def getmap
+  def getmap hero
   end
 end

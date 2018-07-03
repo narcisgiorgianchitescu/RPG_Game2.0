@@ -10,9 +10,9 @@ choice = gets.chomp
 
 case choice
 when "random"
-    map = RandomMap.new.getmap
+    map = RandomMap.new.getmap hero
 when "custom"
-    map = CustomMap.new.getmap
+    map = CustomMap.new.getmap hero
 end
 
 game = Game.new map, hero

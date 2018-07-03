@@ -3,6 +3,7 @@ require_relative "Hero"
 
 class Map
   attr_accessor :size
+  attr_accessor :slots
   def initialize size = 10
     @size = size
     create_map size

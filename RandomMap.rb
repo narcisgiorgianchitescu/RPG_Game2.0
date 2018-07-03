@@ -1,53 +1,63 @@
 require_relative "Game"
+require_relative "MapGenerator"
+require_relative "Consumable"
+require_relative "Head"
+require_relative "Chest"
+require_relative "Boots"
+require_relative "Weapon"
 
 class RandomMap < MapGenerator
 
-  def get_map
-    get_random_map
+  def getmap hero 
+    map = gen_random_map hero
+    return map
   end
 
-  def gen_random_map
+  def gen_random_map hero
     map=Map.new
     map.size.times do |i|
         map.size.times do |j|
-            map.add_room(gen_random_room,[i,j])
+            y = gen_random_room(hero)
+            pos = [i,j]
+            map.add_room(y,pos)
         end
     end
     return map
   end
 
   def gen_random_item
-    case(rand(1..12))
+    case(rand(1..12).to_i)
       when 1..4
-        return Consumable.new(rand(-1..2),rand(-1..2),"Random Potion",rand(-5,20))
+        return Consumable.new(rand(-1..2).to_i,rand(-1..2).to_i,"Random Potion",rand(-5..20).to_i)
       when 5..6
-        return Head.new(rand(0..1),rand(1..6),rand(10..30),"Random Head")
+        return Head.new(rand(0..1).to_i,rand(1..6).to_i,rand(10..30).to_i,"Random Head")
       when 7..8
-        return Chest.new(0,rand(1..10),rand(10..30),"Random Chest")
+        return Chest.new(0,rand(1..10).to_i,rand(10..30).to_i,"Random Chest")
       when 9..10
-        return Boots.new(rand(0..2),rand(1..3),rand(10..30),"Random Boots")
+        return Boots.new(rand(0..2).to_i,rand(1..3).to_i,rand(10..30).to_i,"Random Boots")
       when 11..12
-        return Weapon.new(rand(0..10),0,rand(10..30),"Random Weapon")
+        return Weapon.new(rand(0..10).to_i,0,rand(10..30).to_i,"Random Weapon")
     end
   end
 
-  def gen_random_monster
-    return Monster.new(rand(1..10),"random mob",@hero.hp+rand(-10..10),@hero.attack+rand(-3..1),@hero.defence+rand(-3..1),rand(0..100) )
+  def gen_random_monster hero
+    return Monster.new(rand(1..10).to_i,"random mob",hero.hp+rand(-10..10).to_i,hero.attack+rand(-3..1).to_i,hero.defence+rand(-3..1).to_i,rand(0..100).to_i )
   end
 
-  def gen_random_room
-    case rand(1..100)
+  def gen_random_room hero
+    x = rand(1..100).to_i
+    case x
       when 1..5 #Hospital
           room_new=Hospital.new
       when 6..29 #Lair
-        room_new=Lair.new(gen_random_monster)
+        room_new=Lair.new(gen_random_monster(hero))
       when 30..39
         items=[]
-        rand(3..5).times do |x| items.push(gen_random_item) end
+        rand(3..5).to_i.times do |x| items.push(gen_random_item) end
         room_new=Shop.new(items)
-      when 30..39
+      when 40..49
         items=[]
-        rand(3..5).times do |x| items.push(gen_random_item) end
+        rand(3..5).to_i.times do |x| items.push(gen_random_item) end
         room_new=Vault.new(items)
       else
         room_new=Room.new
