@@ -8,7 +8,7 @@ require_relative "Weapon"
 
 class RandomMap < MapGenerator
 
-  def getmap hero 
+  def getmap hero
     map = gen_random_map hero
     return map
   end
@@ -28,7 +28,7 @@ class RandomMap < MapGenerator
   def gen_random_item
     case(rand(1..12).to_i)
       when 1..4
-        return Consumable.new(rand(-1..2).to_i,rand(-1..2).to_i,"Random Potion",rand(-5..20).to_i)
+        return Consumable.new(rand(-1..2).to_i,rand(-1..2).to_i,rand(10..30),"Random Potion",rand(-5..20).to_i)
       when 5..6
         return Head.new(rand(0..1).to_i,rand(1..6).to_i,rand(10..30).to_i,"Random Head")
       when 7..8
@@ -41,7 +41,7 @@ class RandomMap < MapGenerator
   end
 
   def gen_random_monster hero
-    return Monster.new(rand(1..10).to_i,"random mob",hero.hp+rand(-10..10).to_i,hero.attack+rand(-3..1).to_i,hero.defence+rand(-3..1).to_i,rand(0..100).to_i )
+    return Monster.new(rand(15..40).to_i,"random mob",(hero.hp+rand(-10..10).to_i)/2,(hero.attack+rand(-3..1).to_i)/2,(hero.defence+rand(-3..1).to_i)/2,rand(0..100).to_i )
   end
 
   def gen_random_room hero
