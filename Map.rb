@@ -22,11 +22,11 @@ class Map
 
   def show
     puts " -"*@size*2
-    @size.times do |i|
-      print "|"
+	@size.times do |i|
+	  print "|"
       @size.times do |j|
         current_slot = @slots[i][j]
-        print_slot current_slot," "
+        print_slot current_slot
       end
       puts
       puts " -"*@size*2
