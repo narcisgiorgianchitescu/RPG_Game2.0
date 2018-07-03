@@ -14,10 +14,10 @@ class Vault < Room
 		puts "Chose one item :"
 		puts "0 to exit"
 
-		@items.each_with_index {|item, index| 
+		@items.each_with_index {|item, index|
 			print "#{index + 1} "
 			item.show(1)
-			puts
+			puts ""
 		}
 	end
 
@@ -30,9 +30,9 @@ class Vault < Room
 		@hidden = false
 		option = -1
 
-		until option == 0
+		until option == 0 or @got_item == 1
 			show()
-			
+
 			option = gets.chomp.to_i
 			check_option(option,hero)
 		end

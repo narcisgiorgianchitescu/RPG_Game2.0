@@ -6,6 +6,7 @@ class Shop < Room
 	def initialize items = []
 		@items = items
 		@hidden = true
+		@hadmoney = 1
 	end
 
 	def show()
@@ -18,6 +19,8 @@ class Shop < Room
 			item.show(0)
 			puts
 		end
+
+		puts "You don't have enough money." if @hadmoney == 0
 	end
 
 	def action(hero)
@@ -31,6 +34,8 @@ class Shop < Room
 
 		until option == 0
 			show()
+			puts
+			hero.showstats
 			option = gets.chomp.to_i
 			check_option(option,hero)
 		end
@@ -42,14 +47,16 @@ class Shop < Room
 		end
 
 		if option > 0 and option <= @items.size then
-			if hero.money >= @item[option-1].value then
+			if hero.money >= @items[option-1].value then
 				hero.useitem(@items[option-1])
-				hero.money -= @item[option-1].value
+				hero.money -= @items[option-1].value
 				@items.delete_at(option - 1)
+				@hadmoney = 1
 			else
-				puts "Not enough money"
+				@hadmoney = 0
 			end
 		else
+			@hadmoney = 1
 			puts "We don't have that option."
 		end
 	end

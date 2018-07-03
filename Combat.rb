@@ -2,6 +2,9 @@ require './Monster'
 require './Hero'
 
 class Combat
+	def initialize
+	end
+
 	def fight(hero, monster)
 		system 'cls' or system 'clear'
 
@@ -19,6 +22,9 @@ class Combat
 	end
 
 	def combat(attacker, target)
-		target.hp -= (attacker.attack - target.defence)
+		dmg = attacker.attack - target.defence
+		target.hp -= dmg
+		print "#{target} was hit with #{dmg}"
+		puts " damage by #{attacker} "
 	end
 end

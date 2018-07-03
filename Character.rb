@@ -1,4 +1,8 @@
 class Character
+	attr_accessor :money
+	attr_accessor :hp
+	attr_accessor :attack
+	attr_accessor :defence
 	def initialize(money=0, my_name="noname", hp=100, att=1, defe=1 )
 		@money = money;
 		@name = my_name;
