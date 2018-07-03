@@ -10,12 +10,5 @@ hero = Hero.new 50, name
 puts "Enter game mode: random/custom"
 choice = gets.chomp
 
-case choice
-when "random"
-    map = RandomMap.new.getmap hero
-when "custom"
-    map = CustomMap.new.getmap hero
-end
-
 game = Game.new map, hero
 game.start_game
