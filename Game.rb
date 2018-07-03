@@ -1,6 +1,10 @@
 require_relative "Map"
 require_relative "Hero"
 require_relative "Movement"
+require_relative "Shop"
+require_relative "Hospital"
+require_relative "Lair"
+require_relative "Vault"
 
 class Game
 
