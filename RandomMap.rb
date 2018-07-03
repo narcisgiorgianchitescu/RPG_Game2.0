@@ -1,9 +1,9 @@
 require_relative "Game"
 
-class RandomGame < MapGenerator
+class RandomMap < MapGenerator
 
   def get_map
-    return get_random_map
+    get_random_map
   end
 
   def gen_random_map

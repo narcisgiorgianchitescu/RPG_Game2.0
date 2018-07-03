@@ -1,4 +1,5 @@
 require_relative "CustomMap"
+require_relative "RandomMap"
 
 puts "Enter a hero name"
 name = gets.chomp
@@ -9,6 +10,7 @@ choice = gets.chomp
 
 case choice
 when "random"
+    map = RandomMap.new.getmap
 when "custom"
     map = CustomMap.new.getmap
 end
