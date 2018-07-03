@@ -17,7 +17,7 @@ class Vault < Room
 		@items.each_with_index {|item, index| 
 			print "#{index + 1} "
 			item.show(1)
-			puts
+			puts ""
 		}
 	end
 
