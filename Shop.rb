@@ -37,7 +37,7 @@ class Shop < Room
 		end
 
 		if option > 0 and option <= @items.size then
-			if hero.money >= @item[option-1].value
+			if hero.money >= @item[option-1].value then
 				hero.useitem(@items[option-1])
 				hero.money -= @item[option-1].value
 				@items.delete_at(option - 1)
