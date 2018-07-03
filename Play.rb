@@ -15,6 +15,9 @@ when "random"
     map = RandomMap.new.getmap
 when "custom"
     map = CustomMap.new.getmap
+else
+    puts "Invalid input"
+    exit
 end
 
 game = Game.new map, hero
