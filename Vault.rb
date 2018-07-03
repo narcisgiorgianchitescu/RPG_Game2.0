@@ -30,7 +30,7 @@ class Vault < Room
 		@hidden = false
 		option = -1
 
-		until option == 0 and @got_item == 1
+		until option == 0 or @got_item == 1
 			show()
 			
 			option = gets.chomp.to_i
