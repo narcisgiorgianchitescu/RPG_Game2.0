@@ -22,7 +22,7 @@ class Map
   end
 
   def clear_room position
-    @slots[position.first][position.last] = Room.new
+    @slots[position.first][position.last] = Room.new false
   end
 
   def print_slot slot
