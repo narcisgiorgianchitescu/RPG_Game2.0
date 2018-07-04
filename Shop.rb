@@ -8,7 +8,7 @@ class Shop < Room
 	include SystemCommands
 	include CheckCommands
 
-	def initialize items = []
+	def initialize(items = [])
 		@items = items
 		@has_money = true
 		@hidden = true
@@ -17,7 +17,7 @@ class Shop < Room
     @Wait_for_input = -1
 	end
 
-	def show()
+	def show
 		system 'cls' or system 'clear'
 		puts "Shop's open. Have a look :"
 		puts "0 to exit"

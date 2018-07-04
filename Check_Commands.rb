@@ -7,8 +7,8 @@ module CheckCommands
     end
   end
 
-  def self.check_if_buyer_has_enough_money(character, object_value)
-    if character.money >= object_value
+  def self.check_if_buyer_has_enough_money(buyer, object_value)
+    if buyer.money >= object_value
       true
     else
       false
