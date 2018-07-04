@@ -5,7 +5,7 @@ require_relative 'Head'
 require_relative 'Chest'
 require_relative 'Boots'
 require_relative 'Weapon'
-# Clasa care getereaza o harta
+# Generating a random map with different tools
 class RandomMap < MapGenerator
   def initialize(difficulty = 1)
     # difficulty - 1-10
