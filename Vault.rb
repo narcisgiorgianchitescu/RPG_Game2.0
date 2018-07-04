@@ -1,12 +1,20 @@
-require './Room'
-require './Hero'
-require './Item'
+require_relative 'Room'
+require_relative 'Hero'
+require_relative 'Item'
+require_relative 'System_Commands'
+require_relative 'Check_Commands'
 
 class Vault < Room
+	include SystemCommands
+	include CheckCommands
+
 	def initialize items = []
 		@items = items
-		@hidden = true
-		@got_item = 0
+		@got_item = false
+		@index_correction = 1
+    @Exit = 0
+    @Wait_for_input = -1
+    @Seconds_to_sleep = 1
 	end
 
 	def show()
@@ -15,23 +23,23 @@ class Vault < Room
 		puts "0 to exit"
 
 		@items.each_with_index {|item, index|
-			print "#{index + 1} "
-			item.show(1)
+			print "#{index + @index_correction} "
+			item.show(false)
 			puts ""
 		}
 	end
 
 	def action(hero)
-		if @got_item == 1 then
+		if @got_item then
 			puts "You already chose your item."
-			sleep(1)
+			sleep(@Seconds_to_sleep)
 			return
 		end
 
 		@hidden = false
-		option = -1
+		option = @Wait_for_input
 
-		until option == 0 or @got_item == 1
+		until option == @Exit or @got_item
 			show()
 			puts "\nYou have:\n\n"
 			hero.showstats
@@ -42,13 +50,11 @@ class Vault < Room
 	end
 
 	def check_option(option, hero)
-		if option == 0 then
-			return
-		end
+		super
 
 		if option > 0 and option <= @items.size then
-			hero.useitem(@items[option-1])
-			@got_item = 1
+			hero.useitem(@items[option - @index_correction])
+			@got_item = true
 			return
 		else
 			puts "We don't have that option."

@@ -1,5 +1,5 @@
-require './Monster'
-require './Hero'
+require_relative 'Monster'
+require_relative 'Hero'
 
 class Simple_Combat
 	def initialize

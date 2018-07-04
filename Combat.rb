@@ -1,6 +1,6 @@
-require './Monster'
-require './Hero'
-require './Simple_Combat'
+require_relative 'Monster'
+require_relative 'Hero'
+require_relative 'Simple_Combat'
 
 class Combat
 	def initialize
@@ -38,15 +38,15 @@ class Combat
 
 		puts "\nHero has the folowing stats:\n\n"
 		hero.showstats
-		puts ""
+		puts ''
 
-		puts "1 for attack or 2 for defence"
+		puts '1 for attack or 2 for defence'
 	end
 
 	def combat(hero, monster, option)
 		monster_option = rand(2) + 1
-		puts "Monster chose to attack" if monster_option == 1
-		puts "Monster chose to defend" if monster_option == 2
+		puts 'Monster chose to attack' if monster_option == 1
+		puts 'Monster chose to defend' if monster_option == 2
 		
 		if monster_option == 1 and option == 1 then
 			Simple_Combat.new.both_attack(hero, monster)
@@ -58,6 +58,7 @@ class Combat
 			Simple_Combat.new.both_defend(hero, monster)
 		end
 
-		puts ""
+		puts ''
+		puts 'Press enter to continue to next round'
 	end
 end

@@ -1,11 +1,12 @@
-require './Room'
-require './Monster'
-require './Combat'
+require_relative 'Room'
+require_relative 'Monster'
+require_relative 'Combat'
 
 class Lair < Room
-	def initialize monster = Monster.new
+	def initialize(monster = Monster.new)
 		@monster = monster
-		@hidden = true
+		#TODO : change back
+		@hidden = false
 	end
 
 	def show()

@@ -1,53 +1,67 @@
-require './Room'
-require './Hero'
+require_relative 'Room'
+require_relative 'Hero'
+require_relative 'System_Commands'
+require_relative 'Check_Commands'
 
 class Hospital < Room
-	def initialize (heal = [5, 10, 20, 50] , cost = [5,  9, 16, 35])
-		@heal = heal
-		@cost = cost
+	include SystemCommands
+	include CheckCommands
+
+	def initialize (heal_options = [[5, 5], [10, 9], [20, 16], [50, 35]])
+		@heal_options = heal_options
+		@has_money = true
+		@index_correction = 1
 		@hidden = true
-		@hadmoney = 1
+    @Exit = 0
+    @Wait_for_input = -1
 	end
 
 	def show()
-		system 'cls' or system 'clear'
-		#No need for arrays
-		puts "Hospital. Here you can heal your wound. :"
-		puts "0. To exit"
-		@heal.each_with_index {|h, index|
-			puts "#{index + 1}. #{h} HP - #{@cost[index]} coins"}
+		SystemCommands.clear_screen
+		
+		puts 'Hospital. Here you can heal your wound.'
+		puts '0. To exit'
+
+		@heal_options.each_with_index do |(key, value), index|
+			puts "#{index + @index_correction}. #{key} HP - #{value} coins"
+		end
+
+		puts ''
+		puts 'Not enough money.' unless @has_money
 	end
 
 	def action(hero)
 		@hidden = false
-		option = -1
+    option = @Wait_for_input
 
-		until option == 0
-			show()
-			puts "You have #{hero.hp}HP and #{hero.money} coins."
-			puts "You don't have enough money." if @hadmoney == 0
+    until option == @Exit
+      show
 			
-			option = gets.chomp.to_i
-			check_option(option,hero)
-		end
+			puts "You have #{hero.hp}HP and #{hero.money} coins."
+      option = gets.chomp.to_i
+      check_option(option,hero)
+    end
 	end
 
 	def check_option(option,hero)
-		if option == 0 then
-			return
-		end
+		super
 
-		if option > 0 and option <= @heal.size then
-			if hero.money >= @cost[option-1] then
-				hero.hp += @heal[option-1]
-				hero.money -= @cost[option-1]
-				@hadmoney = 1
+		if CheckCommands.check_if_between(
+				1,
+				@heal_options.size,
+				option - @index_correction) then
+			if CheckCommands.check_if_buyer_has_enough_money(
+					hero,
+					@heal_options[option - @index_correction][1]) then
+				hero.hp += @heal_options[option - @index_correction][0]
+				hero.money -= @heal_options[option - @index_correction][1]
+				@has_money = true
 			else
-				@hadmoney = 0
+				@has_money = false
 				puts "Not enough money"
 			end
 		else
-			@hadmoney = 1
+			@has_money = true
 			puts "We don't have that option."
 		end
 	end
