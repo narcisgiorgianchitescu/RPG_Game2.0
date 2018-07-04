@@ -15,10 +15,10 @@ map = nil
 loop do
   case choice
   when 'random'
-    map = RandomMap.new.getmap hero
+    map = RandomMap.new.get_map hero
     break
   when 'custom'
-    map = CustomMap.new.getmap hero
+    map = CustomMap.new.get_map hero
     break
   else
     puts "Invalid input, please choose 'random' or 'custom'"

@@ -2,5 +2,5 @@ require_relative 'Game'
 
 # class for generating a map
 class MapGenerator
-  def getmap(hero); end
+  def get_map(hero); end
 end
