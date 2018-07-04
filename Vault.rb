@@ -34,7 +34,7 @@ class Vault < Room
 		until option == 0 or @got_item == 1
 			show()
 			puts "\nYou have:\n\n"
-			hero.showstats
+			hero.show_stats
 
 			option = gets.chomp.to_i
 			check_option(option,hero)
@@ -47,7 +47,7 @@ class Vault < Room
 		end
 
 		if option > 0 and option <= @items.size then
-			hero.useitem(@items[option-1])
+			hero.use_item(@items[option-1])
 			@got_item = 1
 			return
 		else
