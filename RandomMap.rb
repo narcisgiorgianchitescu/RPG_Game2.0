@@ -101,8 +101,8 @@ class RandomMap < MapGenerator
 
   def return_random_room(hero)
     case rand(1..100)
-    when 1..5 then return_random_hospital
-    when 6..29 then return_random_lair(hero)
+    when 1..5 then Hospital.new
+    when 6..29 then Lair.new(return_random_monster(hero))
     when 30..39 then return_random_shop
     when 40..49 then return_random_vault
     else
@@ -122,20 +122,8 @@ class RandomMap < MapGenerator
     Vault.new(items)
   end
 
-  def return_random_lair(hero)
-    Lair.new(return_random_monster(hero))
-  end
-
-  def return_random_hospital
-    Hospital.new
-  end
-
-  def return_random_wictory
-    Wictory_Room.new
-  end
-
   def spawn_victory_room(map)
-    ob = return_random_wictory
+    ob = Wictory_Room.new
     position_spawn = [
       map.size - 1 - rand(map.size / 4),
       map.size - 1 - rand(map.size / 4)
