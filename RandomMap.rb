@@ -130,8 +130,12 @@ class RandomMap < MapGenerator
     Hospital.new
   end
 
+  def return_random_wictory
+    Wictory_Room.new
+  end
+
   def spawn_victory_room(map)
-    ob = Wictory_Room.new
+    ob = return_random_wictory
     position_spawn = [
       map.size - 1 - rand(map.size / 4),
       map.size - 1 - rand(map.size / 4)
