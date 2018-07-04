@@ -1,24 +1,24 @@
-require_relative "CustomMap"
-require_relative "RandomMap"
+require_relative 'CustomMap'
+require_relative 'RandomMap'
 
-system 'clear' or system 'cls'
+system('clear') || system('cls')
 
-puts "Enter a hero name"
+puts 'Enter a hero name'
 name = gets.chomp
 hero = Hero.new 50, name, 100, 10, 6
 
-puts "Enter game mode: random/custom"
+puts 'Enter game mode: random/custom'
 choice = gets.chomp
 
 map = nil
 
 loop do
   case choice
-  when "random"
-    map = RandomMap.new.getmap hero
+  when 'random'
+    map = RandomMap.new.get_map hero
     break
-  when "custom"
-    map = CustomMap.new.getmap hero
+  when 'custom'
+    map = CustomMap.new.get_map hero
     break
   else
     puts "Invalid input, please choose 'random' or 'custom'"

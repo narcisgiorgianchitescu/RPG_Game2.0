@@ -2,7 +2,7 @@ require_relative "Game"
 require_relative "MapGenerator"
 
 class CustomMap < MapGenerator
-  def getmap hero
+  def get_map hero
     map = Map.new
 
     sword = Weapon.new 10, 5, 100, "Sword"

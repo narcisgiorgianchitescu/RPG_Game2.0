@@ -34,7 +34,7 @@ class Combat
 		system 'cls' or system 'clear'
 
 		puts "Monster has the folowing stats:\n\n"
-		monster.showstats
+		monster.show_stats
 
 		puts "\nHero has the folowing stats:\n\n"
 		hero.showstats

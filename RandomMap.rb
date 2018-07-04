@@ -1,69 +1,134 @@
-require_relative "Game"
-require_relative "MapGenerator"
-require_relative "Consumable"
-require_relative "Head"
-require_relative "Chest"
-require_relative "Boots"
-require_relative "Weapon"
-
+require_relative 'Game'
+require_relative 'MapGenerator'
+require_relative 'Consumable'
+require_relative 'Head'
+require_relative 'Chest'
+require_relative 'Boots'
+require_relative 'Weapon'
+# Clasa care getereaza o harta
 class RandomMap < MapGenerator
-
-  def getmap hero
-    map = gen_random_map hero
-    ob = Wictory_Room.new
-    map.add_room(ob, [map.size-1-rand(map.size/4),map.size-1-rand(map.size/4)])
-    return map
+  def initialize(difficulty = 1)
+    # difficulty - 1-10
+    @difficulty = difficulty
   end
 
-  def gen_random_map hero
-    map=Map.new
+  def difficulty_multiplier
+    @difficulty * -0.1 + 1.5
+  end
+
+  def get_map(hero)
+    return_random_map hero
+  end
+
+  def return_random_map(hero)
+    map = Map.new
     map.size.times do |i|
-        map.size.times do |j|
-            y = gen_random_room(hero)
-            pos = [i,j]
-            map.add_room(y,pos)
-        end
+      map.size.times do |j|
+        y = return_random_room(hero)
+        position = [i, j]
+        map.add_room(y, position)
+      end
     end
-    return map
+    map = spawn_victory_room(map)
   end
 
-  def gen_random_item
-    case(rand(1..12).to_i)
-      when 1..4
-        return Consumable.new(rand(-1..2).to_i,rand(-1..2).to_i,rand(10..30),"Random Potion",rand(-5..20).to_i)
-      when 5..6
-        return Head.new(rand(0..1).to_i,rand(1..6).to_i,rand(10..30).to_i,"Random Head")
-      when 7..8
-        return Chest.new(0,rand(1..10).to_i,rand(10..30).to_i,"Random Chest")
-      when 9..10
-        return Boots.new(rand(0..2).to_i,rand(1..3).to_i,rand(10..30).to_i,"Random Boots")
-      when 11..12
-        return Weapon.new(rand(0..10).to_i,0,rand(10..30).to_i,"Random Weapon")
+  def return_random_item
+    case rand(1..12)
+    when 1..4 then return_random_consumable
+    when 5..6 then return_random_head
+    when 7..8 then return_random_chest
+    when 9..10 then return_random_boots
+    when 11..12 then return_random_weapon
     end
   end
 
-  def gen_random_monster hero
-    return Monster.new(rand(15..40).to_i,"random mob",(hero.hp+rand(-10..10).to_i)/2,(hero.attack+rand(-3..1).to_i)/2,(hero.defence+rand(-3..1).to_i)/2,rand(0..100).to_i )
+  def return_random_consumable
+    Consumable.new(
+      (rand(-1..2) * difficulty_multiplier).to_i,
+      (rand(-1..2) * difficulty_multiplier).to_i,
+      (rand(10..30) * difficulty_multiplier).to_i,
+      'Random Potion',
+      (rand(-5..20) * difficulty_multiplier).to_i
+    )
   end
 
-  def gen_random_room hero
-    x = rand(1..100).to_i
-    case x
-      when 1..5 #Hospital
-          room_new=Hospital.new
-      when 6..29 #Lair
-        room_new=Lair.new(gen_random_monster(hero))
-      when 30..39
-        items=[]
-        rand(3..5).to_i.times do items.push(gen_random_item) end
-        room_new=Shop.new(items)
-      when 40..49
-        items=[]
-        rand(3..5).to_i.times do items.push(gen_random_item) end
-        room_new=Vault.new(items)
-      else
-        room_new=Room.new
+  def return_random_head
+    Head.new(
+      (rand(0..1) * difficulty_multiplier).to_i,
+      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(10..30) * difficulty_multiplier).to_i,
+      'Random Head'
+    )
+  end
+
+  def return_random_chest
+    Chest.new(
+      (rand(0..1) * difficulty_multiplier).to_i,
+      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(10..30) * difficulty_multiplier).to_i,
+      'Random Chest'
+    )
+  end
+
+  def return_random_boots
+    Boots.new(
+      (rand(0..1) * difficulty_multiplier).to_i,
+      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(10..30) * difficulty_multiplier).to_i,
+      'Random Boots'
+    )
+  end
+
+  def return_random_weapon
+    Weapon.new(
+      (rand(0..1) * difficulty_multiplier).to_i,
+      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(10..30) * difficulty_multiplier).to_i,
+      'Random Weapon'
+    )
+  end
+
+  def return_random_monster(hero)
+    Monster.new(
+      (rand(15..40) * difficulty_multiplier).to_i,
+      'Random Mob',
+      ((hero.hp + rand(-10..10)) / difficulty_multiplier).to_i,
+      ((hero.attack + rand(-3..1)) / difficulty_multiplier).to_i,
+      ((hero.defence + rand(-3..1)) / difficulty_multiplier).to_i,
+      rand(0..100)
+    )
+  end
+
+  def return_random_room(hero)
+    case rand(1..100)
+    when 1..5 then Hospital.new
+    when 6..29 then Lair.new(return_random_monster(hero))
+    when 30..39 then return_random_shop
+    when 40..49 then return_random_vault
+    else
+      Room.new
     end
-    return room_new
+  end
+
+  def return_random_shop
+    items = []
+    rand(3..5).to_i.times { items.push(return_random_item) }
+    Shop.new(items)
+  end
+
+  def return_random_vault
+    items = []
+    rand(3..5).to_i.times { items.push(return_random_item) }
+    Vault.new(items)
+  end
+
+  def spawn_victory_room(map)
+    ob = Wictory_Room.new
+    position_spawn = [
+      map.size - 1 - rand(map.size / 4),
+      map.size - 1 - rand(map.size / 4)
+    ]
+    map.add_room(ob, position_spawn)
+    map
   end
 end

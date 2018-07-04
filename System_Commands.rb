@@ -1,6 +1,7 @@
+# helper module
 module SystemCommands
   def self.clear_screen
-    system 'cls' or system 'clear'
+    system('cls') || system('clear')
   end
 
   def self.sleep_for_seconds(seconds)

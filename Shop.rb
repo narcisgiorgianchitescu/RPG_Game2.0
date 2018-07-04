@@ -43,7 +43,7 @@ class Shop < Room
 		until option == @Exit
 			show()
 			puts
-			hero.showstats
+			hero.show_stats
 			option = gets.chomp.to_i
 			check_option(option,hero)
 		end

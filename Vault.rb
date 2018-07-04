@@ -42,7 +42,7 @@ class Vault < Room
 		until option == @Exit or @got_item
 			show()
 			puts "\nYou have:\n\n"
-			hero.showstats
+			hero.show_stats
 
 			option = gets.chomp.to_i
 			check_option(option,hero)
