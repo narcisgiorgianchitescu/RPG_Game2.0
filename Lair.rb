@@ -6,10 +6,10 @@ class Lair < Room
 	def initialize(monster = Monster.new)
 		@monster = monster
 		#TODO : change back
-		@hidden = false
+		@hidden = true
 	end
 
-	def show()
+	def show
 		system 'cls' or system 'clear'
 		puts "Lair. Room that contains a hideous monster."
 		puts "Please be careful, the monster has the folowing stats:"

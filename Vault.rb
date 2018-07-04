@@ -8,16 +8,17 @@ class Vault < Room
 	include SystemCommands
 	include CheckCommands
 
-	def initialize items = []
+	def initialize(items = [])
 		@items = items
 		@got_item = false
+		@hidden = true
 		@index_correction = 1
     @Exit = 0
     @Wait_for_input = -1
     @Seconds_to_sleep = 1
 	end
 
-	def show()
+	def show
 		system 'cls' or system 'clear'
 		puts "Chose one item from the vault :"
 		puts "0 to exit"

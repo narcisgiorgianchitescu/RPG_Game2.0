@@ -7,7 +7,7 @@ class Hospital < Room
 	include SystemCommands
 	include CheckCommands
 
-	def initialize (heal_options = [[5, 5], [10, 9], [20, 16], [50, 35]])
+	def initialize(heal_options = [[5, 5], [10, 9], [20, 16], [50, 35]])
 		@heal_options = heal_options
 		@has_money = true
 		@index_correction = 1
@@ -16,7 +16,7 @@ class Hospital < Room
     @Wait_for_input = -1
 	end
 
-	def show()
+	def show
 		SystemCommands.clear_screen
 		
 		puts 'Hospital. Here you can heal your wound.'

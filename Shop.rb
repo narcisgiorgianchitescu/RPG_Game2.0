@@ -8,7 +8,7 @@ class Shop < Room
 	include SystemCommands
 	include CheckCommands
 
-	def initialize items = []
+	def initialize(items = [])
 		@items = items
 		@has_money = true
 		@hidden = true
@@ -17,7 +17,7 @@ class Shop < Room
     @Wait_for_input = -1
 	end
 
-	def show()
+	def show
 		system 'cls' or system 'clear'
 		puts "Shop's open. Have a look :"
 		puts "0 to exit"
@@ -54,13 +54,13 @@ class Shop < Room
 
 		if CheckCommands.check_if_between(
 				1,
-				@heal_options.size,
+				@items.size,
 				option - @index_correction) then
 			if CheckCommands.check_if_buyer_has_enough_money(
 					hero,
-					@heal_options[option - @index_correction][1]) then
+					@items[option - @index_correction][1]) then
 				hero.useitem(@items[option - @index_correction])
-				hero.money -= @heal_options[option - @index_correction][1]
+				hero.money -= @items[option - @index_correction][1]
 				@items.delete_at(option - @index_correction)
 				@has_money = true
 			else
