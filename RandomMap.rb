@@ -90,7 +90,7 @@ class RandomMap < MapGenerator
 
   def return_random_monster(hero)
     Monster.new(
-      rand(15..40) * difficulty_multiplier,
+      (rand(15..40) * difficulty_multiplier).to_i,
       'Random Mob',
       ((hero.hp + rand(-10..10)) / difficulty_multiplier).to_i,
       ((hero.attack + rand(-3..1)) / difficulty_multiplier).to_i,
