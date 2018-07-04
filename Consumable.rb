@@ -8,9 +8,9 @@ class Consumable < Item
     @hp = hp1
   end
 
-  def show(show_value = 0)
+  def show(show_value = true)
     super(1)
     print ", #{@hp} hp"
-    print " - #{@value} coins" if show_value.zero
+    print " - #{@value} coins" if show_value
   end
 end
