@@ -14,7 +14,7 @@ class Movement
 
   def move_left
     if @hero.position.last > 0
-      @hero.goleft
+      @hero.go_left
       return true
     end
     false
@@ -22,7 +22,7 @@ class Movement
 
   def move_right
     if @hero.position.last + 1 < @map_size
-      @hero.goright
+      @hero.go_right
       return true
     end
     false
@@ -30,7 +30,7 @@ class Movement
 
   def move_up
     if @hero.position.first > 0
-      @hero.goup
+      @hero.go_up
       return true
     end
     false
@@ -38,7 +38,7 @@ class Movement
 
   def move_down
     if @hero.position.first + 1 < @map_size
-      @hero.godown
+      @hero.go_down
       return true
     end
     false

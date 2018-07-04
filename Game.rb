@@ -17,31 +17,42 @@ class Game
     @movement = Movement.new @hero, @map.size
   end
 
+  def print_info
+    SystemCommands.clear_screen
+    @map.show @hero
+    puts
+    @hero.show_stats
+    puts
+  end
+
+  def end_game(won)
+    SystemCommands.clear_screen
+    if won
+      puts 'You win!'
+    else
+      puts 'You lose!'
+    end
+    @hero.show_stats
+  end
+
+  def parse_result(result)
+    if result == 'Game Over'
+      end_game(@hero.hp > 0)
+      true
+    end
+    if result == 'Dead Monster'
+      @map.clear_room @hero.position
+      false
+    end
+  end
+
   def start_game
-    @game_over = false
-    until @game_over
-      SystemCommands.clear_screen
-      @map.show @hero
-      puts
-      @hero.showstats
-      puts
+    game_over = false
+    until game_over
+      print_info
       @movement.do_move
       result = @map.do_action @hero
-      case result
-      when 'Game Over'
-        @game_over = true
-        clear_screen
-        puts 'End of the game'
-        if @hero.hp > 0
-          puts 'You win!'
-        else
-          puts 'You lose!'
-        end
-        @hero.showstats
-        sleep 3
-      when 'Dead Monster'
-        @map.clear_room @hero.position
-      end
+      game_over = parse_result result
     end
   end
 end
