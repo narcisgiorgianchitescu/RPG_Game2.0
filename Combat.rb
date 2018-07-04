@@ -37,7 +37,7 @@ class Combat
 		monster.show_stats
 
 		puts "\nHero has the folowing stats:\n\n"
-		hero.showstats
+		hero.show_stats
 		puts ''
 
 		puts '1 for attack or 2 for defence'

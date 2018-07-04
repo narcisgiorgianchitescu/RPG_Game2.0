@@ -54,13 +54,13 @@ class Shop < Room
 
 		if CheckCommands.check_if_between(
 				1,
-				@heal_options.size,
+				@items.size,
 				option - @index_correction) then
 			if CheckCommands.check_if_buyer_has_enough_money(
 					hero,
-					@heal_options[option - @index_correction][1]) then
+					@items[option - @index_correction][1]) then
 				hero.useitem(@items[option - @index_correction])
-				hero.money -= @heal_options[option - @index_correction][1]
+				hero.money -= @items[option - @index_correction][1]
 				@items.delete_at(option - @index_correction)
 				@has_money = true
 			else
