@@ -1,12 +1,7 @@
 require_relative 'Equipment'
-
+# Equipment type Chest
 class Chest < Equipment
-	
-	def initialize(att=0, defe=0, val=0, nume="Chest Plate")  
-		super(att, defe, val, nume)
-	end
-	
-	def show(i=0)
-		super(i)
-	end
+  def initialize(attack = 0, defence = 0, value = 0, name = 'Chestplate')
+    super(attack, defence, value, name)
+  end
 end
