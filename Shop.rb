@@ -35,7 +35,7 @@ class Shop < Room
 		until option == 0
 			show()
 			puts
-			hero.showstats
+			hero.show_stats
 			option = gets.chomp.to_i
 			check_option(option,hero)
 		end
@@ -48,7 +48,7 @@ class Shop < Room
 
 		if option > 0 and option <= @items.size then
 			if hero.money >= @items[option-1].value then
-				hero.useitem(@items[option-1])
+				hero.use_item(@items[option-1])
 				hero.money -= @items[option-1].value
 				@items.delete_at(option - 1)
 				@hadmoney = 1
