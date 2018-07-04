@@ -6,7 +6,7 @@ class Lair < Room
 	def initialize(monster = Monster.new)
 		@monster = monster
 		#TODO : change back
-		@hidden = false
+		@hidden = true
 	end
 
 	def show()

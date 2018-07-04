@@ -11,6 +11,7 @@ class Vault < Room
 	def initialize items = []
 		@items = items
 		@got_item = false
+		@hidden = true
 		@index_correction = 1
     @Exit = 0
     @Wait_for_input = -1
