@@ -10,7 +10,6 @@ class Monster < Character
 
   def show_stats
     super
-    print 'Escape Chance: ', @escape_chance, '\n'
+    print "Escape Chance: ", @escape_chance, "\n"
   end
 end
-

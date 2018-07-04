@@ -13,7 +13,7 @@ class Lair < Room
 		puts "Lair. Room that contains a hideous monster."
 		puts "Please be careful, the monster has the folowing stats:"
 		puts ""
-		@monster.showstats
+		@monster.show_stats
 		puts ""
 	end
 
@@ -22,7 +22,7 @@ class Lair < Room
 		show()
 		puts "The hero has the folowing stats:"
 		puts ""
-		hero.showstats
+		hero.show_stats
 		puts ""
 
 		puts "Press a key and tap enter to start combat."
