@@ -31,6 +31,7 @@ class Hero < Character
     when 'Consumable'
       @attack += item.attack
       @defence += item.defence
+      @hp += item.hp
     when 'Head'
       equip @head, item
       @head = item

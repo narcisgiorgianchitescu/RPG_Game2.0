@@ -54,8 +54,8 @@ class RandomMap < MapGenerator
 
   def return_random_head
     Head.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
       (rand(10..30) * difficulty_multiplier).to_i,
       'Random Head'
     )
@@ -63,8 +63,8 @@ class RandomMap < MapGenerator
 
   def return_random_chest
     Chest.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
       (rand(10..30) * difficulty_multiplier).to_i,
       'Random Chest'
     )
@@ -72,8 +72,8 @@ class RandomMap < MapGenerator
 
   def return_random_boots
     Boots.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
       (rand(10..30) * difficulty_multiplier).to_i,
       'Random Boots'
     )
@@ -81,8 +81,8 @@ class RandomMap < MapGenerator
 
   def return_random_weapon
     Weapon.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
+      (rand(0..5) * difficulty_multiplier).to_i,
       (rand(10..30) * difficulty_multiplier).to_i,
       'Random Weapon'
     )
