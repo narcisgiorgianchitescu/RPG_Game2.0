@@ -20,10 +20,10 @@ class Hero < Character
 
   def show_stats
     super
-      print @head.show,"\n"
-      print @chest.show,"\n"
-      print @boots.show,"\n"
-      print @weapon.show,"\n"
+    print @head.show, "\n"
+    print @chest.show, "\n"
+    print @boots.show, "\n"
+    print @weapon.show, "\n"
   end
 
   def use_item(item)
@@ -41,7 +41,7 @@ class Hero < Character
       equip @weapon, item
       @weapon = item
     when 'Boots'
-      equip @weapon, item
+      equip @boots, item
       @boots = item
     end
   end
