@@ -55,11 +55,11 @@ class RandomMap < MapGenerator
         room_new=Lair.new(gen_random_monster(hero))
       when 30..39
         items=[]
-        rand(3..5).to_i.times do |x| items.push(gen_random_item) end
+        rand(3..5).to_i.times do items.push(gen_random_item) end
         room_new=Shop.new(items)
       when 40..49
         items=[]
-        rand(3..5).to_i.times do |x| items.push(gen_random_item) end
+        rand(3..5).to_i.times do items.push(gen_random_item) end
         room_new=Vault.new(items)
       else
         room_new=Room.new
