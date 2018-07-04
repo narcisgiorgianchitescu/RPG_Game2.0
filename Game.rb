@@ -25,7 +25,7 @@ class Game
     puts
   end
 
-  def end_game(won)
+  def stop_game(won)
     SystemCommands.clear_screen
     if won
       puts 'You win!'
@@ -37,9 +37,10 @@ class Game
 
   def parse_result(result)
     if result == 'Game Over'
-      end_game(@hero.hp > 0)
+      stop_game(@hero.hp > 0)
       true
     end
+
     if result == 'Dead Monster'
       @map.clear_room @hero.position
       false
