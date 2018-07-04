@@ -13,6 +13,6 @@ class Item
 
   def show(show_value = true)
     print "#{@name}: #{@attack} dmg, #{@defence} def"
-    print " - #{@value} coins" if show_value == true
+    print " - #{@value} coins" if show_value
   end
 end
