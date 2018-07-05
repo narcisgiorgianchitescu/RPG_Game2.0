@@ -15,12 +15,12 @@ class ItemFactory
     item: Item
   }.freeze
 
-  def self.create(type, attributes)
-    (TYPES[type] || Item).new(attributes)
+  def self.create(type, hash, name)
+    (TYPES[type] || Item).new(hash, name)
     # example: head_new = ItemFactory.for(:head, hash_stats, 'Nou Head')
   end
 
-  def self.show(type, attributes)
-    (TYPES[type] || Item).show(attributes)
+  def self.show(type, show_value)
+    (TYPES[type] || Item).show(show_value)
   end
 end
