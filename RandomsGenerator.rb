@@ -66,15 +66,17 @@ module RandomsGenerator
       value: (rand(10..30) * difficulty_multiplier(difficulty)).to_i }
   end
 
+  def self.return_random_stats_monster(hero, difficulty)
+    { money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
+      name: 'Random Mob',
+      hp: ((hero.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
+      attack: ((hero.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
+      defence: ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
+    }
+  end
+
   def self.return_random_monster(hero, difficulty)
-    Monster.new(
-      (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      'Random Mob',
-      ((hero.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
-      ((hero.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
-      ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
-      rand(0..100)
-    )
+    Monster.new(return_random_stats_monster(hero, difficulty), rand(0..100))
   end
 
   def self.return_random_room(hero, difficulty)

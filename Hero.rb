@@ -6,16 +6,18 @@ require_relative 'Weapon'
 # Hero
 class Hero < Character
   attr_accessor :position
+  attr_accessor :head
+  attr_accessor :chest
+  attr_accessor :boots
+  attr_accessor :weapon
 
-  def initialize(money = 10, my_name = 'noname', hp = 100, attack = 1,
-                 defence = 1, head = Head.new, chest = Chest.new,
-                 boots = Boots.new, weapon = Weapon.new, position = [0, 0])
-    super(money, my_name, hp, attack, defence)
-    @head = head
-    @chest = chest
-    @boots = boots
-    @weapon = weapon
-    @position = position
+  def initialize(hash_stats = {}, hash_eq = {})
+    super(hash_stats)
+    @head = hash_eq[:head].nil? ? Head.new : hash_eq[:head]
+    @chest = hash_eq[:chest].nil? ? Chest.new : hash_eq[:chest]
+    @boots = hash_eq[:boots].nil? ? Boots.new : hash_eq[:boots]
+    @weapon = hash_eq[:weapon].nil? ? Weapon.new : hash_eq[:weapon]
+    @position = hash_eq[:position].nil? ? [0, 0] : hash_eq[:position]
   end
 
   def show_stats
