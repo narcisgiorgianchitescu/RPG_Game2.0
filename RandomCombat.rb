@@ -26,8 +26,8 @@ class RandomCombat
   end
 
   def both_attack
-    hero_attack = rand((@hero.attack/2)..(@hero.attack * 2))
-    monster_attack = rand((@monster.attack/2)..(@monster.attack * 2))
+    hero_attack = attack_for(@hero)
+    monster_attack = attack_for(@monster)
     @hero.hp -= monster_attack
     @monster.hp -= hero_attack
     puts "Hero dealt #{hero_attack} damage"
@@ -35,16 +35,14 @@ class RandomCombat
   end
 
   def hero_attack
-    attack = rand((@hero.attack/2)..(@hero.attack * 2))
-    damage = (attack.to_f / @monster.defence).ceil
+    damage = (attack_for(@hero).to_f / @monster.defence).ceil
     if damage < 0 then damage = 0 end
     puts "Hero dealt #{damage} damage"
     @monster.hp -= damage
   end
 
   def monster_attack
-    attack = rand((@monster.attack/2)..(@monster.attack * 2))
-    damage = (attack.to_f / @hero.defence).ceil
+    damage = (attack_for(@monster).to_f / @hero.defence).ceil
     if damage < 0 then damage = 0 end
     puts "Monster dealt #{damage} damage"
     @hero.hp -= damage
@@ -52,5 +50,9 @@ class RandomCombat
 
   def both_defend
     puts "Staring contest"
+  end
+
+  def attack_for(character)
+    rand((character.attack/2)..(character.attack * 2))
   end
 end

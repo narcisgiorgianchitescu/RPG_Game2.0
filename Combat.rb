@@ -10,41 +10,41 @@ class Combat
   def initialize
     @Attack = 1
     @Defend = 2
-    @Min_to_stay_alive = 1
+    @MIN_TO_STAY_ALIVE = 1
   end
 
   def fight(hero, monster)
     start_fight(hero, monster)
 
-    return "Game Over" if hero.hp < @Min_to_stay_alive
+    return 'Game Over' if hero.hp < @MIN_TO_STAY_ALIVE
 
     hero.money += monster.money
-    puts "You Win! Yay!"
+    puts 'You Win!'
 
     SystemCommands.wait_for_input
-    return "Dead Monster"
+    return 'Dead Monster'
   end
 
   def start_fight(hero, monster)
-    until monster.hp < @Min_to_stay_alive or hero.hp < @Min_to_stay_alive
+    until monster.hp < @MIN_TO_STAY_ALIVE || hero.hp < @MIN_TO_STAY_ALIVE
       print_stats_for(hero, monster)
       option = gets.chomp.to_i
 
-      if option != @Attack and option != @Defend then
-        puts "Invalid commnad"
+      if option != @Attack && option != @Defend then
+        puts 'Invalid commnad'
       else
         #combat(SimpleCombat.new(hero, monster), option)
         combat(RandomCombat.new(hero, monster), option)
       end
 
-      break if monster.hp < @Min_to_stay_alive
+      break if monster.hp < @MIN_TO_STAY_ALIVE
 
       SystemCommands.wait_for_input
     end
   end
 
   def print_stats_for(hero, monster)
-    system 'cls' or system 'clear'
+    SystemCommands.clear_screen
 
     puts "Monster has the folowing stats:\n\n"
     monster.show_stats

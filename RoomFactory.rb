@@ -16,10 +16,10 @@ class RoomFactory
   }.freeze
 
   def self.create(type, items)
-    (TYPES[type] || Room).new(items)
+    TYPES[type].new(items)
   end
 
   def self.show(type)
-    (TYPES[type] || Room).show
+    TYPES[type].show
   end
 end
