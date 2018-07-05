@@ -1,5 +1,5 @@
 require_relative 'Item'
-# Item type Consumable
+
 class Consumable < Item
   attr_accessor :hp
 

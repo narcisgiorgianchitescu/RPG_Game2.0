@@ -34,5 +34,4 @@ class ItemFactory
     else 'Random Item'
     end
   end
-
 end
