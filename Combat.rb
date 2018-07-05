@@ -4,53 +4,57 @@ require_relative 'Simple_Combat'
 require_relative 'System_Commands'
 
 class Combat
-	include SystemCommands
+  include SystemCommands
 
-	def initialize
-		@Attack = 1
-		@Defend = 2
-		@Min_to_stay_alive = 1
-	end
+  def initialize
+    @Attack = 1
+    @Defend = 2
+    @Min_to_stay_alive = 1
+  end
 
-	def fight(hero, monster)
-		until monster.hp < @Min_to_stay_alive or hero.hp < @Min_to_stay_alive
-			print_stats_for(hero, monster)
-			option = gets.chomp.to_i
+  def fight(hero, monster)
+    start_fight(hero, monster)
 
-			if option != @Attack and option != @Defend then
-				puts "Invalid commnad"
-			else
-				combat(Simple_Combat.new(hero, monster), option)
-			end
+    return "Game Over" if hero.hp < @Min_to_stay_alive
 
-			break if monster.hp < @Min_to_stay_alive
+    hero.money += monster.money
+    puts "You Win! Yay!"
 
-			SystemCommands.wait_for_input
-		end
+    SystemCommands.wait_for_input
+    return "Dead Monster"
+  end
 
-		return "Game Over" if hero.hp < @Min_to_stay_alive
+  def start_fight(hero, monster)
+    until monster.hp < @Min_to_stay_alive or hero.hp < @Min_to_stay_alive
+      print_stats_for(hero, monster)
+      option = gets.chomp.to_i
 
-		hero.money += monster.money
-		puts "You Win! Yay!"
+      if option != @Attack and option != @Defend then
+        puts "Invalid commnad"
+      else
+        combat(Simple_Combat.new(hero, monster), option)
+      end
 
-		SystemCommands.wait_for_input
-		return "Dead Monster"
-	end
+      break if monster.hp < @Min_to_stay_alive
 
-	def print_stats_for(hero, monster)
-		system 'cls' or system 'clear'
+      SystemCommands.wait_for_input
+    end
+  end
 
-		puts "Monster has the folowing stats:\n\n"
-		monster.show_stats
+  def print_stats_for(hero, monster)
+    system 'cls' or system 'clear'
 
-		puts "\nHero has the folowing stats:\n\n"
-		hero.show_stats
-		puts ''
+    puts "Monster has the folowing stats:\n\n"
+    monster.show_stats
 
-		puts '1 for attack or 2 for defence'
-	end
+    puts "\nHero has the folowing stats:\n\n"
+    hero.show_stats
+    puts ''
 
-	def combat(simple_combat, hero_option)
-		simple_combat.do_round(hero_option)
-	end
+    puts '1 for attack or 2 for defence'
+  end
+
+  def combat(simple_combat, hero_option)
+    simple_combat.do_round(hero_option)
+  end
 end

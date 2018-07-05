@@ -5,62 +5,62 @@ require_relative 'System_Commands'
 require_relative 'Check_Commands'
 
 class Vault < Room
-	include SystemCommands
-	include CheckCommands
+  include SystemCommands
+  include CheckCommands
 
-	def initialize(items = [])
-		@items = items
-		@got_item = false
-		super
-	end
+  def initialize(items = [])
+    @items = items
+    @got_item = false
+    super
+  end
 
-	def show
-		SystemCommands.clear_screen
-		puts 'Chose one item from the vault :'
-		puts '0 to exit'
+  def show
+    SystemCommands.clear_screen
+    puts 'Chose one item from the vault :'
+    puts '0 to exit'
 
-		@items.each_with_index do |item, index|
-			print "#{index + @index_correction} "
-			item.show(false)
-			puts ''
-		end
-	end
+    @items.each_with_index do |item, index|
+     print "#{index + @index_correction} "
+      item.show(false)
+      puts ''
+    end
+  end
 
-	def action(hero)
-		if @got_item then
-			puts 'You already chose your item.'
-			SystemCommands.wait_for_input
-			return
-		end
+  def action(hero)
+    if @got_item then
+      puts 'You already chose your item.'
+      SystemCommands.wait_for_input
+      return
+    end
 
-		@hidden = false
-		option = @Wait_for_input
+    @hidden = false
+    option = @Wait_for_input
 
-		until option == @Exit or @got_item
-			show()
-			puts "\nYou have:\n\n"
-			hero.show_stats
+    until option == @Exit or @got_item
+      show()
+      puts "\nYou have:\n\n"
+      hero.show_stats
 
-			option = gets.chomp.to_i
-			check_option(option,hero)
-		end
-	end
+      option = gets.chomp.to_i
+      check_option(option,hero)
+    end
+  end
 
-	def check_option(option, hero)
-		super
+  def check_option(option, hero)
+    super
 
-		if CheckCommands.check_if_between(
-				[0, @items.size],
-				option - @index_correction) then
-			give_item_to_hero(hero, @items[option - @index_correction])
-			@got_item = true
-			return
-		else
-			puts "We don't have that option."
-		end
-	end
+    if CheckCommands.check_if_between(
+        [0, @items.size],
+        option - @index_correction) then
+      give_item_to_hero(hero, @items[option - @index_correction])
+      @got_item = true
+      return
+    else
+      puts "We don't have that option."
+    end
+  end
 
-	def give_item_to_hero(hero, item)
-		hero.use_item(item)
-	end
+  def give_item_to_hero(hero, item)
+    hero.use_item(item)
+  end
 end
