@@ -63,5 +63,13 @@ class Vault < Room
 
   def give_item_to_hero(hero, item)
     hero.use_item(item)
+
+    show_item(hero)
+  end
+
+  def show_item(hero)
+    SystemCommands.clear_screen
+    hero.show_stats
+    SystemCommands.wait_for_input
   end
 end
