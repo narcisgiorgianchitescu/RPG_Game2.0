@@ -31,6 +31,7 @@ class Game
       puts 'You win!'
     else
       puts 'You lose!'
+      @hero.hp = 0
     end
     @hero.show_stats
   end
