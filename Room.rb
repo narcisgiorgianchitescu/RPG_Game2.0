@@ -1,7 +1,7 @@
 class Room
   attr_accessor :hidden
   def initialize(hidden = true)
-    @hidden = true
+    @hidden = hidden
     @has_money = true
     @index_correction = 1
     @Exit = 0
