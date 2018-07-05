@@ -20,7 +20,7 @@ class Vault < Room
     puts '0 to exit'
 
     @items.each_with_index do |item, index|
-     print "#{index + @index_correction} "
+      print "#{index + @index_correction} "
       item.show(false)
       puts ''
     end
