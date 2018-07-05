@@ -15,9 +15,9 @@ class Character
   end
 
   def show_stats
-    print "Character ", @name, " has: \n"
-    print @money, " Coins \n"
-    print @hp, " HP\n"
-    print "Attack: ", @attack, "\nDefence: ", @defence, "\n"
-    end
+    print "Character #{@name} has: \n"
+    print "#{@money} Coins \n"
+    print "#{@hp} HP\n"
+    print "Attack: #{@attack} \nDefence: #{@defence}\n"
+  end
 end
