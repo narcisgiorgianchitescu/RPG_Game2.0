@@ -1,6 +1,7 @@
 require_relative 'Monster'
 require_relative 'Hero'
 require_relative 'Simple_Combat'
+require_relative 'RandomCombat'
 require_relative 'System_Commands'
 
 class Combat
@@ -32,7 +33,8 @@ class Combat
       if option != @Attack and option != @Defend then
         puts "Invalid commnad"
       else
-        combat(Simple_Combat.new(hero, monster), option)
+        #combat(SimpleCombat.new(hero, monster), option)
+        combat(RandomCombat.new(hero, monster), option)
       end
 
       break if monster.hp < @Min_to_stay_alive
