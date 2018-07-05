@@ -2,7 +2,7 @@ require_relative 'Game'
 require_relative 'MapGenerator'
 
 class CustomMap < MapGenerator
-  def get_map(hero)
+  def get_map(_hero)
     map = Map.new
     hash_sword = { attack: 10, defence: 5, value: 100 }
     sword = Weapon.new hash_sword, 'Sword'
@@ -28,6 +28,13 @@ class CustomMap < MapGenerator
 
     victory = Wictory_Room.new
     map.add_room victory, [3, 3]
+
+    stats = { :attack => 50, :defence => 50 }
+    monster = Monster.new stats
+    lair = Lair.new monster
+    lair.hidden = false
+    map.add_room lair, [4, 4]
+
     map
   end
 end
