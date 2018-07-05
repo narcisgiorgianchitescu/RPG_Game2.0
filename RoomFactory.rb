@@ -11,7 +11,7 @@ class RoomFactory
     vault: Vault,
     hospital: Hospital,
     lair: Lair,
-    win: Wictory_Room
+    win: WinRoom
   }.freeze
 
   def self.create(type, items)

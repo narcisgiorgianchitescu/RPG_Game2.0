@@ -1,7 +1,7 @@
 require_relative 'Monster'
 require_relative 'Hero'
 
-class SimpleCombat
+class RandomCombat
   def initialize(hero = nil, monster = nil)
     @hero = hero
     @monster = monster
@@ -26,21 +26,25 @@ class SimpleCombat
   end
 
   def both_attack
-    @hero.hp -= @monster.attack
-    @monster.hp -= @hero.attack
-    puts "Hero dealt #{@hero.attack} damage"
-    puts "Monster dealt #{@monster.attack} damage"
+    hero_attack = rand((@hero.attack/2)..(@hero.attack * 2))
+    monster_attack = rand((@monster.attack/2)..(@monster.attack * 2))
+    @hero.hp -= monster_attack
+    @monster.hp -= hero_attack
+    puts "Hero dealt #{hero_attack} damage"
+    puts "Monster dealt #{monster_attack} damage"
   end
 
   def hero_attack
-    damage = (@hero.attack.to_f / @monster.defence).ceil
+    attack = rand((@hero.attack/2)..(@hero.attack * 2))
+    damage = (attack.to_f / @monster.defence).ceil
     if damage < 0 then damage = 0 end
     puts "Hero dealt #{damage} damage"
     @monster.hp -= damage
   end
 
   def monster_attack
-    damage = (@monster.attack.to_f / @hero.defence).ceil
+    attack = rand((@monster.attack/2)..(@monster.attack * 2))
+    damage = (attack.to_f / @hero.defence).ceil
     if damage < 0 then damage = 0 end
     puts "Monster dealt #{damage} damage"
     @hero.hp -= damage
