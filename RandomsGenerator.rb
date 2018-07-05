@@ -5,6 +5,7 @@ require_relative 'Head'
 require_relative 'Chest'
 require_relative 'Boots'
 require_relative 'Weapon'
+require_relative 'ItemFactory'
 
 module RandomsGenerator
   def self.difficulty_multiplier(difficulty)
@@ -34,7 +35,7 @@ module RandomsGenerator
   end
 
   def self.random_consumable(difficulty)
-    Consumable.new(random_consumable_stats(difficulty), 'Random Potion')
+    ItemFactory.create(:consumable, random_consumable_stats(difficulty),'Potion')
   end
 
   def self.random_consumable_stats(difficulty)
@@ -45,19 +46,19 @@ module RandomsGenerator
   end
 
   def self.random_head(difficulty)
-    Head.new(random_stats_equipment(difficulty), 'Random Helmet')
+    ItemFactory.create(:head, random_consumable_stats(difficulty),'Head')
   end
 
   def self.random_chest(difficulty)
-    Chest.new(random_stats_equipment(difficulty), 'Random Chestplate')
+    ItemFactory.create(:chest, random_consumable_stats(difficulty),'Chest')
   end
 
   def self.random_boots(difficulty)
-    Boots.new(random_stats_equipment(difficulty), 'Random Boots')
+    ItemFactory.create(:boots, random_consumable_stats(difficulty),'Boots')
   end
 
   def self.random_weapon(difficulty)
-    Weapon.new(random_stats_equipment(difficulty),'Random Weapon')
+    ItemFactory.create(:weapon, random_consumable_stats(difficulty),'Weapon')
   end
 
   def self.random_stats_equipment(difficulty)
