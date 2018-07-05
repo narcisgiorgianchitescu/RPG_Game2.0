@@ -38,12 +38,12 @@ class Game
   def parse_result(result)
     if result == 'Game Over'
       stop_game(@hero.hp > 0)
-      true
+      return true
     end
 
     if result == 'Dead Monster'
       @map.clear_room @hero.position
-      false
+      return false
     end
   end
 

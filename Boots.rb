@@ -1,7 +1,7 @@
 require_relative 'Equipment'
 # Equipment type Boots
 class Boots < Equipment
-  def initialize(attack = 0, defence = 0, value = 0, name = 'Boots')
-    super(attack, defence, value, name)
+  def initialize(hash_stats = {}, name = 'Boots')
+    super(hash_stats, name)
   end
 end

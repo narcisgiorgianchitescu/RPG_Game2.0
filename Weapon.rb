@@ -1,12 +1,7 @@
 require_relative 'Equipment'
 
 class Weapon < Equipment
-	
-	def initialize(att=0, defe=0, val=0, nume="Weapon")  
-		super(att, defe, val, nume)
-	end
-	
-	def show(i=0)
-		super(i)
-	end
+  def initialize(hash_stats = {}, nume = 'Weapon')
+    super(hash_stats, nume)
+  end
 end
