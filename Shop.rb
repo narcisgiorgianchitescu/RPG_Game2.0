@@ -10,17 +10,13 @@ class Shop < Room
 
 	def initialize(items = [])
 		@items = items
-		@has_money = true
-		@hidden = true
-		@index_correction = 1
-    @Exit = 0
-    @Wait_for_input = -1
+		super
 	end
 
 	def show
 		system 'cls' or system 'clear'
 		puts "Shop's open. Have a look :"
-		puts "0 to exit"
+		puts '0 to exit'
 
 		@items.each_with_index do |item, index|
 			print "#{index + @index_correction} "
@@ -33,16 +29,16 @@ class Shop < Room
 
 	def action(hero)
 		@hidden = false
-		option = @Wait_for_input
 
 		if @items.size < 1 then
-			puts "No more items to sell."
+			puts 'No more items to sell.'
 			return
 		end
 
+		option = @Wait_for_input
 		until option == @Exit
 			show()
-			puts
+			puts ''
 			hero.show_stats
 			option = gets.chomp.to_i
 			check_option(option,hero)
@@ -50,25 +46,39 @@ class Shop < Room
 	end
 
 	def check_option(option,hero)
-		super
+		super(option, hero)
 
 		if CheckCommands.check_if_between(
-				1,
-				@items.size,
+				[0, @items.size],
 				option - @index_correction) then
-			if CheckCommands.check_if_buyer_has_enough_money(
-					hero,
-					@items[option - @index_correction][1]) then
-				hero.useitem(@items[option - @index_correction])
-				hero.money -= @items[option - @index_correction][1]
-				@items.delete_at(option - @index_correction)
-				@has_money = true
-			else
-				@has_money = false
-			end
+			we_have_that_option(option, hero)
 		else
 			@has_money = true
 			puts "We don't have that option."
 		end
+	end
+
+	def we_have_that_option(option, hero)
+		if CheckCommands.check_if_buyer_has_enough_money(
+					hero,
+					@items[option - @index_correction].value) then
+				give_item_to_hero(hero, @items[option - @index_correction])
+
+				delete_item_from_list_at(option - @index_correction)
+
+				@has_money = true
+			else
+				@has_money = false
+				puts 'Not enough money'
+			end
+	end
+
+	def give_item_to_hero(hero, item)
+		hero.use_item(item)
+		hero.money -= item.value
+	end
+
+	def delete_item_from_list_at(poz)
+		@items.delete_at(poz)
 	end
 end
