@@ -14,6 +14,6 @@ class RandomMap < MapGenerator
   end
 
   def get_map(hero)
-    RandomsGenerator.return_random_map(hero, @difficulty)
+    RandomsGenerator.random_map(hero, @difficulty)
   end
 end
