@@ -27,11 +27,15 @@ class Map
     @slots[position.first][position.last] = Room.new false
   end
 
+  def first_letter_of_class(slot)
+    " #{slot.class.to_s[0]} "
+  end
+
   def print_slot(slot)
     if slot.hidden
       print '   '
     else
-      print " #{slot.class.to_s[0]} "
+      print first_letter_of_class(slot)
     end
     print '|'
   end
