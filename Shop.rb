@@ -35,8 +35,8 @@ class Shop < Room
       return
     end
 
-    option = @Wait_for_input
-    until option == @Exit
+    option = @WAIT_FOR_INPUT
+    until option == @EXIT
       show()
       puts ''
       hero.show_stats

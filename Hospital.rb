@@ -28,9 +28,9 @@ require_relative 'Check_Commands'
 
   def action(hero)
     @hidden = false
-    option = @Wait_for_input
+    option = @WAIT_FOR_INPUT
 
-    until option == @Exit
+    until option == @EXIT
       show
 
       puts "You have #{hero.hp}HP and #{hero.money} coins."

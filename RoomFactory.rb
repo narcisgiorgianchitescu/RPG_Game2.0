@@ -1,8 +1,9 @@
-require_relative 'Consumable'
-require_relative 'Head'
-require_relative 'Chest'
-require_relative 'Boots'
-require_relative 'Weapon'
+require_relative 'Room'
+require_relative 'Shop'
+require_relative 'Vault'
+require_relative 'Hospital'
+require_relative 'Lair'
+require_relative 'Victory_Room'
 
 class RoomFactory
   TYPES = {
@@ -11,10 +12,14 @@ class RoomFactory
     vault: Vault,
     hospital: Hospital,
     lair: Lair,
-    win: WinRoom
+    win: Wictory_Room
   }.freeze
 
   def self.create(type, items)
-    (TYPES[type] || Room).new(true, items)
+    (TYPES[type] || Room).new(items)
+  end
+
+  def self.show(type)
+    (TYPES[type] || Room).show
   end
 end
