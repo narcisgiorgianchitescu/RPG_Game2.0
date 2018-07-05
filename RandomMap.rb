@@ -53,39 +53,49 @@ class RandomMap < MapGenerator
   end
 
   def return_random_head
+    stats = return_random_stats_equipment
     Head.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
-      (rand(10..30) * difficulty_multiplier).to_i,
+      stats[:attack],
+      stats[:defence],
+      stats[:value],
       'Random Head'
     )
   end
 
   def return_random_chest
+    stats = return_random_stats_equipment
     Chest.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
-      (rand(10..30) * difficulty_multiplier).to_i,
+      stats[:attack],
+      stats[:defence],
+      stats[:value],
       'Random Chest'
     )
   end
 
   def return_random_boots
+    stats = return_random_stats_equipment
     Boots.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
-      (rand(10..30) * difficulty_multiplier).to_i,
+      stats[:attack],
+      stats[:defence],
+      stats[:value],
       'Random Boots'
     )
   end
 
   def return_random_weapon
+    stats = return_random_stats_equipment
     Weapon.new(
-      (rand(0..1) * difficulty_multiplier).to_i,
-      (rand(1..6) * difficulty_multiplier).to_i,
-      (rand(10..30) * difficulty_multiplier).to_i,
+      stats[:attack],
+      stats[:defence],
+      stats[:value],
       'Random Weapon'
     )
+  end
+
+  def return_random_stats_equipment
+    { attack: (rand(0..5) * difficulty_multiplier).to_i,
+      defence: (rand(0..5) * difficulty_multiplier).to_i,
+      value: (rand(10..30) * difficulty_multiplier).to_i }
   end
 
   def return_random_monster(hero)
