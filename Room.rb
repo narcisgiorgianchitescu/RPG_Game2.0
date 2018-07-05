@@ -13,6 +13,7 @@ class Room
   end
 
   def show
+    puts 'Empty Room'
   end
 
   def check_option(option, hero)
