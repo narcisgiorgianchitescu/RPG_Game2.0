@@ -1,4 +1,4 @@
-# class for different items type of objects
+# class for different items type of in-game physical objects
 class Item
   attr_accessor :attack
   attr_accessor :defence
