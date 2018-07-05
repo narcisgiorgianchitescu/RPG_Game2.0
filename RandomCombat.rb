@@ -49,7 +49,7 @@ class RandomCombat
   end
 
   def both_defend
-    puts "Staring contest"
+    puts 'Staring contest'
   end
 
   def attack_for(character)

@@ -47,6 +47,6 @@ class SimpleCombat
   end
 
   def both_defend
-    puts "Staring contest"
+    puts 'Staring contest'
   end
 end
