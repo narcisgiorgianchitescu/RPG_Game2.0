@@ -17,10 +17,22 @@ class ItemFactory
 
   def self.create(type, hash, name)
     (TYPES[type] || Item).new(hash, name)
-    # example: head_new = ItemFactory.create(:head, hash_stats, 'Nou Head')
+    # example: head_new = ItemFactory.create(:head, hash_stats, 'New Head')
   end
 
   def self.show(type, show_value)
     (TYPES[type] || Item).show(show_value)
   end
+
+  def self.name(type)
+    case TYPES[type]
+    when Consumable then 'Random Potion'
+    when Chest then 'Random Chestplat'
+    when Boots then 'Random Boots'
+    when Weapon then 'Random Weapon'
+    when Equipment then 'Random Equipment'
+    else 'Random Item'
+    end
+  end
+
 end
