@@ -11,15 +11,19 @@ class CustomMap < MapGenerator
     boots = Boots.new hash_boots, 'Boots'
 
     shop = Shop.new [sword, boots]
+    shop.hidden = false
     map.add_room shop, [1, 2]
 
     hospital = Hospital.new
+    hospital.hidden = false
     map.add_room hospital, [2, 1]
 
     vault = Vault.new [boots, sword]
+    vault.hidden = false
     map.add_room vault, [0, 1]
 
     lair = Lair.new
+    lair.hidden = false
     map.add_room lair, [2, 2]
 
     victory = Wictory_Room.new
