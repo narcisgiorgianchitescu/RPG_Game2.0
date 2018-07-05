@@ -28,7 +28,8 @@ class Vault < Room
 
   def action(hero)
     if @got_item then
-      puts 'You already chose your item.'
+      SystemCommands.clear_screen
+      puts 'You already chose your item at this vault.'
       SystemCommands.wait_for_input
       return
     end
