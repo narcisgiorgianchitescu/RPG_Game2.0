@@ -43,53 +43,30 @@ class RandomMap < MapGenerator
   end
 
   def return_random_consumable
-    Consumable.new(
-      (rand(-1..2) * difficulty_multiplier).to_i,
-      (rand(-1..2) * difficulty_multiplier).to_i,
-      (rand(10..30) * difficulty_multiplier).to_i,
-      'Random Potion',
-      (rand(-5..20) * difficulty_multiplier).to_i
-    )
+    Consumable.new(return_random_consumable_stats, 'Random Potion')
+  end
+
+  def return_random_consumable_stats
+    { attack: (rand(-1..2) * difficulty_multiplier).to_i,
+      defence: (rand(-1..2) * difficulty_multiplier).to_i,
+      value: (rand(10..30) * difficulty_multiplier).to_i,
+      hp: (rand(-5..20) * difficulty_multiplier).to_i}
   end
 
   def return_random_head
-    stats = return_random_stats_equipment
-    Head.new(
-      stats[:attack],
-      stats[:defence],
-      stats[:value],
-      'Random Head'
-    )
+    Head.new(return_random_stats_equipment, 'Random Helmet')
   end
 
   def return_random_chest
-    stats = return_random_stats_equipment
-    Chest.new(
-      stats[:attack],
-      stats[:defence],
-      stats[:value],
-      'Random Chest'
-    )
+    Chest.new(return_random_stats_equipment, 'Random Chestplate')
   end
 
   def return_random_boots
-    stats = return_random_stats_equipment
-    Boots.new(
-      stats[:attack],
-      stats[:defence],
-      stats[:value],
-      'Random Boots'
-    )
+    Boots.new(return_random_stats_equipment, 'Random Boots')
   end
 
   def return_random_weapon
-    stats = return_random_stats_equipment
-    Weapon.new(
-      stats[:attack],
-      stats[:defence],
-      stats[:value],
-      'Random Weapon'
-    )
+    Weapon.new(return_random_stats_equipment,'Random Weapon')
   end
 
   def return_random_stats_equipment

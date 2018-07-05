@@ -4,10 +4,10 @@ class Item
   attr_accessor :defence
   attr_accessor :value
 
-  def initialize(attack = 0, defence = 0, value = 0, name = 'Some item')
-    @attack = attack
-    @defence = defence
-    @value = value
+  def initialize(hash_stats = {}, name = 'Some item')
+    @attack = hash_stats[:attack].nil? ? 0 : hash_stats[:attack]
+    @defence = hash_stats[:defence].nil? ? 0 : hash_stats[:defence]
+    @value = hash_stats[:value].nil? ? 0 : hash_stats[:value]
     @name = name
   end
 
