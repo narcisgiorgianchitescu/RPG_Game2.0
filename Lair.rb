@@ -22,7 +22,7 @@ class Lair < Room
 
   def action(hero)
     @hidden = false
-    show()
+    show
     puts 'The hero has the folowing stats:'
     puts ''
     hero.show_stats
@@ -31,6 +31,6 @@ class Lair < Room
     puts 'Press a key and tap enter to start combat.'
     gets
 
-    return Combat.new.fight(hero, @monster)
+    Combat.new.fight(hero, @monster)
   end
 end
