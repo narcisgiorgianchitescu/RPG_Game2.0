@@ -46,19 +46,19 @@ module RandomsGenerator
   end
 
   def self.random_head(difficulty)
-    ItemFactory.create(:head, random_consumable_stats(difficulty),'Head')
+    ItemFactory.create(:head, random_stats_equipment(difficulty),'Head')
   end
 
   def self.random_chest(difficulty)
-    ItemFactory.create(:chest, random_consumable_stats(difficulty),'Chest')
+    ItemFactory.create(:chest, random_stats_equipment(difficulty),'Chest')
   end
 
   def self.random_boots(difficulty)
-    ItemFactory.create(:boots, random_consumable_stats(difficulty),'Boots')
+    ItemFactory.create(:boots, random_stats_equipment(difficulty),'Boots')
   end
 
   def self.random_weapon(difficulty)
-    ItemFactory.create(:weapon, random_consumable_stats(difficulty),'Weapon')
+    ItemFactory.create(:weapon, random_stats_equipment(difficulty),'Weapon')
   end
 
   def self.random_stats_equipment(difficulty)
