@@ -17,5 +17,10 @@ class ItemFactory
 
   def self.create(type, attributes)
     (TYPES[type] || Item).new(attributes)
+    # example: head_new = ItemFactory.for(:head, hash_stats, 'Nou Head')
+  end
+
+  def self.show(type, attributes)
+    (TYPES[type] || Item).show(attributes)
   end
 end
