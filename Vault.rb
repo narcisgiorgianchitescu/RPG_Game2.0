@@ -11,29 +11,25 @@ class Vault < Room
 	def initialize(items = [])
 		@items = items
 		@got_item = false
-		@hidden = true
-		@index_correction = 1
-    @Exit = 0
-    @Wait_for_input = -1
-    @Seconds_to_sleep = 1
+		super
 	end
 
 	def show
-		system 'cls' or system 'clear'
-		puts "Chose one item from the vault :"
-		puts "0 to exit"
+		SystemCommands.clear_screen
+		puts 'Chose one item from the vault :'
+		puts '0 to exit'
 
-		@items.each_with_index {|item, index|
+		@items.each_with_index do |item, index|
 			print "#{index + @index_correction} "
 			item.show(false)
-			puts ""
-		}
+			puts ''
+		end
 	end
 
 	def action(hero)
 		if @got_item then
-			puts "You already chose your item."
-			sleep(@Seconds_to_sleep)
+			puts 'You already chose your item.'
+			SystemCommands.wait_for_input
 			return
 		end
 
@@ -53,12 +49,18 @@ class Vault < Room
 	def check_option(option, hero)
 		super
 
-		if option > 0 and option <= @items.size then
-			hero.useitem(@items[option - @index_correction])
+		if CheckCommands.check_if_between(
+				[0, @items.size],
+				option - @index_correction) then
+			give_item_to_hero(hero, @items[option - @index_correction])
 			@got_item = true
 			return
 		else
 			puts "We don't have that option."
 		end
+	end
+
+	def give_item_to_hero(hero, item)
+		hero.use_item(item)
 	end
 end

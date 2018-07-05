@@ -7,13 +7,9 @@ class Hospital < Room
 	include SystemCommands
 	include CheckCommands
 
-	def initialize(heal_options = [[5, 5], [10, 9], [20, 16], [50, 35]])
+	def initialize(heal_options = [[5, 5], [10, 9], [20, 16]])
 		@heal_options = heal_options
-		@has_money = true
-		@index_correction = 1
-		@hidden = true
-    @Exit = 0
-    @Wait_for_input = -1
+		super
 	end
 
 	def show
@@ -47,8 +43,7 @@ class Hospital < Room
 		super
 
 		if CheckCommands.check_if_between(
-				1,
-				@heal_options.size,
+				[0, @heal_options.size],
 				option - @index_correction) then
 			if CheckCommands.check_if_buyer_has_enough_money(
 					hero,

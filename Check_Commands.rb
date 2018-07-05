@@ -1,6 +1,6 @@
 module CheckCommands
-  def self.check_if_between(from_this_one, to_this_one, option)
-    if (from_this_one..to_this_one) === option then
+  def self.check_if_between(this_interval, option)
+    if option >= this_interval.first and option < this_interval.last then
       true
     else
       false

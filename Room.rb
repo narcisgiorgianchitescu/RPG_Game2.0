@@ -1,8 +1,11 @@
 class Room
   attr_accessor :hidden
   def initialize(hidden = true)
-    @hidden = hidden
+    @hidden = true
+    @has_money = true
+    @index_correction = 1
     @Exit = 0
+    @Wait_for_input = -1
   end
 
   def action(hero)
