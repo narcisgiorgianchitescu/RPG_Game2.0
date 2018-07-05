@@ -4,6 +4,7 @@ require_relative 'Vault'
 require_relative 'Hospital'
 require_relative 'Lair'
 require_relative 'Victory_Room'
+require_relative 'RandomsGenerator'
 
 class RoomFactory
   TYPES = {
@@ -12,11 +13,20 @@ class RoomFactory
     vault: Vault,
     hospital: Hospital,
     lair: Lair,
-    win: Wictory_Room
+    win: WinRoom
   }.freeze
 
-  def self.create(type, items)
-    TYPES[type].new(items)
+  PARAMS = {
+    room: true,
+    shop: RandomsGenerator.random_shop,
+    vault: RandomsGenerator.random_vault,
+    hospital: [[5, 5], [10, 9], [20, 16], [50, 35]],
+    lair: RandomsGenerator.random_monster,
+    win: nil
+  }.freeze
+
+  def self.create(type)
+    TYPES[type].new(PARAMS[type])
   end
 
   def self.show(type)
