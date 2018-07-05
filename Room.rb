@@ -4,8 +4,8 @@ class Room
     @hidden = hidden
     @has_money = true
     @index_correction = 1
-    @Exit = 0
-    @Wait_for_input = -1
+    @EXIT = 0
+    @WAIT_FOR_INPUT = -1
   end
 
   def action(hero)
@@ -17,7 +17,7 @@ class Room
   end
 
   def check_option(option, hero)
-    if option == @Exit then
+    if option == @EXIT then
       return
     end
   end

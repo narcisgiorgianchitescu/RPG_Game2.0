@@ -35,9 +35,9 @@ class Vault < Room
     end
 
     @hidden = false
-    option = @Wait_for_input
+    option = @WAIT_FOR_INPUT
 
-    until option == @Exit or @got_item
+    until option == @EXIT or @got_item
       show()
       puts "\nYou have:\n\n"
       hero.show_stats
