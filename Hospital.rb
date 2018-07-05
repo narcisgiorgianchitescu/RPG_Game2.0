@@ -35,7 +35,7 @@ require_relative 'Check_Commands'
 
       puts "You have #{hero.hp}HP and #{hero.money} coins."
       option = gets.chomp.to_i
-      check_option(option,hero)
+      check_option(option, hero)
     end
   end
 
@@ -53,7 +53,7 @@ require_relative 'Check_Commands'
         @has_money = true
       else
         @has_money = false
-        puts "Not enough money"
+        puts 'Not enough money'
       end
     else
       @has_money = true

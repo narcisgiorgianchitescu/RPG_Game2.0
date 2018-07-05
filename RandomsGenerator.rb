@@ -46,19 +46,19 @@ module RandomsGenerator
   end
 
   def self.random_head(difficulty)
-    ItemFactory.create(:head, random_consumable_stats(difficulty),'Head')
+    ItemFactory.create(:head, random_stats_equipment(difficulty),'Head')
   end
 
   def self.random_chest(difficulty)
-    ItemFactory.create(:chest, random_consumable_stats(difficulty),'Chest')
+    ItemFactory.create(:chest, random_stats_equipment(difficulty),'Chest')
   end
 
   def self.random_boots(difficulty)
-    ItemFactory.create(:boots, random_consumable_stats(difficulty),'Boots')
+    ItemFactory.create(:boots, random_stats_equipment(difficulty),'Boots')
   end
 
   def self.random_weapon(difficulty)
-    ItemFactory.create(:weapon, random_consumable_stats(difficulty),'Weapon')
+    ItemFactory.create(:weapon, random_stats_equipment(difficulty),'Weapon')
   end
 
   def self.random_stats_equipment(difficulty)
@@ -69,11 +69,19 @@ module RandomsGenerator
 
   def self.random_stats_monster(hero, difficulty)
     { money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      name: 'Random Mob',
+      name: random_monster_name,
       hp: ((hero.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
       attack: ((hero.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
       defence: ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
     }
+  end
+
+  def self.random_monster_name
+    bear_names = ['Angry Bear', 'Mad Bear', 'Stone Bear', 'Grizzly Bear']
+    wolf_names = ['Rabid Wold', 'Big Wolf', 'Mad Wolf', 'White Wolf']
+    bat_names  = ['Bloodsucking Bat', 'Giant Bat', 'Mutated Bat']
+    other_monsters = ['Zombie', 'Ghost', 'Mimic', 'Werewolf', 'Savage']
+    name = [bear_names, wolf_names, bat_names, other_monsters].sample.sample
   end
 
   def self.random_monster(hero, difficulty)
