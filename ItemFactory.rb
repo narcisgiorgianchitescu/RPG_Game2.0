@@ -15,8 +15,8 @@ class ItemFactory
     item: Item
   }.freeze
 
-  def self.create(type, hash, name)
-    (TYPES[type] || Item).new(hash, name)
+  def self.create(type, *arg)
+    (TYPES[type] || Item).new(*arg)
     # example: head_new = ItemFactory.create(:head, hash_stats, 'New Head')
   end
 
