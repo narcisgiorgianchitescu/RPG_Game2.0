@@ -7,7 +7,7 @@ class Equipment < Item
     boots: 'Rainbow Boots'
   }.freeze
 
-  def initialize(stats:, type:, name: 'Equipment')
+  def initialize(stats, type, name = 'Equipment')
     stats.hp = 0 if stats.hp != 0
     super(stats, name)
     @type = (TYPES_NAME[type] || 'Undifined Equipment')
