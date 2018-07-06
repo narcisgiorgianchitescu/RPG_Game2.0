@@ -23,4 +23,8 @@ class TestStats < Minitest::Test
     assert_equal [-1, -3, -5, -7],
                  [stats.attack, stats.defence, stats.hp, stats.coins]
   end
+
+  def test_invalid_input
+    assert_raises(RuntimeError) { Stats.new(attack: -1) }
+  end
 end
