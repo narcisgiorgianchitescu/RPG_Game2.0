@@ -11,7 +11,7 @@ class Wearable < Item
     boots: 'Rainbow Boots'
   }.freeze
 
-  def initialize(stats, type, name = TYPES_NAME[type])
+  def initialize(stats = nil, type = :head, name = TYPES_NAME[type])
     super(stats, name)
     @hp = 0
     @type = type

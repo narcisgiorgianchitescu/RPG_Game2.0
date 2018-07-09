@@ -12,7 +12,7 @@ class Hero < Character
   end
 
   def use_consumable(consumable)
-    @stats = change_stats(consumable.stats, :+)
+    @stats.change_stats(consumable.stats, :+)
   end
 
   def change_wearable(wearable)
