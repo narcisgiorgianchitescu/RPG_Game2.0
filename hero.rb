@@ -19,62 +19,18 @@ class Hero < Character
     case wearable.type.to_s
     when 'head'
       @equipment.head = wearable
+      @stats.change_stats(equipment.head.stats, :+)
     when 'chest'
       @equipment.chest = wearable
+      @stats.change_stats(equipment.chest.stats, :+)
     else
       @equipment.boots = wearable
+      @stats.change_stats(equipment.boots.stats, :+)
     end
   end
 
   def change_weapon(weapon)
     @equipment.weapon = weapon
-  end
-
-  def print_stats
-    puts @stats.hp
-    puts @stats.attack
-    puts @stats.defence
-    puts @stats.coins
-    puts
-    puts @equipment.head.stats.hp
-    puts @equipment.head.stats.attack
-    puts @equipment.head.stats.defence
-    puts @equipment.head.stats.coins
-    puts
-    puts @equipment.chest.stats.hp
-    puts @equipment.chest.stats.attack
-    puts @equipment.chest.stats.defence
-    puts @equipment.chest.stats.coins
-    puts
-    puts @equipment.boots.stats.hp
-    puts @equipment.boots.stats.attack
-    puts @equipment.boots.stats.defence
-    puts @equipment.boots.stats.coins
-    puts
-    puts @equipment.weapon.stats.hp
-    puts @equipment.weapon.stats.attack
-    puts @equipment.weapon.stats.defence
-    puts @equipment.weapon.stats.coins
+    @stats.change_stats(equipment.weapon.stats, :+)
   end
 end
-
-h = Hero.new
-
-w = Wearable.new
-w.type = 'head'
-w.stats.hp = 10
-
-h.change_wearable(w)
-
-w = Wearable.new
-w.type = 'boots'
-w.stats.defence = 1000
-h.change_wearable(w)
-
-w = Wearable.new
-w.type = 'head'
-w.stats.hp = 4
-
-h.change_wearable(w)
-
-h.print_stats
