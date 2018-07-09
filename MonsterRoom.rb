@@ -7,6 +7,6 @@ class MonsterRoom < Room
   end
 
   def action
-    #nothing for now
+    super
   end
 end
