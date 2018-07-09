@@ -35,7 +35,7 @@ class Hero < Character
   end
  # TO BE RETESTED
   def use_item(item)
-    case item.class
+    case item.class.to_s
     when 'Consumable'
       use_consumable(item)
     when 'Weapon'

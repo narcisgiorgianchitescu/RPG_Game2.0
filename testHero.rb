@@ -89,4 +89,11 @@ class TestHero < Test::Unit::TestCase
       assert_equal(h.stats.attack, 11)
   end
 
+  def test_use_item_consumable
+    h = Hero.new
+    cons = Consumable.new
+    cons.stats.hp = 10
+    h.use_item(cons)
+    assert_equal(h.stats.hp, 10)
+  end
 end
