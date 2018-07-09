@@ -1,12 +1,12 @@
 require_relative 'Room'
 
 class Hospital < Room
-  def initialize(hidden = true, input = [])
+  def initialize(hidden = true, input = [[5, 5], [10, 9], [20, 17]])
     super(hidden, input)
     @description = 'Hospital, you can heal ypu wounds here'
   end
 
   def action
-    #nothing for now
+    super
   end
 end

@@ -8,15 +8,19 @@ require_relative 'WinRoom'
 require "test/unit"
 
 class TestGameRoom < Test::Unit::TestCase
+#
+# TODO : pus input cu iteme si monster
+#
+
 #-------------------------------------------------------------------
+#Room
 
   def test_room_get_hidden
     assert_equal(true, Room.new.hidden, 'Wrong answer')
   end
 
   def test_room_set_hidden
-    r = Room.new
-    r.hidden = false
+    r = Room.new(false, [])
     assert_equal(false, r.hidden, 'Wrong answer')
   end
 
@@ -25,119 +29,84 @@ class TestGameRoom < Test::Unit::TestCase
   end
 
   def test_room_set_input
-    r = Room.new
-    r.input = ([1..9])
+    r = Room.new(false, [1..9])
     assert_equal([1..9], r.input, 'Wrong answer')
   end
 
+  def test_room_action
+    r = Room.new
+    assert_equal([r.description, r.input], r.action, 'Wrong answer')
+  end
+
 #-------------------------------------------------------------------
+#Shop
 
-  def test_hospital_get_hidden
-    assert_equal(true, Hospital.new.hidden, 'Wrong answer')
+  def test_shop_true_for_out_of_items?
+    s = Shop.new(true, [])
+    assert_equal(true, s.out_of_items?, 'Wrong answer')
   end
 
-  def test_hospital_set_hidden
-    h = Hospital.new
-    h.hidden = false
-    assert_equal(false, h.hidden, 'Wrong answer')
+  def test_shop_false_for_out_of_items?
+    s = Shop.new(true, [1..9])
+    assert_equal(false, s.out_of_items?, 'Wrong answer')
   end
+
+  def test_shop_action_rez_out_of_items
+    s = Shop.new(true, [])
+    assert_equal(s.out_of_items, s.action, 'Wrong answer')
+  end
+
+  def test_shop_action_rez_room_data
+    s = Shop.new(true, ['something', 'something else'])
+    assert_equal([s.description, s.input], s.action, 'Wrong answer')
+  end
+
+#-------------------------------------------------------------------
+#Vault
+
+  def test_vault_action_rez_room_data
+    v = Vault.new(false, [1..9])
+    assert_equal([v.description, v.input], v.action, 'Wrong answer')
+  end
+
+  def tes_vault_action_rez_already_chose
+    v = Vault.new(false, [1..9])
+    v.action
+    assert_equal(v.already_chose, v.action, 'Wrong answer')
+  end
+
+#-------------------------------------------------------------------
+#Hospital
 
   def test_hospital_get_input
-    assert_equal([], Hospital.new.input, 'Wrong answer')
+    h = Hospital.new
+    assert_equal([[5, 5], [10, 9], [20, 17]], h.input, 'Wrong answer')
   end
 
   def test_hospital_set_input
-    h = Hospital.new
-    h.input = ([1..9])
+    h = Hospital.new(false, [1..9])
     assert_equal([1..9], h.input, 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
-
-  def test_shop_get_hidden
-    assert_equal(true, Shop.new.hidden, 'Wrong answer')
-  end
-
-  def test_shop_set_hidden
-    s = Shop.new
-    s.hidden = false
-    assert_equal(false, s.hidden, 'Wrong answer')
-  end
-
-  def test_shop_get_input
-    assert_equal([], Shop.new.input, 'Wrong answer')
-  end
-
-  def test_shop_set_input
-    s = Shop.new
-    s.input = ([1..9])
-    assert_equal([1..9], s.input, 'Wrong answer')
+  def test_hospital_action_rez_room_data
+    h = Hospital.new(false, [1..9])
+    assert_equal([h.description, h.input], h.action, 'Wrong answer')
   end
 
 #-------------------------------------------------------------------
+#MonsterRoom
 
-  def test_vault_get_hidden
-    assert_equal(true, Vault.new.hidden, 'Wrong answer')
-  end
-
-  def test_vault_set_hidden
-    v = Vault.new
-    v.hidden = false
-    assert_equal(false, v.hidden, 'Wrong answer')
-  end
-
-  def test_vault_get_input
-    assert_equal([], Vault.new.input, 'Wrong answer')
-  end
-
-  def test_vault_set_input
-    v = Vault.new
-    v.input = ([1..9])
-    assert_equal([1..9], v.input, 'Wrong answer')
+  def test_monsterroom_action_rez_room_data
+    m = MonsterRoom.new(false, [1..9])
+    assert_equal([m.description, m.input], m.action, 'Wrong answer')
   end
 
 #-------------------------------------------------------------------
+#WinRoom
 
-  def test_monsterroom_get_hidden
-    assert_equal(true, MonsterRoom.new.hidden, 'Wrong answer')
-  end
-
-  def test_monsterroom_set_hidden
-    m = MonsterRoom.new
-    m.hidden = false
-    assert_equal(false, m.hidden, 'Wrong answer')
-  end
-
-  def test_monsterroom_get_input
-    assert_equal([], MonsterRoom.new.input, 'Wrong answer')
-  end
-
-  def test_monsterroom_set_input
-    m = MonsterRoom.new
-    m.input = ([1..9])
-    assert_equal([1..9], m.input, 'Wrong answer')
-  end
-
-#-------------------------------------------------------------------
-
-  def test_winroom_get_hidden
-    assert_equal(true, WinRoom.new.hidden, 'Wrong answer')
-  end
-
-  def test_winroom_set_hidden
+  def test_winroom_action_rez_room_data
     w = WinRoom.new
-    w.hidden = false
-    assert_equal(false, w.hidden, 'Wrong answer')
-  end
-
-  def test_winroom_get_input
-    assert_equal([], WinRoom.new.input, 'Wrong answer')
-  end
-
-  def test_winroom_set_input
-    w = WinRoom.new
-    w.input = ([1..9])
-    assert_equal([1..9], w.input, 'Wrong answer')
+    assert_equal(w.you_win, w.action, 'Wrong answer')
   end
 
 #-------------------------------------------------------------------

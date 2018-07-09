@@ -10,6 +10,6 @@ class Room
   end
 
   def action
-    #this room does nothing
+    [@description, @input]
   end
 end
