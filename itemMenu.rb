@@ -15,7 +15,7 @@ class ItemMenu
       @device.next_line
       print_items
       input = @device.input
-      break if is_valid? input
+      break if valid? input
     end
     input
   end
@@ -30,7 +30,7 @@ class ItemMenu
     end
   end
 
-  def is_valid?(input)
-    input.between(0, @items.size-1)
+  def valid?(input)
+    input.between(0, @items.size - 1)
   end
 end
