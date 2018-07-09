@@ -1,9 +1,10 @@
 require_relative 'Room'
+require_relative 'Item'
 
 class Shop < Room
   attr_accessor :out_of_items
 
-  def initialize(hidden = true, input = [])
+  def initialize(hidden = true, input = [Item.new({}), Item.new({})])
     super(hidden, input)
     @description  = 'Shop is open, have a look'
     @out_of_items = 'Shop is out of items'

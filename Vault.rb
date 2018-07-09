@@ -3,7 +3,7 @@ require_relative 'Room'
 class Vault < Room
   attr_accessor :already_chose
 
-  def initialize(hidden = true, input = [])
+  def initialize(hidden = true, input = [Item.new({}), Item.new({})])
     super(hidden, input)
     @description = 'You can chose one item from this vault'
     @got_item = false

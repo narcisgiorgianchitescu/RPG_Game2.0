@@ -8,9 +8,6 @@ require_relative 'WinRoom'
 require "test/unit"
 
 class TestGameRoom < Test::Unit::TestCase
-#
-# TODO : pus input cu iteme si monster
-#
 
 #-------------------------------------------------------------------
 #Room
@@ -47,7 +44,7 @@ class TestGameRoom < Test::Unit::TestCase
   end
 
   def test_shop_false_for_out_of_items?
-    s = Shop.new(true, [1..9])
+    s = Shop.new
     assert_equal(false, s.out_of_items?, 'Wrong answer')
   end
 
@@ -57,7 +54,7 @@ class TestGameRoom < Test::Unit::TestCase
   end
 
   def test_shop_action_rez_room_data
-    s = Shop.new(true, ['something', 'something else'])
+    s = Shop.new
     assert_equal([s.description, s.input], s.action, 'Wrong answer')
   end
 
@@ -65,12 +62,12 @@ class TestGameRoom < Test::Unit::TestCase
 #Vault
 
   def test_vault_action_rez_room_data
-    v = Vault.new(false, [1..9])
+    v = Vault.new
     assert_equal([v.description, v.input], v.action, 'Wrong answer')
   end
 
   def tes_vault_action_rez_already_chose
-    v = Vault.new(false, [1..9])
+    v = Vault.new
     v.action
     assert_equal(v.already_chose, v.action, 'Wrong answer')
   end
@@ -89,7 +86,7 @@ class TestGameRoom < Test::Unit::TestCase
   end
 
   def test_hospital_action_rez_room_data
-    h = Hospital.new(false, [1..9])
+    h = Hospital.new
     assert_equal([h.description, h.input], h.action, 'Wrong answer')
   end
 
@@ -97,7 +94,7 @@ class TestGameRoom < Test::Unit::TestCase
 #MonsterRoom
 
   def test_monsterroom_action_rez_room_data
-    m = MonsterRoom.new(false, [1..9])
+    m = MonsterRoom.new
     assert_equal([m.description, m.input], m.action, 'Wrong answer')
   end
 
