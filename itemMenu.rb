@@ -12,7 +12,6 @@ class ItemMenu
     input = nil
     loop do
       @device.print_string description
-      @device.next_line
       print_items
       input = @device.input
       break if valid? input
@@ -24,9 +23,10 @@ class ItemMenu
 
   def print_items
     @items.each_with_index do |item, index|
-      @device.print_string "#{index} "
-      @device.print_item item
-      @device.next_line
+      string = "#{index} #{item.name} #{item.stats.attack} attack, "
+      string += "#{item.stats.defence} defence, #{item.stats.hp} hp,"
+      string += "#{item.stats.coins} coins"
+      @device.print_string string
     end
   end
 
