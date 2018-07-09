@@ -1,34 +1,14 @@
-require_relative 'iointerface'
+require_relative 'menu'
 
-# class that receives a list of options and prompts the io to choose one
 class HospitalMenu
-  def initialize(heal_options, description, device)
-    @description = description
-    @heal_options = heal_options
-    @device = device
-  end
-
-  def choice
-    input = nil
-    loop do
-      @device.print_string description
-      print_heal_options
-      input = @device.input
-      break if valid? input
-    end
-    input
-  end
-
   private
 
   def print_heal_options
-    @heal_options.each do |item|
-      string = "#{item[0]} hp for #{item[0]} coins"
+    @values.each.index do |values, x, y|
+      string = "#{x + 1}) #{values} hp" if y.zero?
+      string = "for #{values} coins" if y == 1
       @device.print_string string
+      @device.next_line if y == 1
     end
-  end
-
-  def valid?(input)
-    input.between(0, @heal_options.size - 1)
   end
 end

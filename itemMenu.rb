@@ -1,3 +1,21 @@
+require_relative 'menu'
+
+# class that receives a list of options and prompts the io to choose one
+class ItemMenu < Menu
+  private
+
+  def print_values
+    @items.each_with_index do |item, index|
+      string = "#{index} #{item.name} #{item.stats.attack} attack, "
+      string += "#{item.stats.defence} defence, #{item.stats.hp} hp,"
+      string += "#{item.stats.coins} coins"
+      @device.print_string string
+    end
+  end
+end
+
+#Old code
+=begin
 require_relative 'iointerface'
 
 # class that receives a list of options and prompts the io to choose one
@@ -34,3 +52,4 @@ class ItemMenu
     input.between(0, @items.size - 1)
   end
 end
+=end
