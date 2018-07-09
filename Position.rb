@@ -1,7 +1,7 @@
 class Position
   attr_accessor :coordinates
 
-  def initialize(row, column)
+  def initialize(row = 0, column = 0)
     @coordinates = [row, column]
   end
 
@@ -22,7 +22,7 @@ class Position
   def move_left
     @coordinates[1] -= 1
     self
-    end
+  end
 
   def move_right
     @coordinates[1] += 1
