@@ -25,6 +25,6 @@ class RoomFactory
 end
 
 # r = RoomFactory.create(:vault, true, [1, 2, 3, [4, 5]])
-# puts r.get_room_description
+# puts r.description
 # puts r.hidden
-# print r.input
+# puts r.input

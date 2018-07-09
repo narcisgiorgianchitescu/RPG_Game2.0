@@ -7,22 +7,6 @@ class WinRoom < Room
   end
 
   def action
-    #nothing
-  end
-
-  def get_hidden
-    super
-  end
-
-  def set_hidden(hidden)
-    super(hidden)
-  end
-
-  def get_input
-    super
-  end
-
-  def set_input(input)
-    super(input)
+    #nothing for now
   end
 end
