@@ -2,6 +2,9 @@ require_relative 'Item'
 
 # class for differentiating different tipes of wearables
 class Wearable < Item
+
+  attr_accessor :type, :hp
+
   TYPES_NAME = {
     head: 'Cool Helmet',
     chest: 'Awesome Chestplate',
