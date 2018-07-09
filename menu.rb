@@ -8,7 +8,7 @@ class Menu
     until choice
       # TODO: send options to io
       # TODO: get result from io
-      # TODO: chef if input is valid
+      # TODO: check if input is valid
     end
     choice
   end
