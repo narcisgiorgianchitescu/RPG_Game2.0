@@ -66,7 +66,7 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal([v.description, v.input], v.action, 'Wrong answer')
   end
 
-  def tes_vault_action_rez_already_chose
+  def test_vault_action_rez_already_chose
     v = Vault.new
     v.action
     assert_equal(v.already_chose, v.action, 'Wrong answer')
