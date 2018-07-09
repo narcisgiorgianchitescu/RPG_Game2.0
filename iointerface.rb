@@ -7,6 +7,8 @@ class IOinterface
 
   def print_hero; end
 
+  def print_map; end
+
   def clear; end
 
   def input; end
