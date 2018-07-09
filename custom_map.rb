@@ -5,6 +5,7 @@ require_relative 'Vault'
 require_relative 'WinRoom'
 require_relative 'Consumable'
 require_relative 'Map'
+require_relative 'MonsterRoom'
 
 class CustomMap < MapGenerator
   def create_map
@@ -15,13 +16,14 @@ class CustomMap < MapGenerator
     hospital = Hospital.new(false)
     map.add_room(hospital, 0, 2)
 
-    # TODO: MonsterRoom
+    monster_room = MonsterRoom.new(false)
+    map.add_room(monster_room, 0, 3)
 
     room = Room.new(false)
     map.add_room(room, 0, 4)
 
     stats = Stats.new
-    items = Array.new
+    items = []
     items[0] = Consumable.new(stats, 'Default consumable')
     shop = Shop.new(false, items)
     map.add_room(shop, 0, 5)
