@@ -11,7 +11,7 @@ class Shop < Room
   end
 
   def action
-    return @out_of_items if out_of_items?
+    return [@out_of_items] if out_of_items?
 
     super
   end

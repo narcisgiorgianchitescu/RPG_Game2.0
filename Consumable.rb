@@ -1,7 +1,8 @@
 require_relative 'Item'
 
 class Consumable < Item
-  def initialize(stats, name = 'Consumable')
+  attr_accessor :stats, :name
+  def initialize(stats = nil, name = 'Consumable')
     super(stats, name)
   end
 end

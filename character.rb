@@ -15,4 +15,8 @@ class Character
     raise if stats.hp.negative?
     raise if stats.coins.negative?
   end
+
+  def alive?
+    @stats.hp.positive?
+  end
 end
