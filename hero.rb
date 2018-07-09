@@ -16,7 +16,7 @@ class Hero < Character
   end
 
   def change_wearable(wearable)
-    case wearable.type.class
+    case wearable.type.to_s
     when 'head'
       @equipment.head = wearable
     when 'chest'
@@ -57,3 +57,24 @@ class Hero < Character
     puts @equipment.weapon.stats.coins
   end
 end
+
+h = Hero.new
+
+w = Wearable.new
+w.type = 'head'
+w.stats.hp = 10
+
+h.change_wearable(w)
+
+w = Wearable.new
+w.type = 'boots'
+w.stats.defence = 1000
+h.change_wearable(w)
+
+w = Wearable.new
+w.type = 'head'
+w.stats.hp = 4
+
+h.change_wearable(w)
+
+h.print_stats
