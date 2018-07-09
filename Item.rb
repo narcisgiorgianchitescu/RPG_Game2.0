@@ -1,4 +1,4 @@
-require_relative 'Stats'
+require_relative 'stats'
 
 class Item
   def initialize(stats, name = 'Item')
