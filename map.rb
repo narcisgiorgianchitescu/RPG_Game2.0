@@ -2,7 +2,7 @@ require_relative 'Room'
 
 # class for creating and modifying a map
 class Map
-  attr_accessor :size
+  attr_accessor :size, :slots
   def initialize(size = 10)
     @size = size
     @slots = create_map(size)
@@ -40,12 +40,14 @@ class Map
   end
 
   def create_map(size)
-    slots = Array.new(size) { Array.new(size) }
+    @slots = Array.new(size) { Array.new(size) }
     size.times do |i|
       size.times  do |j|
-        slots[i][j] = Room.new
+        @slots[i][j] = Room.new
       end
     end
-    slots
+    @slots
   end
 end
+
+m = Map.new
