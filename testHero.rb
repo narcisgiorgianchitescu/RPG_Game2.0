@@ -69,4 +69,24 @@ class TestHero < Test::Unit::TestCase
     h.change_wearable(w)
     assert_equal(h.stats.defence, 5)
   end
+
+  def test_use_item_boots
+    h = Hero.new
+    h.stats.defence = 2
+    w = Wearable.new
+    w.type = 'boots'
+    w.stats.defence = 3
+    h.use_item(w)
+    assert_equal(h.stats.defence, 5)
+  end
+
+  def test_change_weapon_use_item
+      h = Hero.new
+      h.stats.attack = 4
+      w = Weapon.new
+      w.stats.attack = 7
+      h.use_item(w)
+      assert_equal(h.stats.attack, 11)
+  end
+
 end
