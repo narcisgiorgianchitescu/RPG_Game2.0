@@ -10,26 +10,6 @@ class Room
   end
 
   def action
-    #nothing
-  end
-
-  def get_hidden
-    @hidden
-  end
-
-  def set_hidden(hidden)
-    @hidden = hidden
-  end
-
-  def get_input
-    @input
-  end
-
-  def set_input(input)
-    @input = input
-  end
-
-  def get_room_description
-    @description
+    #this room does nothing
   end
 end

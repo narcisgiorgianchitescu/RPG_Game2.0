@@ -16,159 +16,129 @@ class TestGameRoom < Test::Unit::TestCase
 
   def test_room_set_hidden
     r = Room.new
-    r.set_hidden(true)
-    assert_equal(true, r.get_hidden, 'Wrong answer')
+    r.hidden = false
+    assert_equal(false, r.hidden, 'Wrong answer')
   end
 
   def test_room_get_input
-    assert_equal([], Room.new.get_input, 'Wrong answer')
+    assert_equal([], Room.new.input, 'Wrong answer')
   end
 
   def test_room_set_input
     r = Room.new
-    r.set_input([1..9])
-    assert_equal([1..9], r.get_input, 'Wrong answer')
+    r.input = ([1..9])
+    assert_equal([1..9], r.input, 'Wrong answer')
   end
 
-  def test_room_description
-    r = Room.new
-    assert_equal(r.description, r.get_room_description, 'Wrong answer')
+#-------------------------------------------------------------------
+
+  def test_hospital_get_hidden
+    assert_equal(true, Hospital.new.hidden, 'Wrong answer')
+  end
+
+  def test_hospital_set_hidden
+    h = Hospital.new
+    h.hidden = false
+    assert_equal(false, h.hidden, 'Wrong answer')
+  end
+
+  def test_hospital_get_input
+    assert_equal([], Hospital.new.input, 'Wrong answer')
+  end
+
+  def test_hospital_set_input
+    h = Hospital.new
+    h.input = ([1..9])
+    assert_equal([1..9], h.input, 'Wrong answer')
   end
 
 #-------------------------------------------------------------------
 
   def test_shop_get_hidden
-    assert_equal(true, Shop.new.get_hidden, 'Wrong answer')
+    assert_equal(true, Shop.new.hidden, 'Wrong answer')
   end
 
   def test_shop_set_hidden
     s = Shop.new
-    s.set_hidden(true)
-    assert_equal(true, s.get_hidden, 'Wrong answer')
+    s.hidden = false
+    assert_equal(false, s.hidden, 'Wrong answer')
   end
 
   def test_shop_get_input
-    assert_equal([], Shop.new.get_input, 'Wrong answer')
+    assert_equal([], Shop.new.input, 'Wrong answer')
   end
 
   def test_shop_set_input
     s = Shop.new
-    s.set_input([1..9])
-    assert_equal([1..9], s.get_input, 'Wrong answer')
+    s.input = ([1..9])
+    assert_equal([1..9], s.input, 'Wrong answer')
   end
 
-  def test_shop_description
-    s = Shop.new
-    assert_equal(s.description, s.get_room_description, 'Wrong answer')
-  end
-
-#----------------------------------------------------
-
-  def test_hospital_get_hidden
-    assert_equal(true, Shop.new.get_hidden, 'Wrong answer')
-  end
-
-  def test_hospital_set_hidden
-    h = Shop.new
-    h.set_hidden(true)
-    assert_equal(true, h.get_hidden, 'Wrong answer')
-  end
-
-  def test_hospital_get_input
-    assert_equal([], Hospital.new.get_input, 'Wrong answer')
-  end
-
-  def test_hospital_set_input
-    h = Shop.new
-    h.set_input([1..9])
-    assert_equal([1..9], h.get_input, 'Wrong answer')
-  end
-
-  def test_hospital_description
-    h = Hospital.new
-    assert_equal(h.description, h.get_room_description, 'Wrong answer')
-  end
-
-#----------------------------------------------------
-
-  def test_monsterrom_get_hidden
-    assert_equal(true, MonsterRoom.new.get_hidden, 'Wrong answer')
-  end
-
-  def test_monsterrom_set_hidden
-    mr = MonsterRoom.new
-    mr.set_hidden(true)
-    assert_equal(true, mr.get_hidden, 'Wrong answer')
-  end
-
-  def test_monsterrom_get_input
-    assert_equal([], MonsterRoom.new.get_input, 'Wrong answer')
-  end
-
-  def test_monsterrom_set_input
-    mr = MonsterRoom.new
-    mr.set_input([1..9])
-    assert_equal([1..9], mr.get_input, 'Wrong answer')
-  end
-
-  def test_monsterrom_description
-    mr = MonsterRoom.new
-    assert_equal(mr.description, mr.get_room_description, 'Wrong answer')
-  end
-
-#----------------------------------------------------
+#-------------------------------------------------------------------
 
   def test_vault_get_hidden
-    assert_equal(true, Vault.new.get_hidden, 'Wrong answer')
+    assert_equal(true, Vault.new.hidden, 'Wrong answer')
   end
 
   def test_vault_set_hidden
     v = Vault.new
-    v.set_hidden(true)
-    assert_equal(true, v.get_hidden, 'Wrong answer')
+    v.hidden = false
+    assert_equal(false, v.hidden, 'Wrong answer')
   end
 
   def test_vault_get_input
-    assert_equal([], Vault.new.get_input, 'Wrong answer')
+    assert_equal([], Vault.new.input, 'Wrong answer')
   end
 
   def test_vault_set_input
     v = Vault.new
-    v.set_input([1..9])
-    assert_equal([1..9], v.get_input, 'Wrong answer')
+    v.input = ([1..9])
+    assert_equal([1..9], v.input, 'Wrong answer')
   end
 
-  def test_vault_description
-    v = Vault.new
-    assert_equal(v.description, v.get_room_description, 'Wrong answer')
+#-------------------------------------------------------------------
+
+  def test_monsterroom_get_hidden
+    assert_equal(true, MonsterRoom.new.hidden, 'Wrong answer')
   end
 
-#----------------------------------------------------
+  def test_monsterroom_set_hidden
+    m = MonsterRoom.new
+    m.hidden = false
+    assert_equal(false, m.hidden, 'Wrong answer')
+  end
+
+  def test_monsterroom_get_input
+    assert_equal([], MonsterRoom.new.input, 'Wrong answer')
+  end
+
+  def test_monsterroom_set_input
+    m = MonsterRoom.new
+    m.input = ([1..9])
+    assert_equal([1..9], m.input, 'Wrong answer')
+  end
+
+#-------------------------------------------------------------------
 
   def test_winroom_get_hidden
-    assert_equal(true, WinRoom.new.get_hidden, 'Wrong answer')
+    assert_equal(true, WinRoom.new.hidden, 'Wrong answer')
   end
 
   def test_winroom_set_hidden
-    wr = WinRoom.new
-    wr.set_hidden(true)
-    assert_equal(true, wr.get_hidden, 'Wrong answer')
+    w = WinRoom.new
+    w.hidden = false
+    assert_equal(false, w.hidden, 'Wrong answer')
   end
 
   def test_winroom_get_input
-    assert_equal([], WinRoom.new.get_input, 'Wrong answer')
+    assert_equal([], WinRoom.new.input, 'Wrong answer')
   end
 
   def test_winroom_set_input
-    wr = WinRoom.new
-    wr.set_input([1..9])
-    assert_equal([1..9], wr.get_input, 'Wrong answer')
+    w = WinRoom.new
+    w.input = ([1..9])
+    assert_equal([1..9], w.input, 'Wrong answer')
   end
 
-  def test_winroom_description
-    wr = WinRoom.new
-    assert_equal(wr.description, wr.get_room_description, 'Wrong answer')
-  end
-
-#----------------------------------------------------
+#-------------------------------------------------------------------
 end
