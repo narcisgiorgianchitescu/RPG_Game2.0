@@ -9,7 +9,7 @@ class WinRoom < Room
     @you_win = 'You Win!'
   end
 
-  def action
+  def action(hero)
     @you_win
   end
 end
