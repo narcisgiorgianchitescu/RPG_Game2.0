@@ -9,7 +9,7 @@ class TestCharacter < Test::Unit::TestCase
   def test_hp
     ch = Character.new
     x = ch.stats
-    assert_equal(x.hp, 0)
+    assert_equal(x.hp, 100)
   end
 
   def test_attack
