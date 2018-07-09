@@ -1,9 +1,6 @@
-require_relative
-
 class Position
-  def initialize(row, column, entity_on_surface)
+  def initialize(row, column)
     @coordinates = [row, column]
-    @entity = entity_on_surface
   end
 
   def move_up
@@ -20,5 +17,21 @@ class Position
 
   def move_right
     @coordinates[1] += 1
+  end
+
+  def next_up
+    [coordinate[0] - 1, coordinate[1]]
+  end
+
+  def next_down
+    [coordinate[0] + 1, coordinate[1]]
+  end
+
+  def next_left
+    [coordinate[0], coordinate[1] - 1]
+  end
+
+  def next_right
+    [coordinate[0], coordinate[1] + 1]
   end
 end
