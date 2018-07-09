@@ -7,7 +7,10 @@ class MonsterRoom < Room
     @description = 'This room contain a hideous monster'
   end
 
-  def action
-    super
+  def action(hero)
+    @device.print_monster(input)
+    @device.print_hero(hero)
+
+    #TODO : Combat
   end
 end
