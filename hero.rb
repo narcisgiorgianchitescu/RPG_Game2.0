@@ -33,4 +33,15 @@ class Hero < Character
     @equipment.weapon = weapon
     @stats.change_stats(equipment.weapon.stats, :+)
   end
+ # TO BE RETESTED
+  def use_item(item)
+    case item.class
+    when 'Consumable'
+      use_consumable(item)
+    when 'Weapon'
+      change_weapon(item)
+    else
+      change_wearable(item)
+    end
+  end
 end
