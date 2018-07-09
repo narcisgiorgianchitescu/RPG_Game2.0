@@ -1,5 +1,5 @@
 # class that receives a list of options and prompts the io to choose one
-class Menu
+class ItemMenu
   def initialize(options)
     @options = options
   end
