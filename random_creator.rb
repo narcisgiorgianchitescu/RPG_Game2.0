@@ -8,7 +8,7 @@ require_relative 'Vault'
 require_relative 'hero'
 require_relative 'map'
 require_relative 'WinRoom'
-
+# TODO: Test
 module RandomCreator
   def self.difficulty_multiplier(difficulty = 0)
     difficulty * -0.1 + 1.5
@@ -90,18 +90,15 @@ module RandomCreator
       value: (rand(10..30) * difficulty_multiplier(difficulty)).to_i })
   end
 
-=begin
   def self.random_stats_monster(hero, difficulty = 0)
-    { money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      name: random_monster_name,
+    Stats.new = { money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
       hp: ((hero.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
       attack: ((hero.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
-      defence: ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
+      defence: ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i
     }
   end
-=end
 
-=begin
+
   def self.random_monster_name
     bear_names = ['Angry Bear', 'Mad Bear', 'Stone Bear', 'Grizzly Bear']
     wolf_names = ['Rabid Wold', 'Big Wolf', 'Mad Wolf', 'White Wolf']
@@ -109,13 +106,12 @@ module RandomCreator
     other_monsters = ['Zombie', 'Ghost', 'Mimic', 'Werewolf', 'Savage']
     [bear_names, wolf_names, bat_names, other_monsters].sample.sample
   end
-=end
 
-=begin
+
   def self.random_monster(hero, difficulty = 0)
-    Monster.new(random_stats_monster(hero, difficulty), rand(0..100))
+    Monster.new(random_stats_monster(hero, difficulty), random_monster_name, rand(0..100))
   end
-=end
+
 
   def self.random_shop(difficulty = 0)
     items = []
