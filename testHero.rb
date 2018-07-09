@@ -22,7 +22,7 @@ class TestHero < Test::Unit::TestCase
     w.type = 'head'
     w.stats.attack = 1
     h.change_wearable(w)
-    assert_equal(h.equipment.head.stats.attack, 1)
+    assert_equal(h.equipment.head, w)
   end
 
   def test_change_wearable_chest
@@ -31,7 +31,7 @@ class TestHero < Test::Unit::TestCase
     w.type = 'chest'
     w.stats.attack = 2
     h.change_wearable(w)
-    assert_equal(h.equipment.chest.stats.attack, 2)
+    assert_equal(h.equipment.chest, w)
   end
 
   def test_change_wearable_boots
@@ -40,7 +40,7 @@ class TestHero < Test::Unit::TestCase
     w.type = 'boots'
     w.stats.attack = 3
     h.change_wearable(w)
-    assert_equal(h.equipment.boots.stats.attack, 3)
+    assert_equal(h.equipment.boots, w)
   end
 
   def test_change_weapon
@@ -48,7 +48,7 @@ class TestHero < Test::Unit::TestCase
     w = Weapon.new
     w.stats.attack = 7
     h.change_weapon(w)
-    assert_equal(h.equipment.weapon.stats.attack, 7)
+    assert_equal(h.equipment.weapon, w)
   end
 
   def test_change_weapon_1
