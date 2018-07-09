@@ -27,11 +27,4 @@ class Stats
       send "#{key}=", new_val
     end
   end
-
-  def build_default_stats
-    {  attack:  0,
-       defence:  0,
-       coins:  0,
-       hp:  100 }
-  end
 end
