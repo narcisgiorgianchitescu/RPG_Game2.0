@@ -1,15 +1,16 @@
 require_relative 'Item'
 
-class Equipment < Item
+# class for differentiating different tipes of wearables
+class Wearable < Item
   TYPES_NAME = {
     head: 'Cool Helmet',
     chest: 'Awesome Chestplate',
     boots: 'Rainbow Boots'
   }.freeze
 
-  def initialize(stats, type, name = 'Equipment')
-    stats.hp = 0 if stats.hp != 0
+  def initialize(stats, type, name = TYPES_NAME[type])
     super(stats, name)
-    @type = (TYPES_NAME[type] || 'Undifined Equipment')
+    @hp = 0
+    @type = type
   end
 end

@@ -12,7 +12,10 @@ class Stats
   attr_accessor :coins
 
   def initialize(stats = {})
-    STATS.keys.each { |key| raise 'Need an integer' unless stats[key].is_a? Integer }
+    STATS.keys.each do |key|
+      raise 'Need an integer' unless (stats[key].is_a? Integer) ||
+                                     stats[key].nil?
+    end
     STATS.keys.each { |key| send "#{key}=", (stats[key] || 0) }
   end
 
