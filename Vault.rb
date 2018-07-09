@@ -11,7 +11,7 @@ class Vault < Room
   end
 
   def action
-    return @already_chose if @got_item
+    return [@already_chose] if @got_item
 
     @got_item = true
     super
