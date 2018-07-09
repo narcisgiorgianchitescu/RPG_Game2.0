@@ -1,14 +1,17 @@
 require_relative 'wearable'
 require_relative 'Weapon'
 
+# class for managing hero equipement
 class Equipment
-  def initialize(head = Wearable.new(Stats.new, :head),
-                 chest = Wearable.new(Stats.new, :chest),
-                 boots = Wearable.new(Stats.new, :boots),
-                 weapon = Weapon.new(Stats.new))
-    @head = head
-    @chest = chest
-    @boots = boots
-    @weapon = weapon
+  ITEMS = [
+    head,
+    chest,
+    boots,
+    weapon,
+  ].freeze
+  def initialize(items = {})
+    ITEMS.each do |item|
+      send "#{item}=", (items[item] || Wearable.new(Stats.new, item))
+    end
   end
 end
