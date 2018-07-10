@@ -7,7 +7,6 @@ require 'hero'
 require 'io_interface'
 require 'wearable'
 require 'map'
-
 # ...
 class IOterminal < IOinterface
   def print_string(string)
@@ -16,6 +15,11 @@ class IOterminal < IOinterface
 
   def next_line
     print "\n"
+  end
+
+  def puts_string(string)
+    print_string(string)
+    next_line
   end
 
   def print_item(item)
@@ -75,7 +79,7 @@ class IOterminal < IOinterface
 
   def show(map)
     puts ' -' * map.size * 2
-    map.slots.each_with_index do |line, index|
+    map.slots.each do |line|
       print_line(line)
       puts ' -' * map.size * 2
     end
@@ -84,7 +88,7 @@ class IOterminal < IOinterface
 
   def print_line(line)
     print '|'
-    line.each_with_index do |slot, index|
+    line.each do |slot|
         print_slot slot
     end
     puts

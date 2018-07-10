@@ -2,7 +2,6 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'menu'
-
 # class that receives a list of options and prompts the io to choose one
 class CombatMenu < Menu
   def initialize(number_of_options, description, device)

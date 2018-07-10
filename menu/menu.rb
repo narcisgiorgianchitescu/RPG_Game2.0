@@ -3,7 +3,6 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'io_interface'
 
-
 # class that receives a list of options and prompts the io to choose one
 class Menu
   EXIT_VALUE = -1
