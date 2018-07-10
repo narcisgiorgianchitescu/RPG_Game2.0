@@ -37,8 +37,4 @@ class TestCharacter < Test::Unit::TestCase
     ch = Character.new
     assert_equal(ch.name, 'noname')
   end
-
-  def test_hp
-    ch = Character.new
-  end
 end
