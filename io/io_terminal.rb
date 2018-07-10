@@ -4,7 +4,7 @@ require 'require_file'
 require 'item'
 require 'monster'
 require 'hero'
-require 'iointerface'
+require 'io_interface'
 require 'wearable'
 require 'map'
 # ...
