@@ -19,4 +19,8 @@ class Character
   def alive?
     @stats.hp.positive?
   end
+
+  def has_money?
+    @stats.coins.positive?
+  end
 end
