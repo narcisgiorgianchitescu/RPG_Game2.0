@@ -9,6 +9,7 @@ require 'vault'
 require 'win_room'
 require 'monster_room'
 require 'hero'
+require 'io_terminal'
 
 class TestGameRoom < Test::Unit::TestCase
 
