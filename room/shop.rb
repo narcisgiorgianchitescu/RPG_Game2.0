@@ -20,6 +20,7 @@ class Shop < Room
 
   def action(hero)
     @device.print_string(@out_of_items) if out_of_items?
+    @device.new_line if out_of_items?
     return if out_of_items?
 
     start_business(hero, @description)
@@ -50,7 +51,7 @@ class Shop < Room
 
     recalculate_supply(input)
 
-    start_business(hero, @description)
+    action(hero)
   end
 
   def give_item_to_hero(hero, input)
