@@ -9,6 +9,7 @@ class HospitalMenu < Menu
       string = "for #{values} coins" if y == 1
       @device.print_string string
       @device.next_line if y == 1
+      super
     end
   end
 end

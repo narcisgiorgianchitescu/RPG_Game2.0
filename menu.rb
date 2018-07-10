@@ -22,7 +22,10 @@ class Menu
 
   private
 
-  def print_values; end
+  def print_values
+    @device.print_string("Press #{EXIT_VALUE} to exit")
+    @device.next_line
+  end
 
   def valid?(input)
     (input.between(0, @values.size - 1) || input == EXIT_VALUE)
