@@ -76,7 +76,7 @@ class IOterminal < IOinterface
 
   def show(map)
     puts ' -' * map.size * 2
-    map.slots.each_with_index do |line, index|
+    map.slots.each do |line|
       print_line(line)
       puts ' -' * map.size * 2
     end
@@ -85,7 +85,7 @@ class IOterminal < IOinterface
 
   def print_line(line)
     print '|'
-    line.each_with_index do |slot, index|
+    line.each do |slot|
         print_slot slot
     end
     puts
