@@ -4,6 +4,9 @@ require 'require_file'
 require 'minitest/autorun'
 require 'random_map'
 require 'custom_map'
+require 'map_generator'
+require 'hero'
+require 'room'
 
 class TestPosition < Minitest::Test
   def setup; end
