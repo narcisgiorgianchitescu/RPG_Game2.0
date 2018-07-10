@@ -16,6 +16,7 @@ class Equipment
 
   def initialize(items = {})
     ITEMS.each do |item|
+      # TODO: weapon initialization is missing
       send "#{item}=", (items[item] || Wearable.new(Stats.new, item))
     end
   end

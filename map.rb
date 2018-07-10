@@ -21,7 +21,7 @@ class Map
 
   def clear_room(row, column)
     check_position(row, column)
-    @slots[row][column] = nil
+    @slots[row][column] = Room.new
   end
 
   def valid_position?(row, column)
@@ -49,5 +49,3 @@ class Map
     @slots
   end
 end
-
-m = Map.new
