@@ -14,6 +14,11 @@ class IOterminal < IOinterface
     print "\n"
   end
 
+  def puts_string(string)
+    print_string(string)
+    next_line
+  end
+
   def print_item(item)
     print_string("Itemul #{item.name} are: "); next_line
     print_stats(item.stats)
