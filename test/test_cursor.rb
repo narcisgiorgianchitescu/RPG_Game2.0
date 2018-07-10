@@ -29,9 +29,10 @@ class TestPosition < Test::Unit::TestCase
   end
 
   def test_move_up
+    cursor = Position.new(5, 5)
     assert_equal(
-      Cursor.new(Position.new(4, 5)).position,
-      Cursor.new(Position.new(5, 5)).move('w')
+      cursor.position.row = 4,
+      cursor.move('w')
     )
 
     assert_equal(
