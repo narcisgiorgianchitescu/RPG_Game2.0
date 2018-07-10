@@ -9,6 +9,8 @@ require 'win_room'
 require 'consumable'
 require 'map'
 require 'monster_room'
+require 'room'
+require 'position'
 
 class CustomMap < MapGenerator
   def create_map
@@ -17,25 +19,31 @@ class CustomMap < MapGenerator
     map = Map.new(size_map)
 
     hospital = Hospital.new(false)
-    map.add_room(hospital, 0, 2)
+    position = Position.new(0, 2)
+    map.add_room(hospital, position)
 
     monster_room = MonsterRoom.new(false)
-    map.add_room(monster_room, 0, 3)
+    position = Position.new(0, 3)
+    map.add_room(monster_room, position)
 
     room = Room.new(false)
-    map.add_room(room, 0, 4)
+    position = Position.new(0, 4)
+    map.add_room(room, position)
 
     stats = Stats.new
     items = []
     items[0] = Consumable.new(stats, 'Default consumable')
     shop = Shop.new(false, items)
-    map.add_room(shop, 0, 5)
+    position = Position.new(0, 5)
+    map.add_room(shop, position)
 
     vault = Vault.new(false, items)
-    map.add_room(vault, 0, 6)
+    position = Position.new(0, 6)
+    map.add_room(vault, position)
 
     winroom = WinRoom.new(false)
-    map.add_room(winroom, 0, 7)
+    position = Position.new(0, 7)
+    map.add_room(winroom, position)
   end
 end
 
