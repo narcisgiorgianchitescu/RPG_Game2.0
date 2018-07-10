@@ -21,70 +21,79 @@ class TestMap  < Test::Unit::TestCase
 
   def test_valid_position_false
     map = Map.new(5)
-    position = Position.new
-    position.row = 6
-    position.column = 3
+    position = Position.new(6, 3)
     assert_equal map.valid_position?(position), false
   end
 
   def test_valid_position_true_limits_1
     map = Map.new(5)
-    assert_equal map.valid_position?(0, 0), true
+    position = Position.new(0, 0)
+    assert_equal map.valid_position?(position), true
   end
 
   def test_valid_position_true_limits_2
     map = Map.new(5)
-    assert_equal map.valid_position?(4, 4), true
+    position = Position.new(4, 4)
+    assert_equal map.valid_position?(position), true
   end
 
   def test_valid_position_true_limits_3
     map = Map.new(5)
-    assert_equal map.valid_position?(0, 4), true
+    position = Position.new(0, 4)
+    assert_equal map.valid_position?(position), true
   end
 
   def test_valid_position_true_limits_4
     map = Map.new(5)
-    assert_equal map.valid_position?(4, 0), true
+    position = Position.new(4, 0)
+    assert_equal map.valid_position?(position), true
   end
 
   def test_valid_position_false_limits_1
     map = Map.new(5)
-    assert_equal map.valid_position?(0, -1), false
+    position = Position.new(0, -1)
+    assert_equal map.valid_position?(position), false
   end
 
   def test_valid_position_false_limits_2
     map = Map.new(5)
-    assert_equal map.valid_position?(4, 5), false
+    position = Position.new(4, 5)
+    assert_equal map.valid_position?(position), false
   end
 
   def test_valid_position_false_limits_3
     map = Map.new(5)
-    assert_equal map.valid_position?(0, 5), false
+    position = Position.new(0, 5)
+    assert_equal map.valid_position?(position), false
   end
 
   def test_valid_position_false_limits_4
     map = Map.new(5)
-    assert_equal map.valid_position?(5, 4), false
+    position = Position.new(5, 4)
+    assert_equal map.valid_position?(position), false
   end
 
   def test_add_room
     map = Map.new(10)
     room = Room.new
-    map.add_room(room, 5, 5)
-    assert_equal map.room(5, 5), room
+    position = Position.new(5, 5)
+    map.add_room(room, position)
+    assert_equal map.room(position), room
   end
 
   def test_add_bad_room
     map = Map.new(10)
     invalid_room = 2
-    assert_raises(RuntimeError) { map.add_room(invalid_room, 3, 5) }
+    position = Position.new(3, 5)
+    assert_raises(RuntimeError) { map.add_room(invalid_room, position) }
   end
 
   def test_clear_room
     map = Map.new(10)
     room = Room.new
-    map.add_room(room, 5, 5)
-    map.clear_room(5, 5)
-    refute_equal room, map.room(5, 5)
+    position = Position.new(5, 5)
+    map.add_room(room, position)
+    map.clear_room(position)
+    refute_equal room, map.room(position)
   end
 end
