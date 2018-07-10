@@ -26,6 +26,10 @@ class Menu
   private
 
   def print_values
+    values.each_with_index do |string_option, index|
+      @device.print_string "#{index}: #{string_option}"
+      @device.next_line
+    end
     @device.print_string("Press #{EXIT_VALUE} to exit")
     @device.next_line
   end
