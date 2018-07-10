@@ -22,23 +22,26 @@ class Hospital < Room
     end
 
     @device.print_string('Invalid input') unless valid
-    
+
     check_for_valid_input(hero)
   end
 
   def check_for_valid_input(hero)
     valid_input = [0..@input.size]
     input = @device.input.chomp
-    
+
     prezent_heal_option(hero, false) unless valid_input === input
 
     heal_hero(hero, input) if input > 0
   end
 
   def heal_hero(hero, input)
-    hero.stats.hp += @input[input].first
-    hero.stats.money -= @input[input].last
-
+    if hero.has_enough_money?(@input[input].last)
+      hero.stats.hp += @input[input].first
+      hero.stats.money -= @input[input].last
+    else
+      @device.print_string("Hero doesn't have enough money!")
+    end
     prezent_heal_option(hero, true)
   end
 end
