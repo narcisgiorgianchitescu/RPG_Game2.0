@@ -38,6 +38,6 @@ class Menu
   end
 
   def valid?(input)
-    ([0, 1].to_a.include? input || (input == @exit_value))
+    (-1..(@values.size - 1)).to_a.include? input
   end
 end
