@@ -5,20 +5,22 @@ require 'io_interface'
 
 # class that receives a list of options and prompts the io to choose one
 class Menu
-  EXIT_VALUE = -1
+  attr_accessor :exit_value
   def initialize(values, description, device)
     @description = description
     @values = values
     @device = device
+    @exit_value = -1
   end
 
   def choice
     input = nil
     loop do
       @device.clear
-      @device.print_string description
+      @device.print_string @description
+      @device.next_line
       print_values
-      input = @device.input
+      input = @device.input.to_i
       break if valid? input
     end
     input
@@ -27,15 +29,15 @@ class Menu
   private
 
   def print_values
-    values.each_with_index do |string_option, index|
+    @values.each_with_index do |string_option, index|
       @device.print_string "#{index}: #{string_option}"
       @device.next_line
     end
-    @device.print_string("Press #{EXIT_VALUE} to exit")
+    @device.print_string("Press #{@exit_value} to exit")
     @device.next_line
   end
 
   def valid?(input)
-    (input.between(0, @values.size - 1) || input == EXIT_VALUE)
+    ([0, 1].to_a.include? input || (input == @exit_value))
   end
 end
