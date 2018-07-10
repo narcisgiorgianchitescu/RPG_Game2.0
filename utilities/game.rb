@@ -5,6 +5,9 @@ require 'io_interface'
 require 'hero'
 require 'cursor'
 require 'map'
+require 'io_terminal'
+require 'random_creator'
+require 'random_map'
 
 # class that manages a game
 class Game
@@ -22,11 +25,11 @@ class Game
   private
 
   def game_setup
-    @device.print_string 'Input the hero name'
+    @device.puts_string 'Input the hero name'
     @hero = Hero.new(name: @device.input)
     @device.clear
-    @device.print_strings 'Input dificulty'
-    @map = RandomCreator.random_map(@hero)
+    @device.puts_string 'Input dificulty'
+    @map = RandomCreator.map(@hero)
     @map.each { |room| room.set_device @device }
   end
 
@@ -69,3 +72,7 @@ class Game
     end
   end
 end
+
+t = IOterminal.new
+g = Game.new t
+g.start_game
