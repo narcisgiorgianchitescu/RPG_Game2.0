@@ -2,7 +2,7 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'test/unit'
-
+require 'hero'
 
 class TestHero < Test::Unit::TestCase
   def test_use_consumable

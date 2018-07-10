@@ -2,6 +2,10 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'equipment'
+require 'character'
+require 'wearable'
+require 'weapon'
+require 'consumable'
 
 # Hero Modified
 class Hero < Character

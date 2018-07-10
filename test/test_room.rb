@@ -1,7 +1,13 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require "test/unit"
+require 'test/unit'
+require 'room'
+require 'hospital'
+require 'shop'
+require 'vault'
+require 'win_room'
+require 'monster_room'
 
 class TestGameRoom < Test::Unit::TestCase
 
