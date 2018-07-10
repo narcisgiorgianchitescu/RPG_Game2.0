@@ -20,7 +20,7 @@ class Character
     @stats.hp.positive?
   end
 
-  def has_money?
-    @stats.coins.positive?
+  def has_enough_money?(money)
+    @stats.coins >= money
   end
 end
