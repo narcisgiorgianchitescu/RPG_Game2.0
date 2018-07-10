@@ -20,6 +20,7 @@ class Game
     @device.clear
     @device.print 'Input dificulty'
     @map = RandomCreator.random_map(@hero)
+    @map.each { |room| room.set_device @device }
   end
 
   def run_game
