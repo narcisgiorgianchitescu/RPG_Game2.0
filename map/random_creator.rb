@@ -23,7 +23,8 @@ module RandomCreator
     map.size.times do |i|
       map.size.times do |j|
         y = room(hero, difficulty)
-        map.add_room(y, i, j)
+        position = Position.new(i, j)
+        map.add_room(y, position)
       end
     end
     map = spawn_victory_room(map)
@@ -44,7 +45,8 @@ module RandomCreator
     ob = WinRoom.new
     row = map.size - 1 - rand(map.size / 4)
     column = map.size - 1 - rand(map.size / 4)
-    map.add_room(ob, row, column)
+    position = Position.new(row, column)
+    map.add_room(ob, position)
     map
   end
 
@@ -96,11 +98,11 @@ module RandomCreator
   end
 
   def self.stats_monster(hero, difficulty = 0)
-    Stats.new = { money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      hp: ((hero.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
-      attack: ((hero.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
-      defence: ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i
-    }
+    Stats.new({ money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
+      hp: ((hero.stats.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
+      attack: ((hero.stats.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
+      defence: ((hero.stats.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i
+    })
   end
 
 
@@ -130,6 +132,6 @@ module RandomCreator
     Vault.new(true, items)
   end
 
-  private :spawn_victory_room, :consumable_stats, :consumable_stats_hash
-  private :stats_monster, :stats_equipment, :monster_name
+  #private :spawn_victory_room, :consumable_stats, :consumable_stats_hash
+  #private :stats_monster, :stats_equipment, :monster_name
 end
