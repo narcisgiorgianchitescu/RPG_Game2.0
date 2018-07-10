@@ -1,14 +1,6 @@
 # Specifications for what should IO implement
 class IOinterface
-  def print_string(string); end
-
-  def print_item(item); end
-
-  def print_monster(monster); end
-
-  def print_hero(hero); end
-
-  def print_map(map); end
+  def print_object; end
 
   def clear; end
 
