@@ -10,4 +10,10 @@ class Item
     @stats = stats
     @name = name
   end
+
+  def description(show_value = true)
+    output = "#{@name} #{@stats.attack} attack #{@stats.defence} defence"
+    output += " #{@stats.coins} coins" if show_value
+    output
+  end
 end
