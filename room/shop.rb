@@ -1,60 +1,64 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
+require 'menu'
+require 'item'
+require 'wearable'
 
 class Shop < Room
   attr_accessor :out_of_items
 
-  def initialize(hidden = true, input = [Item.new({}), Item.new({})])
+  def initialize(hidden = true, input = [Wearable.new({}), Item.new({})])
     super(hidden, input)
     @description  = 'Shop is open, have a look.'
     @out_of_items = 'Shop is out of items'
+    @not_enough_money = 'Not enough money, have another look'
   end
 
   def action(hero)
     @device.print_string(@out_of_items) if out_of_items?
     return if out_of_items?
 
-    start_business(hero, true)
+    start_business(hero, @description)
   end
 
   def out_of_items?
     input.size == 0
   end
 
-  def start_business(hero, valid)
-    @device.clear
-    @device.print_string(@description)
-    @device.print_string(@exit_option)
+  def start_business(hero, description)
+    items_description = items_description(@input, @show_value)
+    item_menu = Menu.new(items_description, description, @device)
+    input = @item_menu.choice
 
-    @input.each_with_index do |item, index|
-      @device.print_string((index + @index_correction).to_s)
-      @device.print_item(item)
-    end
+    return if input == @item_menu.EXIT_VALUE
 
-    @device.print_string('Invalid input') unless valid
+    enough_money = hero.has_enough_money?(@input[input].stats.coins)
 
-    check_for_valid_input(hero)
+    restart_business(hero, input) if enough_money
+
+    start_business(hero, @not_enough_money) unless enough_money
   end
 
-  def check_for_valid_input(hero)
-    valid_input = [0..@input.size]
-    input = @device.input.chomp
+  def restart_business(hero, input)
+    give_item_to_hero(hero, input)
 
-    start_business(hero, false) unless valid_input === input
-
-    do_business(hero, input) if input > 0
-  end
-
-  def do_business(hero, input)
-    hero.use_item(@input[input - @index_correction])
+    take_money(hero, input)
 
     recalculate_supply(input)
+
+    start_business(hero, @description)
+  end
+
+  def give_item_to_hero(hero, input)
+    hero.use_item(@input[input])
+  end
+
+  def take_money(hero, input)
+    hero.stats.coins -= @input[input].stats.coins
   end
 
   def recalculate_supply(input)
-    @input.delete_at(input - @index_correction)
-
-    start_business(hero, true)
+    @input.delete_at(input)
   end
 end
