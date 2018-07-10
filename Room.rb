@@ -7,9 +7,9 @@ class Room
     @hidden = hidden
     @input = input
     @description = 'An empty room'
-    @exit_option = '0 to exit'
     @device = nil
-    @index_correction = 1
+    @win = true
+    @lose = false
   end
 
   def action(hero)
