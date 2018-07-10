@@ -26,4 +26,12 @@ class Character
   def has_enough_money?(money)
     @stats.coins >= money
   end
+
+  def description
+    "#{@name} has the following stats\n"\
+              "#{@stats.attack} attack\n"\
+              "#{@stats.defence} defence\n"\
+              "#{@stats.hp} hp\n"\
+              "#{@stats.coins} coins\n"
+  end
 end
