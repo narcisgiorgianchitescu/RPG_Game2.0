@@ -7,8 +7,9 @@ require 'custom_map'
 require 'map_generator'
 require 'hero'
 require 'room'
+require 'test/unit'
 
-class TestPosition < Minitest::Test
+class TestPosition < Test::Unit::TestCase
   def setup; end
 
   def test_mapgenerator_create_map
