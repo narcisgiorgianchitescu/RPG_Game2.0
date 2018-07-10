@@ -27,7 +27,8 @@ class TestMap < Minitest::Test
 
   def test_add_bad_room
     map = Map.new(10)
-    assert_raises(RuntimeError) { map.add_room(2, 2, 2) }
+    invalid_room = 2
+    assert_raises(RuntimeError) { map.add_room(invalid_room, 3, 5) }
   end
 
   def test_clear_room
