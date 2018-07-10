@@ -1,5 +1,6 @@
 require_relative 'Room'
 require_relative 'Item'
+require_relative 'hero'
 
 class Shop < Room
   attr_accessor :out_of_items
@@ -39,21 +40,20 @@ class Shop < Room
   def check_for_valid_input(hero)
     valid_input = [0..@input.size]
     input = @device.input.chomp
-    
+
     start_business(hero, false) unless valid_input === input
 
     do_business(hero, input) if input > 0
   end
 
   def do_business(hero, input)
-    hero.use_item(@input[input - @index_correction])
-
-    recalculate_supply(input)
-  end
-
-  def recalculate_supply(input)
-    @input.delete_at(input - @index_correction)
-
+    cost = @input[input - @index_correction].stats.coins
+    if hero.has_enough_money?(cost)
+      hero.use_item(@input[input - @index_correction])
+      @input.delete_at(input - @index_correction)
+    else
+      @device.puts_string("Hero doesn't have enough money!")
+    end
     start_business(hero, true)
   end
 end
