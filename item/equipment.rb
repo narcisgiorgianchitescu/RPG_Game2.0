@@ -23,4 +23,12 @@ class Equipment
       send "#{item}=", (items[item] || Wearable.new(Stats.new, item))
     end
   end
+
+  def description(show_value = true)
+    output = 'Head: ' + @head.description(show_value) + "\n"
+    output += 'Chest: ' + @chest.description(show_value) + "\n"
+    output += 'Boots: ' + @boots.description(show_value) + "\n"
+    output += 'Weapon: ' + @weapon.description(show_value) + "\n"
+    output
+  end
 end
