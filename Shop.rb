@@ -1,6 +1,6 @@
 require_relative 'Room'
 require_relative 'Item'
-require_relative 'hero'
+require_relative 'menu_item'
 
 class Shop < Room
   attr_accessor :out_of_items
@@ -9,6 +9,7 @@ class Shop < Room
     super(hidden, input)
     @description  = 'Shop is open, have a look.'
     @out_of_items = 'Shop is out of items'
+    @menu_item = ItemMenu.new(@input, @description, @device)
   end
 
   def action(hero)
@@ -23,27 +24,7 @@ class Shop < Room
   end
 
   def start_business(hero, valid)
-    @device.clear
-    @device.print_string(@description)
-    @device.print_string(@exit_option)
-
-    @input.each_with_index do |item, index|
-      @device.print_string((index + @index_correction).to_s)
-      @device.print_item(item)
-    end
-
-    @device.print_string('Invalid input') unless valid
-
-    check_for_valid_input(hero)
-  end
-
-  def check_for_valid_input(hero)
-    valid_input = [0..@input.size]
-    input = @device.input.chomp
-
-    start_business(hero, false) unless valid_input === input
-
-    do_business(hero, input) if input > 0
+    @menu_item.choice
   end
 
   def do_business(hero, input)

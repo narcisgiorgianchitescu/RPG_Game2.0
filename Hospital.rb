@@ -1,8 +1,10 @@
 require_relative 'Room'
 
 class Hospital < Room
-  def initialize(hidden = true, input = [[5, 5], [10, 9], [20, 17]])
-    super(hidden, input)
+  def initialize(hidden = true, input = nil)
+    heal_price_options = [[5, 5], [10, 9], [20, 17]]
+    super(hidden, heal_price_options) unless input
+    super(hidden, input) if input
     @description = 'Hospital, you can heal wounds here'
   end
 
