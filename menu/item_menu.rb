@@ -2,7 +2,6 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'menu'
-
 # class that receives a list of options and prompts the io to choose one
 class ItemMenu < Menu
   private
@@ -14,8 +13,8 @@ class ItemMenu < Menu
       string += "#{item.stats.coins} coins"
       @device.print_string string
       @device.next_line
-      super
     end
+    super
   end
 end
 

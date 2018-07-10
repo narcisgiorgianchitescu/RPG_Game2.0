@@ -1,9 +1,12 @@
-require_relative 'Item'
-require_relative 'monster'
-require_relative 'hero'
-require_relative 'iointerface'
-require_relative 'wearable'
-require_relative 'map'
+binpath = File.dirname(__FILE__)
+$LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
+require 'require_file'
+require 'item'
+require 'monster'
+require 'hero'
+require 'iointerface'
+require 'wearable'
+require 'map'
 # ...
 class IOterminal < IOinterface
   def print_string(string)

@@ -1,7 +1,10 @@
-require_relative 'character.rb'
-require_relative 'equipment'
-require_relative 'Consumable'
-require_relative 'wearable'
+binpath = File.dirname(__FILE__)
+$LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
+require 'require_file'
+require 'character.rb'
+require 'equipment'
+require 'consumable'
+require 'wearable'
 # Hero Modified
 class Hero < Character
   attr_accessor :equipment
