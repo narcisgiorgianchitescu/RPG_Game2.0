@@ -1,7 +1,6 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'test/unit'
 require 'room'
 require 'hospital'
 require 'shop'
@@ -11,7 +10,11 @@ require 'monster_room'
 require 'hero'
 require 'io_terminal'
 
-class TestGameRoom < Test::Unit::TestCase
+require 'minitest/autorun'
+require 'test/unit'
+
+class TestGameRoom < MiniTest::Test
+  def setup; end
 
 #-------------------------------------------------------------------
 #Room
@@ -39,6 +42,7 @@ class TestGameRoom < Test::Unit::TestCase
     hero = Hero.new
     device = IOterminal.new
     room.set_device(device)
+    #expect { room.action(hero) }.to output(room.description).to_stdout
     assert_output(stdout = room.description) {room.action(hero)}
   end
 
