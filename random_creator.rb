@@ -1,6 +1,6 @@
 require_relative 'Consumable'
 require_relative 'Weapon'
-require_relative 'MonsterRoom'
+require_relative 'monster_room'
 require_relative 'wearable'
 require_relative 'Shop'
 require_relative 'Hospital'
@@ -87,17 +87,17 @@ module RandomCreator
   end
 
   def self.stats_equipment(difficulty = 0)
-    Stats.new({ attack: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
+    Stats.new ({ attack: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
       defence: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
       value: (rand(10..30) * difficulty_multiplier(difficulty)).to_i })
   end
 
   def self.stats_monster(hero, difficulty = 0)
-    Stats.new = { money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      hp: ((hero.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
-      attack: ((hero.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
-      defence: ((hero.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i
-    }
+    Stats.new({ money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
+      hp: ((hero.stats.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
+      attack: ((hero.stats.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
+      defence: ((hero.stats.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i
+    })
   end
 
 
@@ -127,6 +127,5 @@ module RandomCreator
     Vault.new(true, items)
   end
 
-  private :spawn_victory_room, :consumable_stats, :consumable_stats_hash
-  private :stats_monster, :stats_equipment, :monster_name
+
 end

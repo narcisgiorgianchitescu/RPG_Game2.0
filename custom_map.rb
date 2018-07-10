@@ -5,7 +5,7 @@ require_relative 'Vault'
 require_relative 'WinRoom'
 require_relative 'Consumable'
 require_relative 'Map'
-require_relative 'MonsterRoom'
+require_relative 'monster_room'
 
 class CustomMap < MapGenerator
   def create_map

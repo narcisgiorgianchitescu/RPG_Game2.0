@@ -1,10 +1,10 @@
 # Class that encapsulates the stats that a hero or item can have
 class Stats
   STATS = {
-    attack:  0,
-    defence: 0,
-    hp:      0,
-    coins:   0,
+    attack:  10,
+    defence: 10,
+    hp:      100,
+    coins:   100
   }.freeze
   attr_accessor :attack
   attr_accessor :defence

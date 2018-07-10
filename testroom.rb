@@ -1,7 +1,7 @@
 require_relative 'Room'
 require_relative 'Shop'
 require_relative 'Hospital'
-require_relative 'MonsterRoom'
+require_relative 'monster_room'
 require_relative 'Vault'
 require_relative 'WinRoom'
 

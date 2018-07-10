@@ -10,10 +10,10 @@ class Character
   end
 
   def validate_stats(stats)
-    raise if stats.attack.negative?
-    raise if stats.defence.negative?
-    raise if stats.hp.negative?
-    raise if stats.coins.negative?
+    #raise if stats.attack.negative?
+    #raise if stats.defence.negative?
+    #raise if stats.hp.negative?
+    #raise if stats.coins.negative?
   end
 
   def alive?
