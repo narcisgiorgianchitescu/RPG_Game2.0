@@ -1,8 +1,9 @@
 require 'minitest/autorun'
 require_relative 'map'
+require 'test/unit'
 
 # test for Map class
-class TestMap < Minitest::Test
+class TestMap  < Test::Unit::TestCase
   def test_create_custom_size
     map = Map.new(5)
     assert_equal 5, map.size
@@ -16,6 +17,46 @@ class TestMap < Minitest::Test
   def test_valid_position_false
     map = Map.new(5)
     assert_equal map.valid_position?(6, 3), false
+  end
+
+  def test_valid_position_true_limits_1
+    map = Map.new(5)
+    assert_equal map.valid_position?(0, 0), true
+  end
+
+  def test_valid_position_true_limits_2
+    map = Map.new(5)
+    assert_equal map.valid_position?(4, 4), true
+  end
+
+  def test_valid_position_true_limits_3
+    map = Map.new(5)
+    assert_equal map.valid_position?(0, 4), true
+  end
+
+  def test_valid_position_true_limits_4
+    map = Map.new(5)
+    assert_equal map.valid_position?(4, 0), true
+  end
+
+  def test_valid_position_false_limits_1
+    map = Map.new(5)
+    assert_equal map.valid_position?(0, -1), false
+  end
+
+  def test_valid_position_false_limits_2
+    map = Map.new(5)
+    assert_equal map.valid_position?(4, 5), false
+  end
+
+  def test_valid_position_false_limits_3
+    map = Map.new(5)
+    assert_equal map.valid_position?(0, 5), false
+  end
+
+  def test_valid_position_false_limits_4
+    map = Map.new(5)
+    assert_equal map.valid_position?(5, 4), false
   end
 
   def test_add_room
