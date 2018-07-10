@@ -20,7 +20,6 @@ class Shop < Room
 
   def action(hero)
     @device.print_string(@out_of_items) if out_of_items?
-    @device.next_line if out_of_items?
     return if out_of_items?
 
     start_business(hero, @description)
