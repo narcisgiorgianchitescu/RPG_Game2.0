@@ -29,9 +29,9 @@ class Game
     @hero = Hero.new(name: @device.input)
     @device.clear
     @device.puts_string 'Input dificulty'
-    @map = RandomCreator.map(@hero)
-    @map.each { |room| room.set_device @device }
-  end
+    @map = RandomMap.new.create_map(@hero)
+    @map.slots.each {  |room| room.set_device @device }
+ end
 
   def run_game
     game_over = false
