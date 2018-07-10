@@ -30,51 +30,69 @@ class TestPosition < Test::Unit::TestCase
   end
 
   def test_move_up
-    cursor = Position.new(5, 5)
+    cursor = Cursor.new(Position.new(5, 5))
     assert_equal(
-      cursor.position.row = 4,
-      cursor.move('w')
+      cursor.position.row - 1,
+      cursor.move('w').row
     )
 
     assert_equal(
-      Cursor.new(Position.new(3, 5)).position,
-      Cursor.new(Position.new(5, 5)).move('up', 2)
+      cursor.position.column,
+      cursor.move('w').column
+    )
+
+    assert_equal(
+      cursor.position.row - 3,
+      cursor.move('up', 3).row
     )
   end
 
   def test_move_down
+    cursor = Cursor.new(Position.new(5, 5))
     assert_equal(
-      Cursor.new(Position.new(6, 5)).position,
-      Cursor.new(Position.new(5, 5)).move('s')
+      cursor.position.row + 1,
+      cursor.move('s').row
     )
 
     assert_equal(
-      Cursor.new(Position.new(8, 5)).position,
-      Cursor.new(Position.new(5, 5)).move('down', 3)
+      cursor.position.column,
+      cursor.move('s').column
+    )
+    assert_equal(
+      cursor.position.row + 3,
+      cursor.move('down', 3).row
     )
   end
 
   def test_move_right
+    cursor = Cursor.new(Position.new(5, 5))
     assert_equal(
-      Cursor.new(Position.new(5, 6)).position,
-      Cursor.new(Position.new(5, 5)).move('d')
+      cursor.position.row,
+      cursor.move('d').row
     )
-
     assert_equal(
-      Cursor.new(Position.new(5, 9)).position,
-      Cursor.new(Position.new(5, 5)).move('right', 4)
+      cursor.position.column + 1,
+      cursor.move('d').column
+    )
+    assert_equal(
+      cursor.position.column + 3,
+      cursor.move('right', 3).column
     )
   end
 
   def test_move_left
+    cursor = Cursor.new(Position.new(5, 5))
     assert_equal(
-      Cursor.new(Position.new(5, 4)).position,
-      Cursor.new(Position.new(5, 5)).move('a')
+      cursor.position.row,
+      cursor.move('a').row
     )
-
     assert_equal(
-      Cursor.new(Position.new(5, 0)).position,
-      Cursor.new(Position.new(5, 5)).move('left', 5)
+      cursor.position.column - 1,
+      cursor.move('a').column
+    )
+    assert_equal(
+      cursor.position.column - 21,
+      cursor.move('left', 21).column
     )
   end
 end
