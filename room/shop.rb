@@ -67,9 +67,9 @@ class Shop < Room
   end
 end
 
-s = Shop.new
-d = IOterminal.new
-s.set_device(d)
-h = Hero.new
+#s = Shop.new
+#d = IOterminal.new
+#s.set_device(d)
+#h = Hero.new
 
-s.action(h)
+#s.action(h)
