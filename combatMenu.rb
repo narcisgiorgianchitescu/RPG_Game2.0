@@ -2,8 +2,9 @@ require_relative 'menu'
 
 # class that receives a list of options and prompts the io to choose one
 class CombatMenu < Menu
-  def initialize(values, description, device)
-    #values is number of options, maybe: hash with name of ability and index
+  def initialize(number_of_options, description, device)
+    #number of options can be modified with a hash / array
+    super(number_of_options ,description, device)
   end
 
   private
