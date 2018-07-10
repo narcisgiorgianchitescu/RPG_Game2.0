@@ -8,31 +8,30 @@ class Map
     @slots = create_map(size)
   end
 
-  def room(row, column)
-    check_position(row, column)
-    @slots[row][column]
+  def room(position)
+    check_position(position)
+    @slots[position.row][position.column]
   end
 
-  def add_room(room, row, column)
-    check_position(row, column)
+  def add_room(room, position)
+    check_position(position)
     check_valid_room(room)
-    @slots[row][column] = room
+    @slots[position.row][position.column] = room
   end
 
-  def clear_room(row, column)
-    check_position(row, column)
-    @slots[row][column] = Room.new
+  def clear_room(position)
+    check_position(position)
+    @slots[position.row][position.column] = Room.new
   end
 
-  def valid_position?(row, column)
-    row.between?(0, @size - 1) && column.between?(0, @size - 1)
+  def valid_position?(position)
+    position.row.between?(0, @size - 1) && position.column.between?(0, @size - 1)
   end
 
   private
 
-  def check_position(row, column)
-    raise 'Invalid input' unless row.between?(0, @size - 1) &&
-                                 column.between?(0, @size - 1)
+  def check_position(position)
+    raise 'Invalid input' unless valid_position(position)
   end
 
   def check_valid_room(room)

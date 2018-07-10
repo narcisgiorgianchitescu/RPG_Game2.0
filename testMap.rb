@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require_relative 'map'
+require_relative 'Position'
 require 'test/unit'
 
 # test for Map class
@@ -11,12 +12,16 @@ class TestMap  < Test::Unit::TestCase
 
   def test_valid_position_true
     map = Map.new(5)
-    assert_equal map.valid_position?(2, 3), true
+    position = Position.new(2, 3)
+    assert_equal map.valid_position?(position), true
   end
 
   def test_valid_position_false
     map = Map.new(5)
-    assert_equal map.valid_position?(6, 3), false
+    position = Position.new
+    position.row = 6
+    position.column = 3
+    assert_equal map.valid_position?(position), false
   end
 
   def test_valid_position_true_limits_1
