@@ -9,6 +9,8 @@ require 'win_room'
 require 'monster_room'
 require 'hero'
 require 'io_terminal'
+require 'item'
+require 'wearable'
 
 require 'minitest/autorun'
 require 'test/unit'
@@ -42,34 +44,71 @@ class TestGameRoom < MiniTest::Test
     hero = Hero.new
     device = IOterminal.new
     room.set_device(device)
-    #expect { room.action(hero) }.to output(room.description).to_stdout
     assert_output(stdout = room.description) {room.action(hero)}
   end
 
-# #-------------------------------------------------------------------
-# #Shop
+  def test_output_room_items_description_no_parameter
+    room = Room.new
+    assert_equal([], room.items_description(room.input, true), 'Wrong answer')
+  end
 
-#   def test_shop_true_for_out_of_items?
-#     s = Shop.new(true, [])
-#     assert_equal(true, s.out_of_items?, 'Wrong answer')
-#   end
+  def test_output_room_items_description_with_parameter_and_value
+    room = Room.new(true, [Item.new])
+    rez = ["Item, 0 attack, 0 defence, 0 hp for 0 coins"]
+    assert_equal(rez, room.items_description(room.input, true), 'Wrong answer')
+  end
 
-#   def test_shop_false_for_out_of_items?
-#     s = Shop.new
-#     assert_equal(false, s.out_of_items?, 'Wrong answer')
-#   end
+  def test_output_room_items_description_with_parameter_and_no_value
+    room = Room.new(true, [Item.new])
+    rez = ["Item, 0 attack, 0 defence, 0 hp"]
+    assert_equal(rez, room.items_description(room.input, false), 'Wrong answer')
+  end
 
-#   def test_shop_action_rez_out_of_items
-#     s = Shop.new(true, [])
-#     assert_equal(s.out_of_items, s.action, 'Wrong answer')
-#   end
+#-------------------------------------------------------------------
+#Shop
 
-#   def test_shop_action_rez_room_data
-#     s = Shop.new
-#     assert_equal([s.description, s.input], s.action, 'Wrong answer')
-#   end
+  def test_shop_true_for_out_of_items?
+    s = Shop.new(true, [])
+    assert_equal(true, s.out_of_items?, 'Wrong answer')
+  end
 
-# #-------------------------------------------------------------------
+  def test_shop_false_for_out_of_items?
+    s = Shop.new
+    assert_equal(false, s.out_of_items?, 'Wrong answer')
+  end
+
+  def test_shop_action_rez_out_of_items
+    s = Shop.new(true, [])
+    h = Hero.new
+    d = IOterminal.new
+    s.set_device(d)
+    assert_output(stdout = s.out_of_items) {s.action(h)}
+  end
+
+  def test_shop_give_item_to_hero
+    s = Shop.new(true, [Wearable.new])
+    s.input[0].stats.attack = 10
+    h = Hero.new
+    s.give_item_to_hero(h, 0)
+    assert_equal(10, h.equipment.head.stats.attack, 'Wrong answer')
+  end
+
+  def test_shop_take_money
+    s = Shop.new(true, [Wearable.new])
+    s.input[0].stats.coins = 10
+    h = Hero.new
+    h.stats.coins = 20
+    s.take_money(h, 0)
+    assert_equal(10, h.stats.coins, 'Wrong answer')
+  end
+
+  def test_shop_recalculate_supply
+    s = Shop.new(true, [Item.new, Item.new])
+    s.recalculate_supply(1)
+    assert_equal(1, s.input.size, 'Wrong answer')
+  end
+
+#-------------------------------------------------------------------
 # #Vault
 
 #   def test_vault_action_rez_room_data

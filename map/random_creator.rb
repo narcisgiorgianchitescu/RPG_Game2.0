@@ -71,7 +71,7 @@ module RandomCreator
   def self.consumable_stats_hash(difficulty = 0)
     { attack: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       defence: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
-      value: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
+      coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
       hp: (rand(-5..20) * difficulty_multiplier(difficulty)).to_i}
   end
 
@@ -94,11 +94,11 @@ module RandomCreator
   def self.stats_equipment(difficulty = 0)
     Stats.new({ attack: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
       defence: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
-      value: (rand(10..30) * difficulty_multiplier(difficulty)).to_i })
+      coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i })
   end
 
   def self.stats_monster(hero, difficulty = 0)
-    Stats.new({ money: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
+    Stats.new({ coins: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
       hp: ((hero.stats.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
       attack: ((hero.stats.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
       defence: ((hero.stats.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i

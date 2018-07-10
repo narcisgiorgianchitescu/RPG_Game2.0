@@ -5,4 +5,6 @@ class IOinterface
   def clear; end
 
   def input; end
+
+  def next_line; end
 end

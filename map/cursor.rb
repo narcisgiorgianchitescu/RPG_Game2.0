@@ -10,15 +10,14 @@ class Cursor
   end
 
   def move(direction, how_much_moves = 1)
-    row, column = self.next(direction, how_much_moves)
-    @position.row = row
-    @position.column = column
+    position = self.next(direction, how_much_moves)
+    @position.row = position.row
+    @position.column = position.column
     @position
   end
 
   def next(direction, how_much_moves = 1)
     operations = {}
-
     operations['w'] = -> { [@position.row - how_much_moves, @position.column]}
     operations['up'] = -> { [@position.row - how_much_moves, @position.column]}
 
@@ -31,6 +30,7 @@ class Cursor
     operations['a'] = -> { [@position.row, @position.column - how_much_moves]}
     operations['left'] = -> { [@position.row, @position.column - how_much_moves]}
 
-    operations[direction].call
+    row, column = operations[direction].call
+    Position.new(row, column)
   end
 end

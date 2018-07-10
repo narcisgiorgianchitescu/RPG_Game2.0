@@ -15,6 +15,7 @@ class Menu
   def choice
     input = nil
     loop do
+      @device.clear
       @device.print_string description
       print_values
       input = @device.input
