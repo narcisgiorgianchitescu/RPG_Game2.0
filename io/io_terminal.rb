@@ -1,13 +1,9 @@
-binpath = File.dirname(__FILE__)
-$LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
-require 'require_file'
-require 'item'
-require 'monster'
-require 'hero'
-require 'io_interface'
-require 'wearable'
-require 'map'
-
+require_relative 'Item'
+require_relative 'monster'
+require_relative 'hero'
+require_relative 'iointerface'
+require_relative 'wearable'
+require_relative 'map'
 # ...
 class IOterminal < IOinterface
   def print_string(string)
@@ -16,6 +12,11 @@ class IOterminal < IOinterface
 
   def next_line
     print "\n"
+  end
+
+  def puts_string(string)
+    print_string(string)
+    next_line
   end
 
   def print_item(item)
@@ -75,7 +76,7 @@ class IOterminal < IOinterface
 
   def show(map)
     puts ' -' * map.size * 2
-    map.slots.each_with_index do |line, index|
+    map.slots.each do |line|
       print_line(line)
       puts ' -' * map.size * 2
     end
@@ -84,7 +85,7 @@ class IOterminal < IOinterface
 
   def print_line(line)
     print '|'
-    line.each_with_index do |slot, index|
+    line.each do |slot|
         print_slot slot
     end
     puts
