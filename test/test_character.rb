@@ -3,6 +3,7 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'test/unit'
 require 'character'
+require 'stats'
 
 
 class TestCharacter < Test::Unit::TestCase
