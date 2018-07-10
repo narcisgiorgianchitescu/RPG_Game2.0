@@ -15,6 +15,6 @@ class CombatMenu < Menu
   end
 
   def valid?(input)
-    input.between(0, @values - 1)
+    (input.between(0, @values - 1) || input == EXIT_VALUE)
   end
 end

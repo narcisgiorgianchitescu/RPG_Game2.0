@@ -2,6 +2,7 @@ require_relative 'iointerface'
 
 # class that receives a list of options and prompts the io to choose one
 class Menu
+  EXIT_VALUE = -1
   def initialize(values, description, device)
     @description = description
     @values = values
@@ -24,6 +25,6 @@ class Menu
   def print_values; end
 
   def valid?(input)
-    input.between(0, @values.size - 1)
+    (input.between(0, @values.size - 1) || input == EXIT_VALUE)
   end
 end
