@@ -68,28 +68,12 @@ class Combat
   end
 
   def user_interaction
-    description = hero_print + "\n" + monster_print
+    description = @hero.description + "\n" + @monster.description
     options = { 'a' => 'a', 'd' => 'defend', 'r' => 'run' }
     Menu.new(options, description, @device)
   end
 
   def anyone_dead?
     !(@hero.alive? && @monster.alive?)
-  end
-
-  def hero_print
-    "Hero #{@hero.name} has the following stats\n"\
-              "#{@hero.stats.attack} attack\n"\
-              "#{@hero.stats.defence} defence\n"\
-              "#{@hero.stats.hp} hp\n"\
-              "#{@hero.stats.coins} coins\n"
-  end
-
-  def monster_print
-    "Monster #{@monster.name} has the following stats\n"\
-                "#{@monster.stats.attack} attack\n"\
-                "#{@monster.stats.defence} defence\n"\
-                "#{@monster.stats.hp} hp\n"\
-                "#{@monster.stats.coins} coins\n"
   end
 end
