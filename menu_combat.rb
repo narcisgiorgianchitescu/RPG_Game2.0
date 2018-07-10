@@ -13,6 +13,7 @@ class CombatMenu < Menu
     string = 'Press 1 to attack, 2 to defend'
     @device.print_string string
     @device.next_line
+    super
   end
 
   def valid?(input)
