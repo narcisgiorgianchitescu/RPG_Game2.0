@@ -33,8 +33,8 @@ class Room
     arr = []
     items.map do |item|
 
-      without_value = "#{item.name}, #{item.stats.attack} attack, #{item.stats.defence} defence"
-      without_value += ", #{item.stats.hp} hp"
+      without_value = "#{item.name}, #{item.stats.attack} attack,"
+      without_value += " #{item.stats.defence} defence, #{item.stats.hp} hp"
 
       with_value = "#{without_value} for #{item.stats.coins} coins"
 

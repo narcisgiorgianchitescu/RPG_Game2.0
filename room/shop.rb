@@ -2,13 +2,16 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'menu'
-require 'item'
 require 'wearable'
+require 'room'
+require 'hero'
+require 'io_terminal'
+require 'weapon'
 
 class Shop < Room
   attr_accessor :out_of_items
 
-  def initialize(hidden = true, input = [Wearable.new({}), Item.new({})])
+  def initialize(hidden = true, input = [Wearable.new(), Weapon.new()])
     super(hidden, input)
     @description  = 'Shop is open, have a look.'
     @out_of_items = 'Shop is out of items'
@@ -29,9 +32,9 @@ class Shop < Room
   def start_business(hero, description)
     items_description = items_description(@input, @show_value)
     item_menu = Menu.new(items_description, description, @device)
-    input = @item_menu.choice
+    input = item_menu.choice
 
-    return if input == @item_menu.EXIT_VALUE
+    return if input == item_menu.exit_value
 
     enough_money = hero.has_enough_money?(@input[input].stats.coins)
 
@@ -62,3 +65,10 @@ class Shop < Room
     @input.delete_at(input)
   end
 end
+
+# s = Shop.new
+# d = IOterminal.new
+# s.set_device(d)
+# h = Hero.new
+
+# s.action(h)
