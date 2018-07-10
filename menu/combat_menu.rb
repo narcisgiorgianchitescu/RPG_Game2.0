@@ -15,9 +15,11 @@ class CombatMenu < Menu
   def print_values
     string = 'Press 1 to attack, 2 to defend'
     @device.print_string string
+    @device.next_line
+    super
   end
 
   def valid?(input)
-    input.between(0, @values - 1)
+    (input.between(0, @values - 1) || input == EXIT_VALUE)
   end
 end

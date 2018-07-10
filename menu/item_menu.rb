@@ -13,6 +13,8 @@ class ItemMenu < Menu
       string += "#{item.stats.defence} defence, #{item.stats.hp} hp,"
       string += "#{item.stats.coins} coins"
       @device.print_string string
+      @device.next_line
+      super
     end
   end
 end
