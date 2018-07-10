@@ -19,6 +19,7 @@ class Menu
       print_values
       input = @device.input
       break if valid? input
+      @device.clear
     end
     input
   end
