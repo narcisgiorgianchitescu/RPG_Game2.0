@@ -30,7 +30,11 @@ class Game
     @device.clear
     # @device.puts_string 'Input dificulty'
     @map = RandomMap.new.create_map(@hero)
-    @map.slots.each { |room| room.set_device @device }
+    @map.size.times do |i|
+     @map.size.times do |j|
+       @map.slots[i][j].set_device @device
+     end
+   end#room.set_device @device }
   end
 
   def run_game
