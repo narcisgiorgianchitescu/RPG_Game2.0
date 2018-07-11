@@ -17,6 +17,7 @@ class Hospital < Room
   end
 
   def action(hero)
+    super
     get_input(@description, hero)
   end
 

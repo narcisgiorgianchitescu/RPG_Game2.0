@@ -26,7 +26,7 @@ class Room
   end
 
   def action(_hero)
-    @device.print_string(@description)
+    @hidden = false
     @game_on
   end
 
