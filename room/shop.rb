@@ -20,7 +20,7 @@ class Shop < Room
   end
 
   def action(hero)
-    return out_of_items if out_of_items?
+    return no_items if out_of_items?
 
     start_business(hero, @description)
   end
@@ -29,7 +29,7 @@ class Shop < Room
     input.empty?
   end
 
-  def out_of_items
+  def no_items
     @device.print_string(@out_of_items)
     @game_on
   end
