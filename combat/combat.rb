@@ -18,6 +18,12 @@ class Combat
     'd' => 2
   }.freeze
 
+  SYMBOLS = {
+    'a' => 'attack',
+    'd' => 'defend',
+    'r' => 'run'
+  }.freeze
+
   def initialize(hero, monster, device)
     @hero = hero
     @monster = monster
@@ -26,19 +32,36 @@ class Combat
 
   def fight
     loop do
-      user_choice = user_interaction
-      monster_choice = %w[a d].sample
+      (user_choice, monster_choice) = choices
       (hero_taken_damage, monster_taken_damage) =
         compute_damage(user_choice, monster_choice)
       update_stats(hero_taken_damage, monster_taken_damage)
-      # TODO: show who deald what damage
+      show_damage(hero_taken_damage, monster_taken_damage, user_choice,
+                  monster_choice)
       break if anyone_dead?
     end
-    # TODO: create a menu with exit option only that shows what u got
     @hero.alive? ? false : true
   end
 
   private
+
+  def choices
+    user_choice = user_interaction
+    monster_choice = %w[a d].sample
+    [user_choice, monster_choice]
+  end
+
+  def show_damage(hero_taken_damage, monster_taken_damage, user_choice,
+                  monster_choice)
+    @device.clear
+    current_stats = @hero.description + "\n" + @monster.description
+    @device.print_string current_stats
+    string = "Hero chose to #{SYMBOLS[user_choice]} and dealt "\
+             "#{monster_taken_damage}\nMonster chose to "\
+             "#{SYMBOLS[monster_choice]} and dealt #{hero_taken_damage}\n"
+    @device.print_string string
+    @device.input
+  end
 
   def update_stats(hero_taken_damage, monster_taken_damage)
     @hero.stats.hp -= hero_taken_damage
