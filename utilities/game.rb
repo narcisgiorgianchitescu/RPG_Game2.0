@@ -47,6 +47,7 @@ class Game
     until game_over
       @device.clear
       @device.print_map(@map, @hero_cursor)
+      @device.print_hero(@hero)
       game_over = do_move
     end
   end
