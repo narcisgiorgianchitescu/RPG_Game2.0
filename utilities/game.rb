@@ -27,6 +27,7 @@ class Game
   private
 
   def game_setup
+    @device.clear
     @device.puts_string 'Input the hero name'
     @hero = Hero.new(nil, nil, name = @device.input.chomp)
     @device.clear
