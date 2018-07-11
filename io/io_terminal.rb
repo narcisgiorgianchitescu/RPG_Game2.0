@@ -24,35 +24,15 @@ class IOterminal < IOinterface
   end
 
   def print_item(item)
-    print_string("Itemul #{item.name} are: ")
-    next_line
-    print_stats(item.stats)
+    puts_string(item.description)
   end
 
   def print_monster(monster)
-    print_string("Monstrul #{monster.name} are: ")
-    next_line
-    print_stats(monster.stats)
-    next_line
+    puts_string(monster.description)
   end
 
   def print_hero(hero)
-    print_string("Eroul #{hero.name} are: ")
-    next_line
-    print_stats(hero.stats)
-    next_line
-    print_string("Head: #{hero.equipment.head.name}: ")
-    next_line
-    print_stats(hero.equipment.head.stats)
-    next_line
-    print_string("Chest: #{hero.equipment.chest.name}: ")
-    next_line
-    print_stats(hero.equipment.chest.stats)
-    next_line
-    print_string("Boots: #{hero.equipment.boots.name}: ")
-    next_line
-    print_stats(hero.equipment.head.stats)
-    next_line
+    puts_string(hero.description)
   end
 
   def clear
@@ -70,14 +50,7 @@ class IOterminal < IOinterface
   private
 
   def print_stats(stats)
-    print_string("HP: #{stats.hp}")
-    next_line
-    print_string("Attack: #{stats.attack}")
-    next_line
-    print_string("Defence: #{stats.defence}")
-    next_line
-    print_string("Coins: #{stats.coins}")
-    next_line
+    puts_string(stats.description)
   end
 
   def first_letter_of_class(slot)
