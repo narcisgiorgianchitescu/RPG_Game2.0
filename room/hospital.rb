@@ -2,6 +2,8 @@ binpath = File.dirname( __FILE__ )
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'room'
+require 'hero'
+require 'io_terminal'
 
 class Hospital < Room
   def initialize(hidden = true, input = nil)
@@ -9,44 +11,53 @@ class Hospital < Room
     super(hidden, heal_price_options) unless input
     super(hidden, input) if input
     @description = 'Hospital, you can heal wounds here'
+    @insufficient_funds = 'Not enough money for that heal option'
+    @options = from_array_of_pairs_to_array
   end
 
   def action(hero)
-    prezent_heal_option(hero, true)
+    get_input(@description, hero)
   end
 
-  def prezent_heal_option(hero)
-    @device.clear
-    @device.print_string(@description)
-    @device.print_string(@exit_option)
-
-    @input.each_with_index do |item, index|
-      string = "#{index + @index_correction}. #{input[index].first} for"
-      string += " #{input[index].last} coins"
-      @device.print_string(string)
-    end
-
-    @device.print_string('Invalid input') unless valid
-
-    check_for_valid_input(hero)
-  end
-
-  def check_for_valid_input(hero)
-    valid_input = [0..@input.size]
-    input = @device.input.chomp
-
-    prezent_heal_option(hero, false) unless valid_input === input
-
-    heal_hero(hero, input) if input > 0
+  def from_array_of_pairs_to_array
+    @input.map {|pair| "#{pair.first} hp for #{pair.last} coins"}
   end
 
   def heal_hero(hero, input)
-    if hero.enough_money?(@input[input].last)
-      hero.stats.hp += @input[input].first
-      hero.stats.money -= @input[input].last
-    else
-      @device.print_string("Hero doesn't have enough money!")
-    end
-    prezent_heal_option(hero, true)
+    hero.stats.hp += @input[input].first
+  end
+
+  def take_money_from_hero(hero, input)
+    hero.stats.coins -= @input[input].last
+  end
+
+  private
+
+  def get_input(description, hero)
+    menu = Menu.new(@options, description, @device)
+
+    input = menu.choice
+
+    return @game_on if input == menu.exit_value
+
+    enough_money = hero.enough_money?(@input[input].last)
+
+    proceed_with_healing(hero, input) if enough_money
+
+    get_input(@insufficient_funds, hero) unless enough_money
+  end
+
+  def proceed_with_healing(hero, input)
+    heal_hero(hero, input)
+    take_money_from_hero(hero, input)
+
+    get_input(@description, hero)
   end
 end
+
+# hospital = Hospital.new
+# d = IOterminal.new
+# hospital.set_device(d)
+# h = Hero.new
+
+# hospital.action(h)

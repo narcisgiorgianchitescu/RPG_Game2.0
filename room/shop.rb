@@ -40,7 +40,7 @@ class Shop < Room
   private
 
   def start_business(hero, description)
-    menu = get_menu(description)
+    menu = get_menu(description, @show_value)
 
     input = menu.choice
 

@@ -85,7 +85,7 @@ class Combat
     [hero_power, monster_power]
   end
 
-  def compute_block
+  def compute_block(user_choice, monster_choice)
     hero_block = @hero.stats.defence * DEFENCE_MULTIPLIER[user_choice]
     monster_block = @monster.stats.defence * DEFENCE_MULTIPLIER[monster_choice]
     [hero_block, monster_block]

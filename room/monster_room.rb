@@ -3,6 +3,7 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'monster'
 require 'room'
+require 'combat'
 
 class MonsterRoom < Room
   def initialize(hidden = true, input = Monster.new)
@@ -11,9 +12,17 @@ class MonsterRoom < Room
   end
 
   def action(hero)
-    @device.print_monster(input)
-    @device.print_hero(hero)
+    Combat.new(hero, input, @device).fight
 
-    # TODO : Combat
+    return @game_over if hero.stats.hp < 1
+
+    @game_on
   end
 end
+
+# mr = MonsterRoom.new
+# d = IOterminal.new
+# mr.set_device(d)
+# h = Hero.new
+
+# mr.action(h)
