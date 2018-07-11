@@ -4,6 +4,7 @@ require 'require_file'
 require 'menu'
 require 'hero'
 require 'monster'
+require 'io_terminal'
 
 # class that allows 2 characters to fight
 class Combat
@@ -93,7 +94,7 @@ class Combat
   def user_interaction
     description = @hero.description + "\n" + @monster.description
     options = { 'a' => 'a', 'd' => 'defend', 'r' => 'run' }
-    Menu.new(options, description, @device)
+    Menu.new(options, description, @device).choice
   end
 
   def anyone_dead?
