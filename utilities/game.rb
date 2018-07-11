@@ -30,8 +30,8 @@ class Game
     @device.clear
     @device.puts_string 'Input dificulty'
     @map = RandomMap.new.create_map(@hero)
-    @map.slots.each {  |room| room.set_device @device }
- end
+    @map.slots.each { |room| room.set_device @device }
+  end
 
   def run_game
     game_over = false
@@ -72,7 +72,3 @@ class Game
     end
   end
 end
-
-t = IOterminal.new
-g = Game.new t
-g.start_game
