@@ -40,9 +40,11 @@ class Shop < Room
   private
 
   def start_business(hero, description)
-    input = get_input(description)
+    menu = get_menu(description)
 
-    return @game_on if input == item_menu.exit_value
+    input = menu.choice
+
+    return @game_on if input == menu.exit_value
 
     enough_money = hero.enough_money?(@input[input].stats.coins)
 
@@ -54,6 +56,8 @@ class Shop < Room
   def commence_business(hero, input)
     give_item_to_hero(hero, input)
 
+    return @game_over if hero.stats.hp < 1
+
     take_money(hero, input)
 
     recalculate_supply(input)
@@ -62,9 +66,9 @@ class Shop < Room
   end
 end
 
-# s = Shop.new(true, [])
+# s = Shop.new(true, [Wearable.new(), Weapon.new()])
 # d = IOterminal.new
 # s.set_device(d)
 # h = Hero.new
-
+# h.stats.hp = 100
 # s.action(h)

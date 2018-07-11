@@ -20,10 +20,6 @@ class Character
   end
 
   def description
-    "#{@name} has the following stats\n"\
-              "#{@stats.attack} attack\n"\
-              "#{@stats.defence} defence\n"\
-              "#{@stats.hp} hp\n"\
-              "#{@stats.coins} coins\n"
+    "#{@name} has the following stats\n" + @stats.description
   end
 end

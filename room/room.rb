@@ -2,6 +2,7 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'item'
+require 'menu'
 
 class Room
   attr_accessor :hidden
@@ -44,9 +45,9 @@ class Room
 
   private
 
-  def get_input(description)
+  def get_menu(description)
     items_description = items_description(@input, @show_value)
     item_menu = Menu.new(items_description, description, @device)
-    item_menu.choice
+    item_menu
   end
 end

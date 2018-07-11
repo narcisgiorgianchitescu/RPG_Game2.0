@@ -27,4 +27,11 @@ class Stats
       send "#{key}=", new_val
     end
   end
+
+  def description
+    "#{attack} attack\n"\
+    "#{defence} defence\n"\
+    "#{hp} hp\n"\
+    "#{coins} coins\n"
+  end
 end
