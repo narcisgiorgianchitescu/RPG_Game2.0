@@ -27,12 +27,11 @@ class TestRandomCreator < Test::Unit::TestCase
   def test_invalid_option
     device = IOinterface.new
     def device.input
-      ret = nil
-      if @first
-        ret = '1'
-      else
-        ret = '5'
-      end
+      ret = if @first
+              '1'
+            else
+              '5'
+            end
       @first ||= true
       ret
     end
