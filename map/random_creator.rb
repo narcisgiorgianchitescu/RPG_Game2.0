@@ -116,7 +116,7 @@ module RandomCreator
 
 
   def self.monster(hero, difficulty = 0)
-  #  Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
+    Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
   end
 
 
