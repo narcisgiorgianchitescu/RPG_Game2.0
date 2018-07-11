@@ -7,6 +7,7 @@ require 'hero'
 require 'io_interface'
 require 'wearable'
 require 'map'
+require 'cursor'
 # ...
 class IOterminal < IOinterface
   def print_string(string)
@@ -62,8 +63,8 @@ class IOterminal < IOinterface
     gets
   end
 
-  def print_map(map)
-    show(map)
+  def print_map(map, cursor)
+    show(map, cursor)
   end
 
   private
@@ -83,27 +84,31 @@ class IOterminal < IOinterface
     " #{slot.class.to_s[0]} "
   end
 
-  def print_slot(slot)
+  def print_slot(slot, cursor, i , j)
     if slot.hidden
-      print '   '
+      if i == cursor.position.row and j == cursor.position.column
+        print ' X '
+      else
+        print '   '
+      end
     else
       print first_letter_of_class(slot)
     end
     print '|'
   end
 
-  def show(map)
+  def show(map, cursor)
     puts ' -' * map.size * 2
-    map.slots.each do |line|
-      print_line(line)
+    map.slots.each_with_index do |line, line_index|
+      print_line(line, line_index, cursor)
       puts ' -' * map.size * 2
     end
   end
 
-  def print_line(line)
+  def print_line(line, line_index, cursor)
     print '|'
-    line.each do |slot|
-      print_slot slot
+    line.each_with_index do |slot, col_index|
+      print_slot slot, cursor, line_index, col_index
     end
     puts
   end
