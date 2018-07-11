@@ -14,6 +14,6 @@ class MonsterRoom < Room
   end
 
   def action(hero)
-    Combat.new(hero, input, @device).fight
+    Combat.new(hero, @input, @device).fight
   end
 end
