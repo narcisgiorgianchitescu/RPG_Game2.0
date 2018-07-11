@@ -3,7 +3,18 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'position'
 
+# class that has a position which can be changed
 class Cursor
+  OPERATIONS = {
+    'w' => ->(pos, dist) { [pos.row - dist, pos.column] },
+    'up' => ->(pos, dist) { [pos.row - dist, pos.column] },
+    'd' => ->(pos, dist) { [pos.row, pos.column + dist] },
+    'right' => ->(pos, dist) { [pos.row, pos.column + dist] },
+    's' => ->(pos, dist) { [pos.row + dist, pos.column] },
+    'down' => ->(pos, dist) { [pos.row + dist, pos.column] },
+    'a' => ->(pos, dist) { [pos.row, pos.column - dist] },
+    'left' => ->(pos, dist) { [pos.row, pos.column - dist] }
+  }.freeze
   attr_accessor :position
   def initialize(position)
     @position = position
@@ -17,20 +28,7 @@ class Cursor
   end
 
   def next(direction, how_much_moves = 1)
-    operations = {}
-    operations['w'] = -> { [@position.row - how_much_moves, @position.column]}
-    operations['up'] = -> { [@position.row - how_much_moves, @position.column]}
-
-    operations['d'] = -> { [@position.row, @position.column + how_much_moves]}
-    operations['right'] = -> { [@position.row, @position.column + how_much_moves]}
-
-    operations['s'] = -> { [@position.row + how_much_moves, @position.column]}
-    operations['down'] = -> { [@position.row + how_much_moves, @position.column]}
-
-    operations['a'] = -> { [@position.row, @position.column - how_much_moves]}
-    operations['left'] = -> { [@position.row, @position.column - how_much_moves]}
-
-    row, column = operations[direction].call
+    row, column = OPERATIONS[direction].call(position, how_much_moves)
     Position.new(row, column)
   end
 end
