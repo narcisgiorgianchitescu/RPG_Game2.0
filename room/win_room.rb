@@ -5,7 +5,7 @@ require 'require_file'
 class WinRoom < Room
   attr_accessor :you_win
 
-  def initialize(hidden = true, input = [])
+  def initialize(hidden = false, input = [])
     super(hidden, input)
     @description = 'Get here to win'
     @you_win = true
