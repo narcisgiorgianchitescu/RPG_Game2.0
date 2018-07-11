@@ -39,12 +39,17 @@ class Combat
       update_stats(hero_taken_damage, monster_taken_damage)
       show_damage(hero_taken_damage, monster_taken_damage, user_choice,
                   monster_choice)
-      break if anyone_dead?
+      break if anyone_dead? || hero_ran?(user_choice)
     end
     @hero.alive? ? false : true
   end
 
   private
+
+  def hero_ran?(user_choice)
+    return false unless user_choice == 'r'
+    @monster.escape_chance > rand(101)
+  end
 
   def choices
     user_choice = user_interaction
