@@ -73,14 +73,6 @@ class TestGameRoom < MiniTest::Test
     assert_equal([1..9], room.input, 'Wrong answer')
   end
 
-  def test_output_room_action
-    room = Room.new
-    hero = Hero.new
-    device = IOterminal.new
-    room.set_device(device)
-    assert_output(stdout = room.description) {room.action(hero)}
-  end
-
   def test_room_set_device
     room = Room.new
     device = IOterminal.new

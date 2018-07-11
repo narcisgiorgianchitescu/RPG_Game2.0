@@ -28,6 +28,7 @@ class Vault < Room
 
   def you_already_chose
     @device.print_string(@already_chose)
+    @device.input
 
     @game_on
   end

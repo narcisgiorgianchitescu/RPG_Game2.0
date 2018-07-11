@@ -22,7 +22,17 @@ class MonsterRoom < Room
   end
 
   def fight(hero)
-    Combat.new(hero, @input, @device).fight
+    result = Combat.new(hero, @input, @device).fight
+
+    return you_win(hero) unless result
+
+    @game_over
+  end
+
+  def you_win(hero)
+    hero.stats.coins += @input.stats.coins
+
+    @game_on
   end
 
   def monster_is_dead
