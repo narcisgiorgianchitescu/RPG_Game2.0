@@ -3,9 +3,8 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require_relative 'item'
 
-# class for differentiating different tipes of wearables
+# class for differentiating wearables
 class Wearable < Item
-
   attr_accessor :type, :hp
 
   TYPES_NAME = {
