@@ -34,19 +34,18 @@ class Game
     @hero = Hero.new(stats, nil, @device.input.chomp)
     @device.clear
     # @device.puts_string 'Input dificulty'
-    @map = CustomMap.new.create_map
+    @map = RandomMap.new.create_map(@hero)
     @map.size.times do |i|
-     @map.size.times do |j|
-       @map.slots[i][j].set_device @device
-     end
-   end#room.set_device @device }
+      @map.size.times do |j|
+        @map.slots[i][j].set_device @device
+      end
+    end
   end
 
   def run_game
     game_over = false
     until game_over
       @device.clear
-      #@hero_cursor = Cursor.new(@hero_position)
       @device.print_map(@map, @hero_cursor)
       game_over = do_move
     end
