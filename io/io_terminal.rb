@@ -23,28 +23,39 @@ class IOterminal < IOinterface
   end
 
   def print_item(item)
-    print_string("Itemul #{item.name} are: "); next_line
+    print_string("Itemul #{item.name} are: ")
+    next_line
     print_stats(item.stats)
   end
 
   def print_monster(monster)
-    print_string("Monstrul #{monster.name} are: "); next_line
-    print_stats(monster.stats); next_line; next_line
+    print_string("Monstrul #{monster.name} are: ")
+    next_line
+    print_stats(monster.stats)
+    next_line
   end
 
   def print_hero(hero)
-    print_string("Eroul #{hero.name} are: "); next_line
-    print_stats(hero.stats); next_line
-    print_string("Head: #{hero.equipment.head.name}: "); next_line
-    print_stats(hero.equipment.head.stats); next_line
-    print_string("Chest: #{hero.equipment.chest.name}: "); next_line
-    print_stats(hero.equipment.chest.stats); next_line
-    print_string("Boots: #{hero.equipment.boots.name}: "); next_line
-    print_stats(hero.equipment.head.stats); next_line; next_line
+    print_string("Eroul #{hero.name} are: ")
+    next_line
+    print_stats(hero.stats)
+    next_line
+    print_string("Head: #{hero.equipment.head.name}: ")
+    next_line
+    print_stats(hero.equipment.head.stats)
+    next_line
+    print_string("Chest: #{hero.equipment.chest.name}: ")
+    next_line
+    print_stats(hero.equipment.chest.stats)
+    next_line
+    print_string("Boots: #{hero.equipment.boots.name}: ")
+    next_line
+    print_stats(hero.equipment.head.stats)
+    next_line
   end
 
   def clear
-    system 'cls' or system 'clear'
+    system('cls') || system('clear')
   end
 
   def input
@@ -58,10 +69,14 @@ class IOterminal < IOinterface
   private
 
   def print_stats(stats)
-    print_string("HP: #{stats.hp}"); next_line
-    print_string("Attack: #{stats.attack}"); next_line
-    print_string("Defence: #{stats.defence}"); next_line
-    print_string("Coins: #{stats.coins}"); next_line
+    print_string("HP: #{stats.hp}")
+    next_line
+    print_string("Attack: #{stats.attack}")
+    next_line
+    print_string("Defence: #{stats.defence}")
+    next_line
+    print_string("Coins: #{stats.coins}")
+    next_line
   end
 
   def first_letter_of_class(slot)
@@ -85,11 +100,10 @@ class IOterminal < IOinterface
     end
   end
 
-
   def print_line(line)
     print '|'
     line.each do |slot|
-        print_slot slot
+      print_slot slot
     end
     puts
   end
