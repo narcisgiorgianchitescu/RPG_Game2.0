@@ -50,5 +50,4 @@ class Hero < Character
     @equipment.weapon = weapon
     @stats.change_stats(equipment.weapon.stats, :+)
   end
-
 end
