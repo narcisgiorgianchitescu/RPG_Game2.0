@@ -36,7 +36,8 @@ class Hero < Character
     @equipment.weapon = weapon
     @stats.change_stats(equipment.weapon.stats, :+)
   end
- # TO BE RETESTED
+
+  # TODO: retest
   def use_item(item)
     case item.class.to_s
     when 'Consumable'
