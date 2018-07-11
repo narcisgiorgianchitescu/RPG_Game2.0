@@ -20,7 +20,7 @@ class Menu
       @device.print_string @description
       @device.next_line
       print_values
-      input = @device.input
+      input = @device.input.chomp
       break if valid? input
     end
     return_input(input)
