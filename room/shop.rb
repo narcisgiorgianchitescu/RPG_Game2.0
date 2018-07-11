@@ -44,7 +44,7 @@ class Shop < Room
 
     return @game_on if input == item_menu.exit_value
 
-    enough_money = hero.has_enough_money?(@input[input].stats.coins)
+    enough_money = hero.enough_money?(@input[input].stats.coins)
 
     commence_business(hero, input) if enough_money
 

@@ -51,12 +51,12 @@ class TestCharacter < Test::Unit::TestCase
 
   def test_money_false
     ch = Character.new
-    assert_equal(ch.has_enough_money?(1), false)
+    assert_equal(ch.enough_money?(1), false)
   end
 
   def test_money_true
     ch = Character.new
     ch.stats.coins = 4
-    assert_equal(ch.has_enough_money?(4), true)
+    assert_equal(ch.enough_money?(4), true)
   end
 end

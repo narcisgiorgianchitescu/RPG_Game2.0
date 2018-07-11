@@ -41,7 +41,7 @@ class Hospital < Room
   end
 
   def heal_hero(hero, input)
-    if hero.has_enough_money?(@input[input].last)
+    if hero.enough_money?(@input[input].last)
       hero.stats.hp += @input[input].first
       hero.stats.money -= @input[input].last
     else
