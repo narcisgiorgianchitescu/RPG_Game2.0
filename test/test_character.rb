@@ -37,4 +37,26 @@ class TestCharacter < Test::Unit::TestCase
     ch = Character.new
     assert_equal(ch.name, 'noname')
   end
+
+  def test_alive?
+    ch = Character.new
+    assert_equal(ch.alive?, false)
+  end
+
+  def test_alive_true
+    ch = Character.new
+    ch.stats.hp = 1
+    assert_equal(ch.alive?, true)
+  end
+
+  def test_money_false
+    ch = Character.new
+    assert_equal(ch.has_enough_money?(1), false)
+  end
+
+  def test_money_true
+    ch = Character.new
+    ch.stats.coins = 4
+    assert_equal(ch.has_enough_money?(4), true)
+  end
 end
