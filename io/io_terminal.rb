@@ -92,7 +92,11 @@ class IOterminal < IOinterface
         print '   '
       end
     else
-      print first_letter_of_class(slot)
+      if i == cursor.position.row and j == cursor.position.column
+        print ' X '
+      else
+        print first_letter_of_class(slot)
+      end
     end
     print '|'
   end
