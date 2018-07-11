@@ -10,4 +10,8 @@ class Monster < Character
     super(stats, name)
     @escape_chance = escpch
   end
+
+  def description
+    super + "#{@escape_chance} escape_chance\n"
+  end
 end
