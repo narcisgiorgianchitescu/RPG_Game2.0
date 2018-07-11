@@ -57,19 +57,17 @@ class IOterminal < IOinterface
     " #{slot.class.to_s[0]} "
   end
 
-  def print_slot(slot, cursor, i , j)
+  def print_slot(slot, cursor, i, j)
     if slot.hidden
-      if i == cursor.position.row and j == cursor.position.column
+      if i == cursor.position.row && j == cursor.position.column
         print ' X '
       else
         print '   '
       end
+    elsif i == cursor.position.row && j == cursor.position.column
+      print ' X '
     else
-      if i == cursor.position.row and j == cursor.position.column
-        print ' X '
-      else
-        print first_letter_of_class(slot)
-      end
+      print first_letter_of_class(slot)
     end
     print '|'
   end
