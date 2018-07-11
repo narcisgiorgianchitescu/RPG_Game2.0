@@ -7,11 +7,12 @@ require 'room'
 require 'hero'
 require 'io_terminal'
 
+# room from where you can pick one item
 class Vault < Room
   attr_accessor :already_chose
   attr_accessor :got_item
 
-  def initialize(hidden = true, input = [Wearable.new(), Weapon.new()])
+  def initialize(hidden = true, input = [Wearable.new, Weapon.new])
     super(hidden, input)
     @description = 'You can chose one item from this vault'
     @got_item = false
@@ -59,10 +60,3 @@ class Vault < Room
     give_item(hero, input)
   end
 end
-
-# s = Vault.new
-# d = IOterminal.new
-# s.set_device(d)
-# h = Hero.new
-
-# s.action(h)
