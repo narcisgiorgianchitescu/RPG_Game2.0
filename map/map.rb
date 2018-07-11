@@ -28,7 +28,8 @@ class Map
   end
 
   def valid_position?(position)
-    position.row.between?(0, @size - 1) && position.column.between?(0, @size - 1)
+    position.row.between?(0, @size - 1) &&
+      position.column.between?(0, @size - 1)
   end
 
   private
