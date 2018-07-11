@@ -52,7 +52,7 @@ class Vault < Room
   private
 
   def prezent_option(hero)
-    menu = get_menu(@description, @no_value)
+    menu = get_menu(hero.description + "\n" + @description, @no_value)
     input = menu.choice
 
     return @game_on if input == menu.exit_value
