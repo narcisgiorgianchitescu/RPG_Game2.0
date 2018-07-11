@@ -14,6 +14,20 @@ class Hero < Character
     @equipment = equipment
   end
 
+  # TODO: retest
+  def use_item(item)
+    case item.class.to_s
+    when 'Consumable'
+      use_consumable(item)
+    when 'Weapon'
+      change_weapon(item)
+    else
+      change_wearable(item)
+    end
+  end
+
+  # private
+
   def use_consumable(consumable)
     @stats.change_stats(consumable.stats, :+)
   end
@@ -37,15 +51,4 @@ class Hero < Character
     @stats.change_stats(equipment.weapon.stats, :+)
   end
 
-  # TODO: retest
-  def use_item(item)
-    case item.class.to_s
-    when 'Consumable'
-      use_consumable(item)
-    when 'Weapon'
-      change_weapon(item)
-    else
-      change_wearable(item)
-    end
-  end
 end
