@@ -17,7 +17,9 @@ class Cursor
   }.freeze
   attr_accessor :position
   def initialize(position)
-    @position = position
+    @position = Position.new
+    @position.row = position.row
+    @position.column = position.column
   end
 
   def move(direction, how_much_moves = 1)
