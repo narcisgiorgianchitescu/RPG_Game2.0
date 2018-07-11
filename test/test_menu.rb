@@ -2,14 +2,41 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'test/unit'
-require 'random_creator'
 require 'menu'
+require 'io_interface'
 
 class TestRandomCreator < Test::Unit::TestCase
-  def setup
-    @menu = Menu.new([], ' ')
+  def test_valid_input
+    device = IOinterface.new
+    def device.input
+      '1'
+    end
+    menu = Menu.new(%w[a b c], '', device)
+    assert_equal menu.choice, 1
   end
-  #TODO: test_choice, print_values, values_on_type
 
+  def test_exit
+    device = IOinterface.new
+    def device.input
+      '-1'
+    end
+    menu = Menu.new(%w[a b c], '', device)
+    assert_equal menu.choice, -1
+  end
 
+  def test_invalid_option
+    device = IOinterface.new
+    def device.input
+      ret = nil
+      if @first
+        ret = '1'
+      else
+        ret = '5'
+      end
+      @first ||= true
+      ret
+    end
+    menu = Menu.new(%w[a b c], '', device)
+    assert_equal menu.choice, 1
+  end
 end
