@@ -13,7 +13,7 @@ class Vault < Room
   end
 
   def action(hero)
-    return [@already_chose] if @got_item
+    @device.print_string(@already_chose) if @got_item
 
     prezent_option(hero, true)
   end

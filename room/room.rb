@@ -7,6 +7,7 @@ class Room
   attr_accessor :hidden
   attr_accessor :input
   attr_accessor :description
+  attr_accessor :device
 
   def initialize(hidden = true, input = [])
     @hidden = hidden
@@ -30,18 +31,22 @@ class Room
   end
 
   def items_description(items, value)
-    arr = []
-    items.map do |item|
+    items.map {|item| item.description(value)}
+  end
 
-      without_value = "#{item.name}, #{item.stats.attack} attack,"
-      without_value += " #{item.stats.defence} defence, #{item.stats.hp} hp"
+  def give_item_to_hero(hero, input)
+    hero.use_item(@input[input])
+  end
 
-      with_value = "#{without_value} for #{item.stats.coins} coins"
+  def take_money(hero, input)
+    hero.stats.coins -= @input[input].stats.coins
+  end
 
-      arr.push(with_value) if value
-      arr.push(without_value) unless value
-    end
+  private
 
-    arr
+  def get_input(description)
+    items_description = items_description(@input, @show_value)
+    item_menu = Menu.new(items_description, description, @device)
+    item_menu.choice
   end
 end

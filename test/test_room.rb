@@ -12,11 +12,45 @@ require 'io_terminal'
 require 'item'
 require 'wearable'
 
+require 'room_factory'
+
 require 'minitest/autorun'
 require 'test/unit'
 
 class TestGameRoom < MiniTest::Test
   def setup; end
+#-------------------------------------------------------------------
+#RoomFactory
+
+  def test_create_room
+    r = RoomFactory.create(:room)
+    assert_equal(Room, r.class, 'Wrong answer')
+  end
+
+  def test_create_shop
+    r = RoomFactory.create(:shop)
+    assert_equal(Shop, r.class, 'Wrong answer')
+  end
+
+  def test_create_vault
+    r = RoomFactory.create(:vault)
+    assert_equal(Vault, r.class, 'Wrong answer')
+  end
+
+  def test_create_hospital
+    r = RoomFactory.create(:hospital)
+    assert_equal(Hospital, r.class, 'Wrong answer')
+  end
+
+  def test_create_monster_room
+    r = RoomFactory.create(:monsterroom)
+    assert_equal(MonsterRoom, r.class, 'Wrong answer')
+  end
+
+  def test_create_room
+    r = RoomFactory.create(:winroom)
+    assert_equal(WinRoom, r.class, 'Wrong answer')
+  end
 
 #-------------------------------------------------------------------
 #Room
@@ -47,20 +81,27 @@ class TestGameRoom < MiniTest::Test
     assert_output(stdout = room.description) {room.action(hero)}
   end
 
-  def test_output_room_items_description_no_parameter
+  def test_room_set_device
+    room = Room.new
+    device = IOterminal.new
+    room.set_device(device)
+    assert_equal(device, room.device, 'Wrong answer')
+  end
+
+  def test_room_items_description_no_parameter
     room = Room.new
     assert_equal([], room.items_description(room.input, true), 'Wrong answer')
   end
 
-  def test_output_room_items_description_with_parameter_and_value
+  def test_room_items_description_with_parameter_and_value
     room = Room.new(true, [Item.new])
-    rez = ["Item, 0 attack, 0 defence, 0 hp for 0 coins"]
+    rez = ["Item 0 attack 0 defence 0 coins"]
     assert_equal(rez, room.items_description(room.input, true), 'Wrong answer')
   end
 
-  def test_output_room_items_description_with_parameter_and_no_value
+  def test_room_items_description_with_parameter_and_no_value
     room = Room.new(true, [Item.new])
-    rez = ["Item, 0 attack, 0 defence, 0 hp"]
+    rez = ["Item 0 attack 0 defence"]
     assert_equal(rez, room.items_description(room.input, false), 'Wrong answer')
   end
 
@@ -75,14 +116,6 @@ class TestGameRoom < MiniTest::Test
   def test_shop_false_for_out_of_items?
     s = Shop.new
     assert_equal(false, s.out_of_items?, 'Wrong answer')
-  end
-
-  def test_shop_action_rez_out_of_items
-    s = Shop.new(true, [])
-    h = Hero.new
-    d = IOterminal.new
-    s.set_device(d)
-    assert_output(stdout = s.out_of_items) {s.action(h)}
   end
 
   def test_shop_give_item_to_hero

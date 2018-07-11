@@ -8,8 +8,8 @@ class RoomFactory
     shop: Shop,
     vault: Vault,
     hospital: Hospital,
-    monsterrom: MonsterRoom,
-    win: WinRoom
+    monsterroom: MonsterRoom,
+    winroom: WinRoom
   }.freeze
 
   def self.create(type, *arg)

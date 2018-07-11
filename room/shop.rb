@@ -19,8 +19,7 @@ class Shop < Room
   end
 
   def action(hero)
-    @device.print_string(@out_of_items) if out_of_items?
-    return if out_of_items?
+    return out_of_items if out_of_items?
 
     start_business(hero, @description)
   end
@@ -29,21 +28,30 @@ class Shop < Room
     input.size == 0
   end
 
-  def start_business(hero, description)
-    items_description = items_description(@input, @show_value)
-    item_menu = Menu.new(items_description, description, @device)
-    input = item_menu.choice
+  def out_of_items
+    @device.print_string(@out_of_items)
+    @game_on
+  end
 
-    return if input == item_menu.exit_value
+  def recalculate_supply(input)
+    @input.delete_at(input)
+  end
+
+  private
+
+  def start_business(hero, description)
+    input = get_input(description)
+
+    return @game_on if input == item_menu.exit_value
 
     enough_money = hero.has_enough_money?(@input[input].stats.coins)
 
-    restart_business(hero, input) if enough_money
+    commence_business(hero, input) if enough_money
 
     start_business(hero, @not_enough_money) unless enough_money
   end
 
-  def restart_business(hero, input)
+  def commence_business(hero, input)
     give_item_to_hero(hero, input)
 
     take_money(hero, input)
@@ -52,23 +60,11 @@ class Shop < Room
 
     action(hero)
   end
-
-  def give_item_to_hero(hero, input)
-    hero.use_item(@input[input])
-  end
-
-  def take_money(hero, input)
-    hero.stats.coins -= @input[input].stats.coins
-  end
-
-  def recalculate_supply(input)
-    @input.delete_at(input)
-  end
 end
 
-#s = Shop.new
-#d = IOterminal.new
-#s.set_device(d)
-#h = Hero.new
+# s = Shop.new(true, [])
+# d = IOterminal.new
+# s.set_device(d)
+# h = Hero.new
 
-#s.action(h)
+# s.action(h)
