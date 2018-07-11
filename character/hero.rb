@@ -26,6 +26,12 @@ class Hero < Character
     end
   end
 
+  def description
+  return (super + @equipment.head.description +
+               + @equipment.chest.description +
+               + @equipment.boots.description )
+  end
+
   # private
 
   def use_consumable(consumable)

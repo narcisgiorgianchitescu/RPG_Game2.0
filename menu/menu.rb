@@ -16,17 +16,24 @@ class Menu
   def choice
     input = nil
     loop do
-      #@device.clear
+      @device.clear
       @device.print_string @description
       @device.next_line
       print_values
       input = @device.input
       break if valid? input
     end
-    input
+    return_input(input)
   end
 
   private
+
+  def return_input(input)
+    print_return_input = {}
+    print_return_input['Array'] = -> { input.to_i }
+    print_return_input['Hash'] = -> { input }
+    print_return_input[@values.class.name].call
+  end
 
   def print_values
     @values.each_with_index do |string_option, index|
@@ -49,13 +56,12 @@ class Menu
     valids_class['Array'] = -> { (-1..(@values.size - 1)).to_a.include? input.to_i }
     valids_class['Hash'] = -> { @values.has_key?(input.to_s.to_sym) || @values.has_key?("#{input}") || @values.has_key?(input.to_i) || @values.has_key?(input.to_s) || @values.has_key?(input) }
     valids_class[@values.class.name].call
-
   end
 end
 
 #device = IOterminal.new
-#values = { 'mihai' => 'test', 'spanac' => 'test2'}
+#values = [1, 2, 3, 4]
 #[1, 2, 3, 4]
 #{ mihai: 'test', spanac: 'test2'}
 #description = ' '
-#Menu.new(values, description, device).choice
+#puts Menu.new(values, description, device).choice.class.name

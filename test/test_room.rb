@@ -142,20 +142,36 @@ class TestGameRoom < MiniTest::Test
   end
 
 #-------------------------------------------------------------------
-# #Vault
+#Vault
 
-#   def test_vault_action_rez_room_data
-#     v = Vault.new
-#     assert_equal([v.description, v.input], v.action, 'Wrong answer')
-#   end
+  def test_vault_give_item
+    v = Vault.new(true, [Wearable.new])
+    v.input[0].stats.attack = 10
+    h = Hero.new
+    v.give_item(h, 0)
+    assert_equal(10, h.equipment.head.stats.attack, 'Wrong answer')
+  end
 
-#   def test_vault_action_rez_already_chose
-#     v = Vault.new
-#     v.action
-#     assert_equal(v.already_chose, v.action, 'Wrong answer')
-#   end
+  def test_vault_hero_chose_item
+    v = Vault.new
+    v.hero_chose_item
+    assert_equal(true, v.got_item, 'Wrong answer')
+  end
 
-# #-------------------------------------------------------------------
+  def test_vault_output_game_on
+    v = Vault.new
+    h = Hero.new
+    assert_equal(true, v.output(h), 'Wrong answer')
+  end
+
+  def test_vault_output_game_over
+    v = Vault.new
+    h = Hero.new
+    h.stats.hp = 0
+    assert_equal(true, v.output(h), 'Wrong answer')
+  end
+
+#-------------------------------------------------------------------
 # #Hospital
 
 #   def test_hospital_get_input
