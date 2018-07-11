@@ -44,7 +44,6 @@ class CustomMap < MapGenerator
     winroom = WinRoom.new(false)
     position = Position.new(0, 7)
     map.add_room(winroom, position)
+    map
   end
 end
-
-CustomMap.new.create_map
