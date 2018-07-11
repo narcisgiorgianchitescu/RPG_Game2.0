@@ -84,16 +84,17 @@ class Combat
   end
 
   def compute_power(user_choice, monster_choice)
-    hero_power = @hero.stats.attack * ATTACK_MULTIPLIER[user_choice] *
+    hero_power = @hero.stats.attack * ATTACK_MULTIPLIER[user_choice].to_i *
                  rand(0.5..2)
-    monster_power = @monster.stats.attack * ATTACK_MULTIPLIER[monster_choice] *
-                    rand(0.5..2)
+    monster_power = @monster.stats.attack *
+                    ATTACK_MULTIPLIER[monster_choice].to_i * rand(0.5..2)
     [hero_power, monster_power]
   end
 
   def compute_block(user_choice, monster_choice)
-    hero_block = @hero.stats.defence * DEFENCE_MULTIPLIER[user_choice]
-    monster_block = @monster.stats.defence * DEFENCE_MULTIPLIER[monster_choice]
+    hero_block = @hero.stats.defence * DEFENCE_MULTIPLIER[user_choice].to_i
+    monster_block = @monster.stats.defence *
+                    DEFENCE_MULTIPLIER[monster_choice].to_i
     [hero_block, monster_block]
   end
 

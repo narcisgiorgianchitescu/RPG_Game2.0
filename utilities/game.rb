@@ -36,18 +36,19 @@ class Game
     # @device.puts_string 'Input dificulty'
     @map = RandomMap.new.create_map @hero
     @map.size.times do |i|
-     @map.size.times do |j|
-       @map.slots[i][j].set_device @device
-     end
-   end#room.set_device @device }
+      @map.size.times do |j|
+        @map.slots[i][j].set_device @device
+      end
+    end
   end
 
   def run_game
     game_over = false
     until game_over
       @device.clear
-      #@hero_cursor = Cursor.new(@hero_position)
       @device.print_map(@map, @hero_cursor)
+      @device.print_string(@hero.description)
+      @device.next_line
       game_over = do_move
     end
   end
