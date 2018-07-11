@@ -6,6 +6,7 @@ require 'menu'
 require 'hero'
 require 'io_terminal'
 
+# generic room
 class Room
   attr_accessor :hidden
   attr_accessor :input
@@ -24,7 +25,7 @@ class Room
     @no_value = false
   end
 
-  def action(hero)
+  def action(_hero)
     @device.print_string(@description)
     @game_on
   end
@@ -34,7 +35,7 @@ class Room
   end
 
   def items_description(items, value)
-    items.map {|item| item.description(value)}
+    items.map { |item| item.description(value) }
   end
 
   def give_item_to_hero(hero, input)
@@ -53,9 +54,3 @@ class Room
     item_menu
   end
 end
-
-# r = Room.new
-# h = Hero.new
-# d = IOterminal.new
-# r.set_device(d)
-# r.action(h)
