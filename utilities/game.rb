@@ -28,7 +28,7 @@ class Game
     @device.puts_string 'Input the hero name'
     @hero = Hero.new(name: @device.input)
     @device.clear
-    @device.puts_string 'Input dificulty'
+    # @device.puts_string 'Input dificulty'
     @map = RandomMap.new.create_map(@hero)
     @map.slots.each { |room| room.set_device @device }
   end
