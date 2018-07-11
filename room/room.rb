@@ -47,8 +47,8 @@ class Room
 
   private
 
-  def get_menu(description)
-    items_description = items_description(@input, @show_value)
+  def get_menu(description, show_value)
+    items_description = items_description(@input, show_value)
     item_menu = Menu.new(items_description, description, @device)
     item_menu
   end
