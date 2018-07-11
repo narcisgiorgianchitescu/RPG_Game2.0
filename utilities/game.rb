@@ -8,6 +8,7 @@ require 'map'
 require 'io_terminal'
 require 'random_creator'
 require 'random_map'
+require 'custom_map'
 
 # class that manages a game
 class Game
@@ -30,7 +31,7 @@ class Game
     @hero = Hero.new(name: @device.input)
     @device.clear
     # @device.puts_string 'Input dificulty'
-    @map = RandomMap.new.create_map(@hero)
+    @map = CustomMap.new.create_map
     @map.size.times do |i|
      @map.size.times do |j|
        @map.slots[i][j].set_device @device
