@@ -9,6 +9,7 @@ require 'io_terminal'
 require 'random_creator'
 require 'random_map'
 require 'custom_map'
+require 'stats'
 
 # class that manages a game
 class Game
@@ -29,7 +30,8 @@ class Game
   def game_setup
     @device.clear
     @device.puts_string 'Input the hero name'
-    @hero = Hero.new(nil, nil, name = @device.input.chomp)
+    stats = Stats.new(attack: 5, defence: 4, hp: 50, coins: 25)
+    @hero = Hero.new(stats, nil, @device.input.chomp)
     @device.clear
     # @device.puts_string 'Input dificulty'
     @map = CustomMap.new.create_map
@@ -52,7 +54,7 @@ class Game
 
   def stop_game
     @device.clear
-    @device.print_string 'End of the game. Here are your stats'
+    @device.puts_string 'End of the game. Here are your stats'
     @device.print_hero @hero
   end
 
