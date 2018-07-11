@@ -20,6 +20,7 @@ class Vault < Room
   end
 
   def action(hero)
+    super
     return you_already_chose if @got_item
 
     prezent_option(hero)

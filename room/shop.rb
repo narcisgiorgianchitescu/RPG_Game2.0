@@ -20,6 +20,7 @@ class Shop < Room
   end
 
   def action(hero)
+    super
     return no_items if out_of_items?
 
     start_business(hero, @description)

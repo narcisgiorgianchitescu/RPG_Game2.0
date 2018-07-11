@@ -13,6 +13,7 @@ class WinRoom < Room
   end
 
   def action(_hero)
+    super
     @you_win
   end
 end
