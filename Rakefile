@@ -8,5 +8,5 @@ task :test do
   ruby 'test/test_cursor.rb'
   ruby 'test/test_character.rb'
   ruby 'test/test_map_generator.rb'
-  runy 'test/test_combat'
+  ruby 'test/test_combat.rb'
 end
