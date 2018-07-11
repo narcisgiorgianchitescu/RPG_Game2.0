@@ -15,6 +15,20 @@ class MonsterRoom < Room
 
   def action(hero)
     super
+
+    return fight(hero) if @input.stats.hp > 0
+
+    monster_is_dead
+  end
+
+  def fight(hero)
     Combat.new(hero, @input, @device).fight
+  end
+
+  def monster_is_dead
+    @device.clear
+    @device.print_string('The monster is dead')
+    @device.input
+    @game_on
   end
 end

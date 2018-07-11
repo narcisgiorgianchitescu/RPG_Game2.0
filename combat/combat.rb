@@ -78,9 +78,10 @@ class Combat
   def compute_damage(user_choice, monster_choice)
     (hero_power, monster_power) = compute_power(user_choice, monster_choice)
     (hero_block, monster_block) = compute_block(user_choice, monster_choice)
-    hero_taken_damage = (monster_power - hero_block).to_i.abs
-    monster_taken_damage = (hero_power - monster_block).to_i.abs
-    [hero_taken_damage, monster_taken_damage]
+    hero_taken_damage = (monster_power - hero_block).to_i
+    monster_taken_damage = (hero_power - monster_block).to_i
+    [hero_taken_damage > 0 ? hero_taken_damage : 0,
+     monster_taken_damage > 0 ? monster_taken_damage : 0]
   end
 
   def compute_power(user_choice, monster_choice)
