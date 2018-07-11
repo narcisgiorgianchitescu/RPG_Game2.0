@@ -8,10 +8,11 @@ require 'hero'
 require 'io_terminal'
 require 'weapon'
 
+# Has some items and the hero can buy them
 class Shop < Room
   attr_accessor :out_of_items
 
-  def initialize(hidden = true, input = [Wearable.new(), Weapon.new()])
+  def initialize(hidden = true, input = [Wearable.new, Weapon.new])
     super(hidden, input)
     @description  = 'Shop is open, have a look.'
     @out_of_items = 'Shop is out of items'
@@ -25,7 +26,7 @@ class Shop < Room
   end
 
   def out_of_items?
-    input.size == 0
+    input.empty?
   end
 
   def out_of_items
@@ -65,10 +66,3 @@ class Shop < Room
     action(hero)
   end
 end
-
-# s = Shop.new(true, [Wearable.new(), Weapon.new()])
-# d = IOterminal.new
-# s.set_device(d)
-# h = Hero.new
-# h.stats.hp = 100
-# s.action(h)
