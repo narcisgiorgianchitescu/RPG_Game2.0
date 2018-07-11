@@ -72,7 +72,7 @@ module RandomCreator
     { attack: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       defence: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
-      hp: (rand(-5..20) * difficulty_multiplier(difficulty)).to_i}
+      hp: (rand(-1..5) * difficulty_multiplier(difficulty)).to_i}
   end
 
   def self.head(difficulty = 0)
@@ -116,7 +116,7 @@ module RandomCreator
 
 
   def self.monster(hero, difficulty = 0)
-  #  Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
+    Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
   end
 
 
