@@ -20,8 +20,3 @@ class RoomFactory
     TYPES[type].get_room_description
   end
 end
-
-# r = RoomFactory.create(:vault, true, [1, 2, 3, [4, 5]])
-# puts r.description
-# puts r.hidden
-# puts r.input
