@@ -10,12 +10,10 @@ class MonsterRoom < Room
   def initialize(hidden = true, input = Monster.new)
     super(hidden, input)
     @description = 'This room contain a hideous monster'
+    @input = Monster.new if @input.class != Monster
   end
 
   def action(hero)
     Combat.new(hero, input, @device).fight
-    # code under is not necessary
-    return @game_over if hero.stats.hp < 1
-    @game_on
   end
 end
