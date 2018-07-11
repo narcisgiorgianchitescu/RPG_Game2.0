@@ -99,9 +99,9 @@ module RandomCreator
 
   def self.stats_monster(hero, difficulty = 0)
     Stats.new({ coins: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      hp: ((hero.stats.hp + rand(-10..10)) / difficulty_multiplier(difficulty)).to_i,
-      attack: ((hero.stats.attack + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i,
-      defence: ((hero.stats.defence + rand(-3..1)) / difficulty_multiplier(difficulty)).to_i
+      hp: ((hero.stats.hp + rand(-5..5)).abs / difficulty_multiplier(difficulty)).to_i,
+      attack: ((hero.stats.attack + rand(-3..1)).abs / difficulty_multiplier(difficulty)).to_i,
+      defence: ((hero.stats.defence + rand(-3..1)).abs / difficulty_multiplier(difficulty)).to_i
     })
   end
 
