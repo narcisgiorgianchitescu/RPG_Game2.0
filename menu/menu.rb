@@ -6,7 +6,7 @@ require 'io_terminal'
 # class that receives a list of options and prompts the io to choose one
 class Menu
   attr_accessor :exit_value
-  def initialize(values, description, device)
+  def initialize(values = [], description = ' ', device = nil)
     @description = description
     @values = values
     @device = device
