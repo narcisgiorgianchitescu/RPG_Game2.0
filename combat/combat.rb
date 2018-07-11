@@ -10,7 +10,8 @@ require 'io_terminal'
 class Combat
   ATTACK_MULTIPLIER = {
     'a' => 1,
-    'd' => 0
+    'd' => 0,
+    'r' => 0
   }.freeze
 
   DEFENCE_MULTIPLIER = {
