@@ -93,7 +93,7 @@ class Combat
 
   def user_interaction
     description = @hero.description + "\n" + @monster.description
-    options = { 'a' => 'a', 'd' => 'defend', 'r' => 'run' }
+    options = { 'a' => 'attack', 'd' => 'defend', 'r' => 'run' }
     Menu.new(options, description, @device).choice
   end
 
