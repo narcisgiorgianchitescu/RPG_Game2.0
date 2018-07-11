@@ -193,14 +193,6 @@ class TestGameRoom < MiniTest::Test
   end
 
 #-------------------------------------------------------------------
-# #MonsterRoom
-
-#   def test_monsterroom_action_rez_room_data
-#     m = MonsterRoom.new
-#     assert_equal([m.description, m.input], m.action, 'Wrong answer')
-#   end
-
-# #-------------------------------------------------------------------
 #WinRoom
 
   def test_winroom_action_rez_room_data
