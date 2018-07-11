@@ -94,14 +94,16 @@ class TestGameRoom < MiniTest::Test
   end
 
   def test_room_items_description_with_parameter_and_value
-    room = Room.new(true, [Item.new])
-    rez = ["Item 0 attack 0 defence 0 coins"]
+    i = Item.new
+    room = Room.new(true, [i])
+    rez = [i.description(true)]
     assert_equal(rez, room.items_description(room.input, true), 'Wrong answer')
   end
 
   def test_room_items_description_with_parameter_and_no_value
-    room = Room.new(true, [Item.new])
-    rez = ["Item 0 attack 0 defence"]
+    i = Item.new
+    room = Room.new(true, [i])
+    rez = [i.description(false)]
     assert_equal(rez, room.items_description(room.input, false), 'Wrong answer')
   end
 
@@ -172,24 +174,25 @@ class TestGameRoom < MiniTest::Test
   end
 
 #-------------------------------------------------------------------
-# #Hospital
+#Hospital
 
-#   def test_hospital_get_input
-#     h = Hospital.new
-#     assert_equal([[5, 5], [10, 9], [20, 17]], h.input, 'Wrong answer')
-#   end
+  def test_hospital_heal_hero
+    h = Hospital.new(true, [[5, 5]])
+    hero = Hero.new
+    hero.stats.hp = 10
+    h.heal_hero(hero, 0)
+    assert_equal(15, hero.stats.hp, 'Wrong answer')
+  end
 
-#   def test_hospital_set_input
-#     h = Hospital.new(false, [1..9])
-#     assert_equal([1..9], h.input, 'Wrong answer')
-#   end
+  def test_hospital_take_money_from_hero
+    h = Hospital.new(true, [[5, 5]])
+    hero = Hero.new
+    hero.stats.coins = 10
+    h.take_money_from_hero(hero, 0)
+    assert_equal(5, hero.stats.coins, 'Wrong answer')
+  end
 
-#   def test_hospital_action_rez_room_data
-#     h = Hospital.new
-#     assert_equal([h.description, h.input], h.action, 'Wrong answer')
-#   end
-
-# #-------------------------------------------------------------------
+#-------------------------------------------------------------------
 # #MonsterRoom
 
 #   def test_monsterroom_action_rez_room_data
@@ -198,12 +201,13 @@ class TestGameRoom < MiniTest::Test
 #   end
 
 # #-------------------------------------------------------------------
-# #WinRoom
+#WinRoom
 
-#   def test_winroom_action_rez_room_data
-#     w = WinRoom.new
-#     assert_equal(w.you_win, w.action, 'Wrong answer')
-#   end
+  def test_winroom_action_rez_room_data
+    w = WinRoom.new
+    h = Hero.new
+    assert_equal(w.you_win, w.action(h), 'Wrong answer')
+  end
 
-# #-------------------------------------------------------------------
+#-------------------------------------------------------------------
 end

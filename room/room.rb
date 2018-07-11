@@ -3,6 +3,8 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'item'
 require 'menu'
+require 'hero'
+require 'io_terminal'
 
 class Room
   attr_accessor :hidden
@@ -51,3 +53,9 @@ class Room
     item_menu
   end
 end
+
+# r = Room.new
+# h = Hero.new
+# d = IOterminal.new
+# r.set_device(d)
+# r.action(h)
