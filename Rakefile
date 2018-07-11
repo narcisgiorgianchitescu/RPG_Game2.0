@@ -10,5 +10,6 @@ task :test do
   ruby 'test/test_map_generator.rb'
   ruby 'test/test_combat.rb'
   ruby 'test/test_monster.rb'
-  ruby 'test/test_random_creator'
+  ruby 'test/test_random_creator.rb'
+  ruby 'test/test_menu.rb'
 end
