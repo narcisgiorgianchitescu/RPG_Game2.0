@@ -72,7 +72,7 @@ module RandomCreator
     { attack: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       defence: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
-      hp: (rand(-5..20) * difficulty_multiplier(difficulty)).to_i}
+      hp: (rand(-1..5) * difficulty_multiplier(difficulty)).to_i}
   end
 
   def self.head(difficulty = 0)
