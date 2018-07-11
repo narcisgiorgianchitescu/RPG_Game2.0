@@ -46,7 +46,7 @@ class TestMonster < Test::Unit::TestCase
     assert_equal(ch.name, 'noname')
   end
 
-  def test_alive?
+  def test_alive_default
     ch = Monster.new
     assert_equal(ch.alive?, false)
   end
