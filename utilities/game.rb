@@ -29,7 +29,8 @@ class Game
   def game_setup
     @device.clear
     @device.puts_string 'Input the hero name'
-    @hero = Hero.new(nil, nil, name = @device.input.chomp)
+    stats = Stats.new(attack: 5, defence: 4, hp: 50, coins: 25)
+    @hero = Hero.new(stats, nil, @device.input.chomp)
     @device.clear
     # @device.puts_string 'Input dificulty'
     @map = CustomMap.new.create_map
