@@ -14,9 +14,9 @@ require 'win_room'
 # TODO: Test
 module RandomCreator
   def self.difficulty_multiplier(difficulty = 0)
-    #difficulty between 0 and 10
+    # difficulty between 0 and 10
     difficulty * -0.1 + 1.5
-    # TODO solution?
+    # TODO: solution?
   end
 
   def self.map(hero, difficulty = 0)
@@ -73,7 +73,7 @@ module RandomCreator
     { attack: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       defence: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
       coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
-      hp: (rand(-1..5) * difficulty_multiplier(difficulty)).to_i}
+      hp: (rand(-1..5) * difficulty_multiplier(difficulty)).to_i }
   end
 
   def self.head(difficulty = 0)
@@ -93,33 +93,32 @@ module RandomCreator
   end
 
   def self.stats_equipment(difficulty = 0)
-    Stats.new({ attack: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
-      defence: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
-      coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i })
+    Stats.new(attack: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
+              defence: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
+              coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i)
   end
 
   def self.stats_monster(hero, difficulty = 0)
-    Stats.new({ coins: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
-      hp: ((hero.stats.hp + rand(-5..5)).abs / difficulty_multiplier(difficulty)).to_i,
-      attack: ((hero.stats.attack + rand(-3..1)).abs / difficulty_multiplier(difficulty)).to_i,
-      defence: ((hero.stats.defence + rand(-3..1)).abs / difficulty_multiplier(difficulty)).to_i
-    })
+    Stats.new(coins: (rand(15..40) * difficulty_multiplier(difficulty)).to_i,
+              hp: ((hero.stats.hp +
+                rand(-5..5)).abs / difficulty_multiplier(difficulty)).to_i,
+              attack: ((hero.stats.attack +
+                rand(-3..1)).abs / difficulty_multiplier(difficulty)).to_i,
+              defence: ((hero.stats.defence +
+                rand(-3..1)).abs / difficulty_multiplier(difficulty)).to_i)
   end
-
 
   def self.monster_name
     bear_names = ['Angry Bear', 'Mad Bear', 'Stone Bear', 'Grizzly Bear']
     wolf_names = ['Rabid Wold', 'Big Wolf', 'Mad Wolf', 'White Wolf']
     bat_names  = ['Bloodsucking Bat', 'Giant Bat', 'Mutated Bat']
-    other_monsters = ['Zombie', 'Ghost', 'Mimic', 'Werewolf', 'Savage']
+    other_monsters = %w[Zombie Ghost Mimic Werewolf Savage]
     [bear_names, wolf_names, bat_names, other_monsters].sample.sample
   end
-
 
   def self.monster(hero, difficulty = 0)
     Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
   end
-
 
   def self.shop(difficulty = 0)
     items = []
@@ -133,6 +132,6 @@ module RandomCreator
     Vault.new(true, items)
   end
 
-  #private :spawn_victory_room, :consumable_stats, :consumable_stats_hash
-  #private :stats_monster, :stats_equipment, :monster_name
+  # private :spawn_victory_room, :consumable_stats, :consumable_stats_hash
+  # private :stats_monster, :stats_equipment, :monster_name
 end
