@@ -33,8 +33,9 @@ class Game
     stats = Stats.new(attack: 5, defence: 4, hp: 50, coins: 25)
     @hero = Hero.new(stats, nil, @device.input.chomp)
     @device.clear
-    # @device.puts_string 'Input dificulty'
-    @map = RandomMap.new.create_map @hero
+    @device.puts_string 'Input dificulty - between 0 to 10'
+    difficulty = @device.input.to_i
+    @map = RandomMap.new.create_map @hero, difficulty
     @map.size.times do |i|
       @map.size.times do |j|
         @map.slots[i][j].set_device @device
