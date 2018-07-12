@@ -131,7 +131,7 @@ module RandomCreator
   end
 
   def self.boots_name
-    model = ['Mail', 'Leather', 'Steel', 'Skin', 'Normal']
+    model = ['Mail', 'Leather', 'Steel', 'Normal']
     type = ['boots', 'shoes', 'feets']
     aspect = ['speed', 'the unseen', 'sneakiness']
     "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
