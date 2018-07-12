@@ -35,7 +35,7 @@ class Hero < Character
 
   def use_consumable(consumable, free = true)
     @stats.change_stats(consumable.stats, :+)
-    #@stats.coins -= consumable.stats.coins unless free
+    @stats.coins -= consumable.stats.coins unless free
   end
 
   def change_wearable(wearable, free = true)
@@ -60,7 +60,7 @@ class Hero < Character
       @stats.change_stats(equipment.boots.stats, :+)
       @stats.coins -= @equipment.boots.stats.coins
     end
-    #@stats.coins -= wearable.stats.coins unless free
+    @stats.coins -= wearable.stats.coins unless free
   end
 
   def change_weapon(weapon, free = true)
@@ -68,7 +68,7 @@ class Hero < Character
     @stats.coins += @equipment.weapon.stats.coins
     @equipment.weapon = weapon
     @stats.change_stats(equipment.weapon.stats, :+)
-  #  @stats.coins -= weapon.stats.coins unless free
+    @stats.coins -= weapon.stats.coins unless free
     @stats.coins += @equipment.weapon.stats.coins
   end
 
