@@ -34,7 +34,7 @@ class Game
   def set_hero
     @device.clear
     @device.puts_string 'Input the hero name'
-    stats = Stats.new(attack: 5, defence: 4, hp: 50, coins: 25)
+    stats = Stats.new(attack: 15, defence: 10, hp: 100, coins: 25)
     Hero.new(stats, nil, @device.input.chomp)
   end
 
@@ -42,7 +42,7 @@ class Game
     @device.clear
     option = 0
     loop do
-      @device.puts_string 'Input dificulty - between 0 to 10'
+      @device.puts_string 'Input dificulty - between 0 to 10 - preferable 3'
       option = @device.input
       break if ((0..10).include? option.to_i) && (string_is_number?(option.to_s.chomp))
       @device.clear
@@ -51,7 +51,7 @@ class Game
   end
 
   def set_map(difficulty)
-    map = RandomMap.new.create_map @hero, difficulty
+    map = RandomMap.new.create_map @hero, difficulty, 15
     map.size.times do |i|
       map.size.times do |j|
         map.slots[i][j].set_device @device

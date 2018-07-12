@@ -19,8 +19,8 @@ module RandomCreator
     # TODO: solution?
   end
 
-  def self.map(hero, difficulty = 0)
-    map = Map.new
+  def self.map(hero, difficulty = 0, size = 10)
+    map = Map.new(size)
     map.size.times do |i|
       map.size.times do |j|
         y = room(hero, difficulty)
@@ -117,7 +117,13 @@ module RandomCreator
   end
 
   def self.monster(hero, difficulty = 0)
-    Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
+    case rand(1..100)
+    when 1..90 then Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
+    when 91..95 then Monster.new(stats_monster(hero, 7), 'Samson', rand(0..100))
+    when 96..98 then Monster.new(stats_monster(hero, 9), 'Fat dudes', rand(0..100))
+    when 99 then Monster.new(stats_monster(hero, 10), 'Mojojojo', rand(0..100))
+    when 100 then Monster.new(stats_monster(hero, 12), 'Politehnica', rand(0..100))
+    end
   end
 
   def self.shop(difficulty = 0)
