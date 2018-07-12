@@ -38,8 +38,8 @@ class Room
     items.map { |item| item.description(value).chomp }
   end
 
-  def give_item_to_hero(hero, input)
-    hero.use_item(@input[input], false)
+  def give_item_to_hero(hero, input, free = false)
+    hero.use_item(@input[input], free)
   end
 
   def take_money(hero, input)
