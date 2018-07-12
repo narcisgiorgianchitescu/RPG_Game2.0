@@ -15,13 +15,13 @@ class Menu
 
   def choice(clear_screen = true)
     @device.clear if clear_screen
+    print_description
+    print_values
     loop do
-      print_description
-      print_values
       @input = get_input
       break if valid?
-      @device.clear
     end
+    @device.clear
     return_input
   end
 
