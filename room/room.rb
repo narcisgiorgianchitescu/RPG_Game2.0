@@ -39,7 +39,7 @@ class Room
   end
 
   def give_item_to_hero(hero, input)
-    hero.use_item(@input[input])
+    hero.use_item(@input[input], false)
   end
 
   def take_money(hero, input)

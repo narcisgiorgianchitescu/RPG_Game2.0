@@ -15,14 +15,14 @@ class Hero < Character
   end
 
   # TODO: retest
-  def use_item(item)
+  def use_item(item, free = true)
     case item.class.to_s
     when 'Consumable'
-      use_consumable(item)
+      use_consumable(item, free)
     when 'Weapon'
-      change_weapon(item)
+      change_weapon(item, free)
     else
-      change_wearable(item)
+      change_wearable(item, free)
     end
   end
 
@@ -32,11 +32,12 @@ class Hero < Character
 
   # private
 
-  def use_consumable(consumable)
+  def use_consumable(consumable, free = true)
     @stats.change_stats(consumable.stats, :+)
+    @stats.coins -= consumable.stats.coins unless free
   end
 
-  def change_wearable(wearable)
+  def change_wearable(wearable, free = true)
     case wearable.type.to_s
     when 'head'
       @equipment.head = wearable
@@ -48,11 +49,13 @@ class Hero < Character
       @equipment.boots = wearable
       @stats.change_stats(equipment.boots.stats, :+)
     end
+    @stats.coins -= wearable.stats.coins unless free
   end
 
-  def change_weapon(weapon)
+  def change_weapon(weapon, free = true)
     @equipment.weapon = weapon
     @stats.change_stats(equipment.weapon.stats, :+)
+    @stats.coins -= weapon.stats.coins unless free
   end
 
   def take_money(amount)
