@@ -9,6 +9,7 @@ class Wearable < Item
 
   TYPES_NAME = {
     head: 'Cool Helmet',
+
     chest: 'Awesome Chestplate',
     boots: 'Rainbow Boots'
   }.freeze
