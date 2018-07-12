@@ -34,7 +34,7 @@ class Vault < Room
   end
 
   def give_item(hero, input)
-    give_item_to_hero(hero, input, true)
+    give_item_to_hero(hero, input, false)
 
     hero_chose_item
 

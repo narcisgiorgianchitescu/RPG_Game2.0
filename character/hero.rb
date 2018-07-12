@@ -60,7 +60,7 @@ class Hero < Character
       @stats.change_stats(equipment.boots.stats, :+)
       @stats.coins -= @equipment.boots.stats.coins
     end
-    @stats.coins -= wearable.stats.coins unless free
+  #  @stats.coins -= wearable.stats.coins unless free
   end
 
   def change_weapon(weapon, free = true)
