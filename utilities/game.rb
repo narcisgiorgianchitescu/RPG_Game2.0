@@ -26,21 +26,39 @@ class Game
   end
 
   private
-
-  def game_setup
+  def set_hero
     @device.clear
     @device.puts_string 'Input the hero name'
     stats = Stats.new(attack: 5, defence: 4, hp: 50, coins: 25)
-    @hero = Hero.new(stats, nil, @device.input.chomp)
+    Hero.new(stats, nil, @device.input.chomp)
+  end
+
+  def set_difficulty
     @device.clear
-    @device.puts_string 'Input dificulty - between 0 to 10'
-    difficulty = @device.input.to_i
-    @map = RandomMap.new.create_map @hero, difficulty
-    @map.size.times do |i|
-      @map.size.times do |j|
-        @map.slots[i][j].set_device @device
+    option = 0
+    loop do
+      @device.puts_string 'Input dificulty - between 0 to 10'
+      option = @device.input.to_i
+      break if (0..10).include? option
+      @device.clear
+    end
+    option
+  end
+
+  def set_map(difficulty)
+    map = RandomMap.new.create_map @hero, difficulty
+    map.size.times do |i|
+      map.size.times do |j|
+        map.slots[i][j].set_device @device
       end
     end
+    map
+  end
+
+  def game_setup
+    @hero = set_hero
+    difficulty = set_difficulty
+    @map = set_map(difficulty)
   end
 
   def run_game
