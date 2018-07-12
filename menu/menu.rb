@@ -55,7 +55,7 @@ class Menu
   def print_values_on_type(index, string_option)
     # TODO: change to class constant
     print_values_class = {}
-    print_values_class['Array'] = -> { @device.print_string "#{index}. #{string_option}"}
+    print_values_class['Array'] = -> { @device.print_string "#{index}. #{string_option}" if string_option}
     print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}" if  string_option[1]}
     print_values_class[@values.class.name].call
   end
