@@ -116,6 +116,34 @@ module RandomCreator
     [bear_names, wolf_names, bat_names, other_monsters].sample.sample
   end
 
+  def self.head_name
+    model = ['Pointy', 'Neat', 'Shiny', 'Dirty', 'Normal', 'Boring']
+    type = ['helmet', 'mask', 'glasses']
+    aspect = ['beauty', 'lazyness', 'boredom']
+    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+  end
+
+  def self.chest_name
+    model = ['Mail', 'Bronz', 'Steel', 'Iron', 'Normal']
+    type = ['armor', 'cuirass', 'breastplate']
+    aspect = ['resistence', 'awesomeness']
+    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+  end
+
+  def self.boots_name
+    model = ['Mail', 'Leather', 'Steel', 'Skin', 'Normal']
+    type = ['boots', 'shoes', 'feets']
+    aspect = ['speed', 'the unseen', 'sneakiness']
+    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+  end
+
+  def self.weapon_name
+    model = ['Short', 'Long', 'Double', 'Iron', 'Normal']
+    type = ['sword', 'saber', 'machete']
+    aspect = ['victory', 'battle', 'fighting']
+    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+  end
+
   def self.monster(hero, difficulty = 0)
     case rand(1..100)
     when 1..90 then Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
