@@ -13,13 +13,14 @@ class Menu
     @exit_value = -1
   end
 
-  def choice
+  def choice(clear_screen = true)
+    @device.clear if clear_screen
     loop do
-      @device.clear
       print_description
       print_values
       @input = get_input
       break if valid?
+      @device.clear
     end
     return_input
   end
@@ -45,7 +46,6 @@ class Menu
   def print_values
     @values.each_with_index do |string_option, index|
       print_values_on_type(index, string_option)
-      @device.next_line
     end
     string = "Press #{@exit_value} to exit"
     @device.print_string string if @values.class.name == 'Array'
@@ -55,9 +55,21 @@ class Menu
   def print_values_on_type(index, string_option)
     # TODO: change to class constant
     print_values_class = {}
-    print_values_class['Array'] = -> { @device.print_string "#{index}. #{string_option}" if string_option}
-    print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}" if  string_option[1]}
+    print_values_class['Array'] = -> { print_value_array(index, string_option)}
+    print_values_class['Hash'] = -> { print_value_hash(string_option)}
     print_values_class[@values.class.name].call
+  end
+
+  def print_value_array(index, string_option)
+    return unless string_option
+    @device.print_string "#{index}. #{string_option}"
+    @device.next_line
+  end
+
+  def print_value_hash(string_option)
+    return unless string_option[1]
+    @device.print_string "#{string_option[0]} #{string_option[1]}"
+    @device.next_line
   end
 
   def valid?
