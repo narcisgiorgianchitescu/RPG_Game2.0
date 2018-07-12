@@ -144,6 +144,13 @@ module RandomCreator
     "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
   end
 
+  def self.consumable_name
+    model = ['Weak', 'Strong', 'Tasty', 'Sour', 'Sad']
+    type = ['potion', 'vial', 'flask', 'drink', 'tonic']
+    aspect = ['tomorrow', 'battle', 'dizziness', 'madness']
+    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
+  end
+
   def self.monster(hero, difficulty = 0)
     case rand(1..100)
     when 1..90 then Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
