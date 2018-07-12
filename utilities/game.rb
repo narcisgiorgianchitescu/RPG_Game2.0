@@ -42,7 +42,7 @@ class Game
     @device.clear
     option = 0
     loop do
-      @device.puts_string 'Input dificulty - between 0 to 10 - preferable 3'
+      @device.puts_string 'Input dificulty - between 0 to 10 - preferable 4'
       option = @device.input
       break if ((0..10).include? option.to_i) && (string_is_number?(option.to_s.chomp))
       @device.clear
@@ -50,8 +50,8 @@ class Game
     option.to_i
   end
 
-  def set_map(difficulty)
-    map = RandomMap.new.create_map @hero, difficulty, 15
+  def set_map(difficulty, size)
+    map = RandomMap.new.create_map @hero, difficulty, size
     map.size.times do |i|
       map.size.times do |j|
         map.slots[i][j].set_device @device
@@ -63,7 +63,20 @@ class Game
   def game_setup
     @hero = set_hero
     difficulty = set_difficulty
-    @map = set_map(difficulty)
+    size = set_size
+    @map = set_map(difficulty, size)
+  end
+
+  def set_size
+    @device.clear
+    option = 0
+    loop do
+      @device.puts_string 'Introduce the size of the map (between 8 and 20)'
+      option = @device.input
+      break if ((8..20).include? option.to_i) && (string_is_number?(option.to_s.chomp))
+      @device.clear
+    end
+    option.to_i
   end
 
   def run_game
