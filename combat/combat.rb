@@ -100,7 +100,8 @@ class Combat
   end
 
   def user_interaction
-    description = @hero.description(false) + "\n" + @monster.description
+    description = "You are in a monster room\n\n"
+    description += @hero.description(false) + "\n" + @monster.description
     options = { 'a' => 'attack', 'd' => 'defend', 'r' => 'run' }
     Menu.new(options, description, @device).choice
   end
