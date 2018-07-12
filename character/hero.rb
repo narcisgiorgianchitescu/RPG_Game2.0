@@ -27,7 +27,7 @@ class Hero < Character
   end
 
   def description
-  return (super + @equipment.description)
+    return (super + @equipment.description)
   end
 
   # private
