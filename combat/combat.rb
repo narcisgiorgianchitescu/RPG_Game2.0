@@ -61,9 +61,10 @@ class Combat
   def show_damage(hero_taken_damage, monster_taken_damage, user_choice,
                   monster_choice)
     @device.clear
-    current_stats = @hero.description(false) + "\n" + @monster.description
+    current_stats = "You are in a monster room\n\n"
+    current_stats += @hero.description(false) + "\n" + @monster.description
     @device.print_string current_stats
-    string = "Hero chose to #{SYMBOLS[user_choice]} and dealt "\
+    string = "\nHero chose to #{SYMBOLS[user_choice]} and dealt "\
              "#{monster_taken_damage}\nMonster chose to "\
              "#{SYMBOLS[monster_choice]} and dealt #{hero_taken_damage}\n"
     @device.print_string string
