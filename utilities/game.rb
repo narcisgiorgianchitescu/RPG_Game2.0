@@ -42,7 +42,7 @@ class Game
     @device.clear
     option = 0
     loop do
-      @device.puts_string 'Input dificulty - between 0 to 10 - preferable 3'
+      @device.puts_string 'Input dificulty - between 0 to 10 - preferable 4'
       option = @device.input
       break if ((0..10).include? option.to_i) && (string_is_number?(option.to_s.chomp))
       @device.clear
