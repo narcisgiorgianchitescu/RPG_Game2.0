@@ -55,25 +55,42 @@ class Menu
   def print_values_on_type(index, string_option)
     # TODO: change to class constant
     print_values_class = {}
-    print_values_class['Array'] = -> { @device.print_string "#{index}. #{string_option}" if string_option }
-    print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}" if string_option[1] }
+    print_values_class['Array'] = -> { print_value_array(index, string_option)}
+    print_values_class['Hash'] = -> { print_value_hash(string_option)}
     print_values_class[@values.class.name].call
   end
 
-  def string_is_number?(string)
-    string == string.to_i.to_s
+  def print_value_array(index, string_option)
+    return unless string_option
+    @device.print_string "#{index}. #{string_option}"
+    @device.next_line
+  end
+
+  def print_value_hash(string_option)
+    return unless string_option[1]
+    @device.print_string "#{string_option[0]} #{string_option[1]}"
+    @device.next_line
   end
 
   def valid?
     # TODO: change to class constant
-    return false if @values.class.name == 'Array' && !string_is_number?(@input)
+
     valids_class = {}
-    valids_class['Array'] = -> { (-1..(@values.size - 1)).to_a.include? @input.to_i }
+    valids_class['Array'] = -> { is_in_array_index }
     valids_class['Hash'] = -> { is_in_hash_keys }
     valids_class[@values.class.name].call
   end
 
+  def is_in_array_index
+    return false unless string_is_number?(@input)
+    (-1..(@values.size - 1)).to_a.include? @input.to_i
+  end
+
   def is_in_hash_keys
     @values.key?(@input.to_s.to_sym) || @values.key?(@input.to_s) || @values.key?(@input)
+  end
+
+  def string_is_number?(string)
+    string == string.to_i.to_s
   end
 end
