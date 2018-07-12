@@ -77,19 +77,19 @@ module RandomCreator
   end
 
   def self.head(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :head, 'Random Head')
+    Wearable.new(stats_equipment(difficulty), :head, head_name)
   end
 
   def self.chest(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :chest, 'Random Chest')
+    Wearable.new(stats_equipment(difficulty), :chest, chest_name)
   end
 
   def self.boots(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :boots, 'Random Boots')
+    Wearable.new(stats_equipment(difficulty), :boots, boots_name)
   end
 
   def self.weapon(difficulty = 0)
-    Weapon.new(stats_equipment(difficulty), 'Random Weapon')
+    Weapon.new(stats_equipment(difficulty), weapon_name)
   end
 
   def self.stats_equipment(difficulty = 0)
@@ -120,28 +120,28 @@ module RandomCreator
     model = ['Pointy', 'Neat', 'Shiny', 'Dirty', 'Normal', 'Boring']
     type = ['helmet', 'mask', 'glasses']
     aspect = ['beauty', 'lazyness', 'boredom']
-    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
   end
 
   def self.chest_name
-    model = ['Mail', 'Bronz', 'Steel', 'Iron', 'Normal']
+    model = ['Mail', 'Bronze', 'Steel', 'Iron', 'Normal']
     type = ['armor', 'cuirass', 'breastplate']
     aspect = ['resistence', 'awesomeness']
-    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
   end
 
   def self.boots_name
     model = ['Mail', 'Leather', 'Steel', 'Skin', 'Normal']
     type = ['boots', 'shoes', 'feets']
     aspect = ['speed', 'the unseen', 'sneakiness']
-    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
   end
 
   def self.weapon_name
     model = ['Short', 'Long', 'Double', 'Iron', 'Normal']
     type = ['sword', 'saber', 'machete']
     aspect = ['victory', 'battle', 'fighting']
-    name = "#{model.sample} #{type.sample.sample} of #{aspect.sample}"
+    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
   end
 
   def self.monster(hero, difficulty = 0)
