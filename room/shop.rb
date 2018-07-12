@@ -23,7 +23,7 @@ class Shop < Room
     super
     return no_items if out_of_items?
 
-    start_business(hero, @description)
+    prezent_wares(hero, @description)
   end
 
   def out_of_items?
@@ -41,7 +41,7 @@ class Shop < Room
 
   private
 
-  def start_business(hero, description)
+  def prezent_wares(hero, description)
     menu = get_menu(hero.description + "\n" + description, @show_value)
 
     input = menu.choice
@@ -50,12 +50,12 @@ class Shop < Room
 
     enough_money = hero.enough_money?(@input[input].stats.coins)
 
-    commence_business(hero, input) if enough_money
+    do_business(hero, input) if enough_money
 
-    start_business(hero, @not_enough_money) unless enough_money
+    prezent_wares(hero, @not_enough_money) unless enough_money
   end
 
-  def commence_business(hero, input)
+  def do_business(hero, input)
     give_item_to_hero(hero, input)
 
     return @game_over if hero.stats.hp < 1
