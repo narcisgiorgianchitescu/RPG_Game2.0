@@ -30,7 +30,7 @@ class MonsterRoom < Room
   end
 
   def you_win(hero)
-    hero.stats.coins += @input.stats.coins
+    hero.stats.coins += @input.stats.coins if @input.stats.hp < 1
 
     @game_on
   end
