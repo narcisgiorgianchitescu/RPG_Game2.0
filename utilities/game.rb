@@ -92,15 +92,18 @@ class Game
 
   def parse
     # TODO: replace with a menu
-    loop do
-      @device.print_string "Input 'left' to go left, 'right' to go right,"\
-                         "'down' to go down, 'up' to go up or 'exit' to quit.\n"
-      input = @device.input.chomp
-      return 'up' if %w[up u].include? input
-      return 'down' if %w[down d].include? input
-      return 'left' if %w[left l].include? input
-      return 'right' if %w[right r].include? input
-      return 'exit' if %w[exit e].include? input
-    end
+    description = 'Choose an option: '
+    directions = {
+      'up' => 'or w to go up',
+      'down' => 'or s to go down',
+      'left' => 'or a to go left',
+      'right' => 'to or d go right',
+      'exit' => 'to exit',
+      'a' => nil,
+      's' => nil,
+      'd' => nil,
+      'w' => nil
+    }
+    Menu.new(directions, description, @device).choice(false)
   end
 end

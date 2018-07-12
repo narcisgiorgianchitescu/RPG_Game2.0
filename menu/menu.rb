@@ -13,13 +13,14 @@ class Menu
     @exit_value = -1
   end
 
-  def choice
+  def choice(clear_screen = true)
+    @device.clear if clear_screen
     loop do
-      @device.clear
       print_description
       print_values
       @input = get_input
       break if valid?
+      @device.clear
     end
     return_input
   end
@@ -45,7 +46,6 @@ class Menu
   def print_values
     @values.each_with_index do |string_option, index|
       print_values_on_type(index, string_option)
-      @device.next_line
     end
     string = "Press #{@exit_value} to exit"
     @device.print_string string if @values.class.name == 'Array'
