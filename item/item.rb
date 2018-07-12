@@ -13,6 +13,7 @@ class Item
 
   def description(show_value = true)
     output = "#{@name}: #{@stats.attack} attack #{@stats.defence} defence"
+    output += " #{@stats.hp} hp" if self.class == Consumable
     output += " #{@stats.coins} coins" if show_value
     output += "\n"
     output

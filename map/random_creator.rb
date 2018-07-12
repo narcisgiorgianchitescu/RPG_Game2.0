@@ -14,6 +14,7 @@ require 'win_room'
 # TODO: Test
 module RandomCreator
   def self.difficulty_multiplier(difficulty = 0)
+    #difficulty between 0 and 10
     difficulty * -0.1 + 1.5
     # TODO solution?
   end

@@ -14,24 +14,31 @@ class Menu
   end
 
   def choice
-    input = nil
     loop do
       @device.clear
-      @device.print_string @description
-      @device.next_line
+      print_description
       print_values
-      input = @device.input.chomp
-      break if valid? input
+      @input = get_input
+      break if valid?
     end
-    return_input(input)
+    return_input
   end
 
   private
 
-  def return_input(input)
+  def get_input
+    @device.input.chomp
+  end
+
+  def print_description
+    @device.print_string @description
+    @device.next_line
+  end
+
+  def return_input
     print_return_input = {}
-    print_return_input['Array'] = -> { input.to_i }
-    print_return_input['Hash'] = -> { input }
+    print_return_input['Array'] = -> { @input.to_i }
+    print_return_input['Hash'] = -> { @input }
     print_return_input[@values.class.name].call
   end
 
@@ -49,15 +56,19 @@ class Menu
     # TODO: change to class constant
     print_values_class = {}
     print_values_class['Array'] = -> { @device.print_string "#{index}. #{string_option}"}
-    print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}"}
+    print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}" if  string_option[1]}
     print_values_class[@values.class.name].call
   end
 
-  def valid?(input)
+  def valid?
     # TODO: change to class constant
     valids_class = {}
-    valids_class['Array'] = -> { (-1..(@values.size - 1)).to_a.include? input.to_i }
-    valids_class['Hash'] = -> { @values.has_key?(input.to_s.to_sym) || @values.has_key?("#{input}") || @values.has_key?(input.to_i) || @values.has_key?(input.to_s) || @values.has_key?(input) }
+    valids_class['Array'] = -> { (-1..(@values.size - 1)).to_a.include? @input.to_i }
+    valids_class['Hash'] = -> { is_in_hash_keys }
     valids_class[@values.class.name].call
+  end
+
+  def is_in_hash_keys
+    @values.key?(@input.to_s.to_sym) || @values.key?(@input.to_s) || @values.key?(@input)
   end
 end
