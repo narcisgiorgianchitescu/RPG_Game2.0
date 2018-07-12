@@ -6,7 +6,7 @@ require 'menu'
 require 'io_interface'
 
 class TestRandomCreator < Test::Unit::TestCase
-  def test_valid_input
+  def test_valid_input_array
     device = IOinterface.new
     def device.input
       '1'
@@ -15,7 +15,7 @@ class TestRandomCreator < Test::Unit::TestCase
     assert_equal menu.choice, 1
   end
 
-  def test_exit
+  def test_exit_array
     device = IOinterface.new
     def device.input
       '-1'
@@ -24,7 +24,7 @@ class TestRandomCreator < Test::Unit::TestCase
     assert_equal menu.choice, -1
   end
 
-  def test_invalid_option
+  def test_invalid_option_array
     device = IOinterface.new
     def device.input
       ret = if @first
@@ -37,5 +37,31 @@ class TestRandomCreator < Test::Unit::TestCase
     end
     menu = Menu.new(%w[a b c], '', device)
     assert_equal menu.choice, 1
+  end
+
+  def test_valid_input_hash
+    device = IOinterface.new
+    def device.input
+      'a'
+    end
+    choices = { 'a' => 'choice a', 'b ' => 'choice b' }
+    menu = Menu.new(choices, '', device)
+    assert_equal menu.choice, 'a'
+  end
+
+  def test_invalid_option_hash
+    device = IOinterface.new
+    def device.input
+      ret = if @first
+              'f'
+            else
+              'a'
+            end
+      @first ||= true
+      ret
+    end
+    choices = { 'a' => 'choice a', 'b ' => 'choice b' }
+    menu = Menu.new(choices, '', device)
+    assert_equal menu.choice, 'a'
   end
 end
