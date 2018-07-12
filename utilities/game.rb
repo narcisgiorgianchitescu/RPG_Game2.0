@@ -26,6 +26,11 @@ class Game
   end
 
   private
+
+  def string_is_number?(string)
+    string == string.to_i.to_s
+  end
+
   def set_hero
     @device.clear
     @device.puts_string 'Input the hero name'
@@ -38,11 +43,11 @@ class Game
     option = 0
     loop do
       @device.puts_string 'Input dificulty - between 0 to 10'
-      option = @device.input.to_i
-      break if (0..10).include? option
+      option = @device.input
+      break if ((0..10).include? option.to_i) && (string_is_number?(option.to_s.chomp))
       @device.clear
     end
-    option
+    option.to_i
   end
 
   def set_map(difficulty)
