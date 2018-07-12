@@ -3,6 +3,7 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'stats'
 
+# a generic item class
 class Item
   attr_accessor :stats, :name
   def initialize(stats = nil, name = 'Item')
