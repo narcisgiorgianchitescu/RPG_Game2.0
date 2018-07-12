@@ -30,7 +30,7 @@ class TestRandomCreator < Test::Unit::TestCase
       ret = if @first
               '1'
             else
-              '5'
+              'l'
             end
       @first ||= true
       ret
