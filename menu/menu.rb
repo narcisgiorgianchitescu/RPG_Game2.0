@@ -55,8 +55,8 @@ class Menu
   def print_values_on_type(index, string_option)
     # TODO: change to class constant
     print_values_class = {}
-    print_values_class['Array'] = -> { print_value_array(index, string_option)}
-    print_values_class['Hash'] = -> { print_value_hash(string_option)}
+    print_values_class['Array'] = -> { print_value_array(index, string_option) }
+    print_values_class['Hash'] = -> { print_value_hash(string_option) }
     print_values_class[@values.class.name].call
   end
 
@@ -76,18 +76,19 @@ class Menu
     # TODO: change to class constant
 
     valids_class = {}
-    valids_class['Array'] = -> { is_in_array_index }
-    valids_class['Hash'] = -> { is_in_hash_keys }
+    valids_class['Array'] = -> { in_array_index? }
+    valids_class['Hash'] = -> { in_hash_keys? }
     valids_class[@values.class.name].call
   end
 
-  def is_in_array_index
+  def in_array_index?
     return false unless string_is_number?(@input)
     (-1..(@values.size - 1)).to_a.include? @input.to_i
   end
 
-  def is_in_hash_keys
-    @values.key?(@input.to_s.to_sym) || @values.key?(@input.to_s) || @values.key?(@input)
+  def in_hash_keys?
+    @values.key?(@input.to_s.to_sym) || @values.key?(@input.to_s) ||
+      @values.key?(@input)
   end
 
   def string_is_number?(string)

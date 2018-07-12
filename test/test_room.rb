@@ -14,10 +14,9 @@ require 'wearable'
 
 require 'room_factory'
 
-require 'minitest/autorun'
 require 'test/unit'
 
-class TestGameRoom < MiniTest::Test
+class TestGameRoom < Test::Unit::TestCase
   def setup; end
 #-------------------------------------------------------------------
 #RoomFactory
@@ -47,7 +46,7 @@ class TestGameRoom < MiniTest::Test
     assert_equal(MonsterRoom, r.class, 'Wrong answer')
   end
 
-  def test_create_room
+  def test_create_room2
     r = RoomFactory.create(:winroom)
     assert_equal(WinRoom, r.class, 'Wrong answer')
   end
@@ -113,20 +112,42 @@ class TestGameRoom < MiniTest::Test
   end
 
   def test_shop_give_item_to_hero
-    s = Shop.new(true, [Wearable.new])
+    s = Shop.new(true, [Wearable.new, Wearable.new])
     s.input[0].stats.attack = 10
+    s.input[0].stats.coins = 10
     h = Hero.new
-    s.give_item_to_hero(h, 0)
-    assert_equal(10, h.equipment.head.stats.attack, 'Wrong answer')
+    device = IOinterface.new
+    def device.input
+      '0'
+    end
+    h.stats.coins = 100
+    s.set_device(device)
+    s.action(h)
+    rez = Hero.new.stats.attack + 10
+    assert_equal(rez, h.stats.attack, 'Attack not modified')
   end
 
   def test_shop_take_money
-    s = Shop.new(true, [Wearable.new])
-    s.input[0].stats.coins = 10
+    s = Shop.new(true, [Wearable.new, Wearable.new])
+    item_price = 10
+    s.input[0].stats.attack = 10
+    s.input[0].stats.coins = item_price
     h = Hero.new
-    h.stats.coins = 20
-    s.take_money(h, 0)
-    assert_equal(10, h.stats.coins, 'Wrong answer')
+    device = IOinterface.new
+    def device.input
+      # ret = if @first
+      #         '-1'
+      #       else
+      #         '0'
+      #       end
+      # @first ||= true
+      # ret
+      '0'
+    end
+    h.stats.coins = 100
+    s.set_device(device)
+    s.action(h)
+    assert_equal(100 - item_price, h.stats.coins, 'No coins taken')
   end
 
   def test_shop_recalculate_supply
