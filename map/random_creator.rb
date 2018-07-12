@@ -120,7 +120,7 @@ module RandomCreator
     case rand(1..100)
     when 1..90 then Monster.new(stats_monster(hero, difficulty), monster_name, rand(0..100))
     when 91..95 then Monster.new(stats_monster(hero, 7), 'Samson', rand(0..100))
-    when 96..98 then Monster.new(stats_monster(hero, 9), 'Fat dudes', rand(0..100))
+    when 96..98 then Monster.new(stats_monster(hero, 9), 'Monkey King', rand(0..100))
     when 99 then Monster.new(stats_monster(hero, 10), 'Mojojojo', rand(0..100))
     when 100 then Monster.new(stats_monster(hero, 12), 'Politehnica', rand(0..100))
     end
