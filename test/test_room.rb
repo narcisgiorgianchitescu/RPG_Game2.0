@@ -46,7 +46,7 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal(MonsterRoom, r.class, 'Wrong answer')
   end
 
-  def test_create_room
+  def test_create_room2
     r = RoomFactory.create(:winroom)
     assert_equal(WinRoom, r.class, 'Wrong answer')
   end

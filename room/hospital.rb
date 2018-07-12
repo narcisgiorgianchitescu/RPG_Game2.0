@@ -38,7 +38,8 @@ class Hospital < Room
   private
 
   def get_input(description, hero)
-    menu = Menu.new(@options, hero.description(false) + "\n" + description, @device)
+    menu = Menu.new(@options, hero.description(false) + "\n" + description,
+                    @device)
     input = menu.choice
     return @game_on if input == menu.exit_value
     enough_money = hero.enough_money?(@input[input].last)
