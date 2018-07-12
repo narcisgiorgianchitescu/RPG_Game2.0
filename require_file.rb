@@ -1,11 +1,6 @@
 main_folder = File.dirname(__FILE__)
 $LOAD_PATH << main_folder
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'room'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'test'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'character'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'io'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'item'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'map'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'utilities'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'menu'))
-$LOAD_PATH.unshift File.expand_path(File.join(main_folder, 'combat'))
+folders = %w[room test character io item map utilities menu combat]
+folders.each do |folder|
+  $LOAD_PATH.unshift File.expand_path(File.join(main_folder, folder))
+end

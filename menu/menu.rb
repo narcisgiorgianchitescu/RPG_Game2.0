@@ -28,7 +28,7 @@ class Menu
   private
 
   def get_input
-    @device.input.chomp
+    @device.input
   end
 
   def print_description

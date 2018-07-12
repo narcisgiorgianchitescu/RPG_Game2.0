@@ -1,5 +1,5 @@
 binpath = File.dirname(__FILE__)
-$LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
+$LOAD_PATH.unshift File.expand_path(binpath)
 require 'require_file'
 require 'io_interface'
 require 'hero'
@@ -38,13 +38,13 @@ class Game
     Hero.new(stats, nil, @device.input.chomp)
   end
 
-  def set_difficulty
+  def set_difficulty(range = (0..10), recommended_difficulty = 4)
     @device.clear
     option = 0
     loop do
-      @device.puts_string 'Input dificulty - between 0 to 10 - preferable 4'
+      @device.puts_string "Input dificulty - between #{range.min} to #{range.max} - preferable #{recommended_difficulty}"
       option = @device.input
-      break if ((0..10).include? option.to_i) && (string_is_number?(option.to_s.chomp))
+      break if (range.include? option.to_i) && (string_is_number?(option.to_s))
       @device.clear
     end
     option.to_i
@@ -102,7 +102,7 @@ class Game
     direction = option
     next_position = @hero_cursor.next direction
     return false unless @map.valid_position? next_position
-    @hero_cursor.position = @hero_cursor.move direction
+    @hero_cursor.move direction
     position = @hero_cursor.position
     room = @map.room position
     room.action @hero
