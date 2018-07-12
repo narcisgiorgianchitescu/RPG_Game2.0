@@ -25,10 +25,10 @@ class Equipment
   end
 
   def description(show_value = true)
-    output = 'Head: ' + @head.description(show_value) + "\n"
-    output += 'Chest: ' + @chest.description(show_value) + "\n"
-    output += 'Boots: ' + @boots.description(show_value) + "\n"
-    output += 'Weapon: ' + @weapon.description(show_value) + "\n"
+    output = 'Head: ' + @head.description(show_value)
+    output += 'Chest: ' + @chest.description(show_value)
+    output += 'Boots: ' + @boots.description(show_value)
+    output += 'Weapon: ' + @weapon.description(show_value)
     output
   end
 end

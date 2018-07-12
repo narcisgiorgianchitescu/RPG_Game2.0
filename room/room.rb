@@ -35,7 +35,7 @@ class Room
   end
 
   def items_description(items, value)
-    items.map { |item| item.description(value) }
+    items.map { |item| item.description(value).chomp }
   end
 
   def give_item_to_hero(hero, input)
