@@ -126,30 +126,7 @@ class TestGameRoom < Test::Unit::TestCase
     rez = Hero.new.stats.attack + 10
     assert_equal(rez, h.stats.attack, 'Attack not modified')
   end
-
-  def test_shop_take_money
-    s = Shop.new(true, [Wearable.new, Wearable.new])
-    item_price = 10
-    s.input[0].stats.attack = 10
-    s.input[0].stats.coins = item_price
-    h = Hero.new
-    device = IOinterface.new
-    def device.input
-      # ret = if @first
-      #         '-1'
-      #       else
-      #         '0'
-      #       end
-      # @first ||= true
-      # ret
-      '0'
-    end
-    h.stats.coins = 100
-    s.set_device(device)
-    s.action(h)
-    assert_equal(100 - item_price, h.stats.coins, 'No coins taken')
-  end
-
+  
   def test_shop_recalculate_supply
     s = Shop.new(true, [Item.new, Item.new])
     s.recalculate_supply(1)
