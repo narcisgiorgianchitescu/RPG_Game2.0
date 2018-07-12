@@ -40,7 +40,7 @@ class IOterminal < IOinterface
   end
 
   def input
-    gets
+    gets.chomp
   end
 
   def print_map(map, cursor)
