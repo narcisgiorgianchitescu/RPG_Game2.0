@@ -88,14 +88,14 @@ class TestGameRoom < MiniTest::Test
   def test_room_items_description_with_parameter_and_value
     i = Item.new
     room = Room.new(true, [i])
-    rez = [i.description(true)]
+    rez = [i.description(true).chomp]
     assert_equal(rez, room.items_description(room.input, true), 'Wrong answer')
   end
 
   def test_room_items_description_with_parameter_and_no_value
     i = Item.new
     room = Room.new(true, [i])
-    rez = [i.description(false)]
+    rez = [i.description(false).chomp]
     assert_equal(rez, room.items_description(room.input, false), 'Wrong answer')
   end
 
