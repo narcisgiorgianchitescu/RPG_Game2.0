@@ -56,7 +56,7 @@ class Menu
     # TODO: change to class constant
     print_values_class = {}
     print_values_class['Array'] = -> { @device.print_string "#{index}. #{string_option}"}
-    print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}"}
+    print_values_class['Hash'] = -> { @device.print_string "#{string_option[0]} #{string_option[1]}" if  string_option[1]}
     print_values_class[@values.class.name].call
   end
 
@@ -69,6 +69,6 @@ class Menu
   end
 
   def is_in_hash_keys
-    @values.key?(@input.to_s.to_sym)  || @values.key?(@input.to_s) || @values.key?(@input)
+    @values.key?(@input.to_s.to_sym) || @values.key?(@input.to_s) || @values.key?(@input)
   end
 end
