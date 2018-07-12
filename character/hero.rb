@@ -54,4 +54,8 @@ class Hero < Character
     @equipment.weapon = weapon
     @stats.change_stats(equipment.weapon.stats, :+)
   end
+
+  def take_money(amount)
+    @stats.coins -= amount
+  end
 end
