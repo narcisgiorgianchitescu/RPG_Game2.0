@@ -61,7 +61,7 @@ class Combat
   def show_damage(hero_taken_damage, monster_taken_damage, user_choice,
                   monster_choice)
     @device.clear
-    current_stats = @hero.description + "\n" + @monster.description
+    current_stats = @hero.description(false) + "\n" + @monster.description
     @device.print_string current_stats
     string = "Hero chose to #{SYMBOLS[user_choice]} and dealt "\
              "#{monster_taken_damage}\nMonster chose to "\
@@ -100,7 +100,8 @@ class Combat
   end
 
   def user_interaction
-    description = @hero.description + "\n" + @monster.description
+    description = "You are in a monster room\n\n"
+    description += @hero.description(false) + "\n" + @monster.description
     options = { 'a' => 'attack', 'd' => 'defend', 'r' => 'run' }
     Menu.new(options, description, @device).choice
   end

@@ -26,8 +26,9 @@ class Hero < Character
     end
   end
 
-  def description
-    return (super + @equipment.description)
+  def description(with_equipment = true)
+    return super unless with_equipment
+    (super + @equipment.description)
   end
 
   # private
