@@ -23,7 +23,7 @@ class Shop < Room
     super
     return no_items if out_of_items?
 
-    start_business(hero, @description)
+    prezent_wares(hero, @description)
   end
 
   def out_of_items?
