@@ -62,7 +62,7 @@ module RandomCreator
   end
 
   def self.consumable(difficulty = 0)
-    Consumable.new(consumable_stats(difficulty), 'Random Consumable')
+    Consumable.new(consumable_stats(difficulty), consumable_name)
   end
 
   def self.consumable_stats(difficulty = 0)
