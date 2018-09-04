@@ -1,3 +1,9 @@
 # RubyTextRPG
 
-A simple text based RPG game made with Ruby.
+The game requires Ruby, you can install it by apt-get install ruby or manual download.
+
+1. Clone the repo in your pc.
+2. Open terminal(CTRL+ALT+T)
+3. cd to RPG_Game2.0
+4. Write "ruby play.rb" 
+
