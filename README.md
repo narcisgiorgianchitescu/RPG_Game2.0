@@ -1,13 +1,13 @@
 # RubyTextRPG - Our amazing anventure game
 
-First of all, we want to thank Sava and Irina, 2Performant's developers, for the useful feedback and wise suggestions
+First of all, we want to thank Sava, Irina and Eugeniu, 2Performant's developers, for the useful feedback and wise suggestions
 
 A short game description: 
 
 This is a game made by [Narcis Chitescu](https://github.com/narcisgiorgianchitescu), [Catalin Dragutescu](https://github.com/catalindrg), [Mihai Ionescu](https://github.com/Mihai23I) and [Cristian Dogaru](https://github.com/Versatyl) in August 2018 as interns at 2Performant. Its purpose was to learn Ruby and elegant programming by making a fun project.
 
-The game starts with the hero (marked as X) positioned on the left corner of the map and the target is to reach de winning room marked with "W" on the map.
-Be careful, your hero can pass through lair-rooms where the monsters can kill him. Fortunetly, hero can attack, defend or run away.
+The game starts with the hero (marked as X) positioned on the left corner of the map and the target is to reach the winning room marked with "W" on the map.
+Be careful, your hero can pass through lair-rooms where the monsters can kill him. Fortunately,the hero can attack, defend or run away.
 The hero has a certain amount of money when the game starts, but he can take the monsters' coins once he killed them.
 Across the map your character can find Shops or Vaults and refill his energy with potions or buy weapons and special equipment, he can also go to Hospital and get better after a fight. 
 The game has other hidden rooms that wait to be opened. Good luck! 
