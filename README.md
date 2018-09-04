@@ -14,7 +14,7 @@ The game has other hidden rooms that wait to be opened. Good luck!
 
 Here are some intructions to play the game.
 
-The game requires Ruby, if you didn't use it, you can install it by apt-get install ruby or manual download.
+The game requires [Ruby](https://www.ruby-lang.org/en/), if you didn't use it, you can install it by apt-get install ruby or manual download.
 After that:
 
 1. Clone the repo in your pc.
