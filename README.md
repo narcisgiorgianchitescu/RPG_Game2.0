@@ -1,6 +1,10 @@
-# RubyTextRPG
+# RubyTextRPG - Our amazing anventure game
 
-Our amazing anventure game. You will be the hero (X) and you have to reach de winning room marked with "W" on the map.
+First of all, we want to thank Sava and Irina, 2Performant's developers, for the useful feedback and wise suggestions.
+
+A short game description: 
+
+You will be the hero (X) and you have to reach de winning room marked with "W" on the map.
 Be careful, you will pass through lair-rooms where the monsters can kill you. Fortunetly, you can attack, defend or run away.
 The hero has a certain amount of money when the game starts, but he can take the monster's coins once he killed them.
 Across the map you can find Shops or Vaults and refill your energy with potions or buy weapons and special equipment, you can go to Hospital and get better after a fight. 
