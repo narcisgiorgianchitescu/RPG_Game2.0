@@ -1,8 +1,10 @@
 # RubyTextRPG - Our amazing anventure game
 
-First of all, we want to thank Sava and Irina, 2Performant's developers, for the useful feedback and wise suggestions.
+First of all, we want to thank Sava and Irina, 2Performant's developers, for the useful feedback and wise suggestions
 
 A short game description: 
+
+This is a game made by [Narcis Chitescu](https://github.com/narcisgiorgianchitescu), Catalin Dragutescu, Mihai Ionescu and Cristian Dogaru in August 2018 as interns at 2Performant. Its purpose was to learn Ruby 
 
 You will be the hero (X) and you have to reach de winning room marked with "W" on the map.
 Be careful, you will pass through lair-rooms where the monsters can kill you. Fortunetly, you can attack, defend or run away.
