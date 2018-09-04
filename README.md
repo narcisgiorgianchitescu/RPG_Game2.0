@@ -18,7 +18,7 @@ The game requires [Ruby](https://www.ruby-lang.org/en/), if you didn't use it, y
 After that:
 
 1. Clone the repo in your pc.
-2. Open terminal(CTRL+ALT+T)
+2. Open terminal(CTRL+ALT+T on Linux or PowerShell on Windows)
 3. cd to RPG_Game2.0
 4. Write "ruby play.rb" 
 
