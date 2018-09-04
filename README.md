@@ -25,9 +25,7 @@ After that:
 
 7. Set map's size
 
-![alt text](https://github.com/narcisgiorgianchitescu/RPG_Game2.0/blob/master/utilities/photos/diff.png)
-
-https://github.com/narcisgiorgianchitescu/RPG_Game2.0/blob/master/utilities/photos/mapsize.png 
+![alt text](https://github.com/narcisgiorgianchitescu/RPG_Game2.0/blob/master/utilities/photos/mapsize.png )
 
 8. You can move un the map by using 'a', 's', 'd' and 'w' keys. Be careful at monsters! 
 
