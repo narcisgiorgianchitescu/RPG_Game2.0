@@ -27,6 +27,10 @@ After that:
 
 ![alt text](https://github.com/narcisgiorgianchitescu/RPG_Game2.0/blob/master/utilities/photos/mapsize.png )
 
+The game should look like this 
+
+![alt text](https://github.com/narcisgiorgianchitescu/RPG_Game2.0/blob/master/utilities/photos/gameview.png)
+
 8. You can move un the map by using 'a', 's', 'd' and 'w' keys. Be careful at monsters! 
 
 9. Here is a shop view
