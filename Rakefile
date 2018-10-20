@@ -1,15 +1,12 @@
 task default: %w[test]
-
+# TODO: Add 'test/test_map_generator.rb' to tests.
+tests = ['test/test_hero.rb', 'test/test_map.rb',
+         'test/test_room.rb', 'test/test_stats.rb',
+         'test/test_cursor.rb', 'test/test_character.rb',
+         'test/test_combat.rb', 'test/test_monster.rb',
+         'test/test_random_creator.rb', 'test/test_menu.rb']
 task :test do
-  ruby 'test/test_hero.rb'
-  ruby 'test/test_map.rb'
-  ruby 'test/test_room.rb'
-  ruby 'test/test_stats.rb'
-  ruby 'test/test_cursor.rb'
-  ruby 'test/test_character.rb'
-  # ruby 'test/test_map_generator.rb'
-  ruby 'test/test_combat.rb'
-  ruby 'test/test_monster.rb'
-  ruby 'test/test_random_creator.rb'
-  ruby 'test/test_menu.rb'
+  tests.each do |test_file|
+    ruby test_file
+  end
 end
