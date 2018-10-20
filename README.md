@@ -1,4 +1,4 @@
-# RubyTextRPG - Our amazing anventure game
+# RubyTextRPG - Our amazing adventure game
 
 First of all, we want to thank Sava, Irina and Eugeniu, 2Performant's developers, for the useful feedback and wise suggestions
 
