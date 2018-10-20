@@ -13,7 +13,7 @@ class TestHero < Test::Unit::TestCase
     h = Hero.new
     cons = Consumable.new
     cons.stats.hp = 10
-    h.send(:use_consumable, cons)
+    h.use_consumable(cons)
     assert_equal(h.stats.hp, 10)
   end
 
@@ -22,7 +22,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'head'
     w.stats.attack = 1
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.equipment.head, w)
   end
 
@@ -31,7 +31,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'head'
     w.stats.attack = 1
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.stats.attack, 1)
   end
 
@@ -40,7 +40,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'chest'
     w.stats.defence = 2
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.equipment.chest, w)
   end
 
@@ -49,7 +49,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'chest'
     w.stats.defence = 2
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.stats.defence, 2)
   end
 
@@ -58,7 +58,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'boots'
     w.stats.attack = 3
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.equipment.boots, w)
   end
 
@@ -67,7 +67,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'boots'
     w.stats.attack = 3
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.stats.attack, 3)
   end
 
@@ -75,7 +75,7 @@ class TestHero < Test::Unit::TestCase
     h = Hero.new
     w = Weapon.new
     w.stats.attack = 7
-    h.send(:change_weapon, w)
+    h.change_weapon(w)
     assert_equal(h.equipment.weapon, w)
   end
 
@@ -84,7 +84,7 @@ class TestHero < Test::Unit::TestCase
       h.stats.attack = 4
       w = Weapon.new
       w.stats.attack = 7
-      h.send(:change_weapon, w)
+      h.change_weapon(w)
       assert_equal(h.stats.attack, 11)
   end
 
@@ -94,7 +94,7 @@ class TestHero < Test::Unit::TestCase
     w = Wearable.new
     w.type = 'boots'
     w.stats.defence = 3
-    h.send(:change_wearable, w)
+    h.change_wearable(w)
     assert_equal(h.stats.defence, 5)
   end
 
