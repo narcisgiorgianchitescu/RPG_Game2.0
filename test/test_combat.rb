@@ -12,10 +12,6 @@ class TestCombat < Minitest::Test
     def rand
       1
     end
-
-    def rand(_n)
-      1
-    end
   end
 
   def test_monster_dies
