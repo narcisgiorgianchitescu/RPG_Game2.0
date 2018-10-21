@@ -33,7 +33,11 @@ class Game
 
   def set_hero
     @device.clear
-    @device.puts_string 'Input the hero name'
+    @device.puts_string 'TIP: For a better experience, press F11 to go full-screen'
+    @device.puts_string 'Press any key to continue... '
+    @device.input
+    @device.clear
+    @device.puts_string 'Welcome to our adventure! Input the hero name...'
     stats = Stats.new(attack: 15, defence: 10, hp: 100, coins: 25)
     Hero.new(stats, nil, @device.input.chomp)
   end
@@ -71,9 +75,9 @@ class Game
     @device.clear
     option = 0
     loop do
-      @device.puts_string 'Introduce the size of the map (between 8 and 20)'
+      @device.puts_string 'Introduce the size of the map (between 8 and 16)'
       option = @device.input
-      break if ((8..20).include? option.to_i) && (string_is_number?(option.to_s.chomp))
+      break if ((8..16).include? option.to_i) && (string_is_number?(option.to_s.chomp))
       @device.clear
     end
     option.to_i
@@ -98,6 +102,7 @@ class Game
 
   def do_move
     option = parse
+    @device.puts_string(option)  
     return true if option == 'exit'
     direction = option
     next_position = @hero_cursor.next direction
@@ -121,7 +126,7 @@ class Game
       's' => nil,
       'd' => nil,
       'w' => nil
-    }
+    } 
     Menu.new(directions, description, @device).choice(false)
   end
 end
