@@ -4,6 +4,7 @@ require 'require_file'
 require 'stats'
 require 'test/unit'
 require 'monster'
+require 'test_helper'
 
 class TestMonster < Test::Unit::TestCase
   def test_escape_chance

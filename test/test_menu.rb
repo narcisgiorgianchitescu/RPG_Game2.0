@@ -4,6 +4,7 @@ require 'require_file'
 require 'test/unit'
 require 'menu'
 require 'io_interface'
+require 'test_helper'
 
 class TestRandomCreator < Test::Unit::TestCase
   def test_valid_input_array

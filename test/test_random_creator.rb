@@ -4,6 +4,7 @@ require 'require_file'
 require 'test/unit'
 require 'random_creator'
 require 'position'
+require 'test_helper'
 
 class TestRandomCreator < Test::Unit::TestCase
   def setup

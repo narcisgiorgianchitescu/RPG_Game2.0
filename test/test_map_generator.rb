@@ -8,6 +8,7 @@ require 'map_generator'
 require 'hero'
 require 'room'
 require 'test/unit'
+require 'test_helper'
 
 class TestPosition < Test::Unit::TestCase
   def setup; end

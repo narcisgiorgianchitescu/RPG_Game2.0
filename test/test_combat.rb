@@ -6,6 +6,7 @@ require 'monster'
 require 'minitest/autorun'
 require 'io_interface'
 require 'combat'
+require 'test_helper'
 
 class TestCombat < Minitest::Test
   def setup

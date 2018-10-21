@@ -5,6 +5,7 @@ require 'minitest/autorun'
 require 'map'
 require 'test/unit'
 require 'position'
+require 'test_helper'
 
 # test for Map class
 class TestMap  < Test::Unit::TestCase

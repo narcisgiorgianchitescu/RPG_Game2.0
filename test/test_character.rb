@@ -4,6 +4,7 @@ require 'require_file'
 require 'test/unit'
 require 'character'
 require 'stats'
+require 'test_helper'
 
 
 class TestCharacter < Test::Unit::TestCase

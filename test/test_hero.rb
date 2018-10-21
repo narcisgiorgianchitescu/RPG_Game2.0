@@ -7,6 +7,7 @@ require 'character'
 require 'stats'
 require 'weapon'
 require 'consumable'
+require 'test_helper'
 
 class TestHero < Test::Unit::TestCase
   def test_use_consumable

@@ -3,6 +3,7 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'stats'
 require 'test/unit'
+require 'test_helper'
 
 class TestStats < Test::Unit::TestCase
   def test_initialization_with_hash
