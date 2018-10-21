@@ -78,19 +78,19 @@ module RandomCreator
   end
 
   def self.head(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :head, build_name('utilities/names.json', "head_names"))
+    Wearable.new(stats_equipment(difficulty), :head, build_name('utilities/names.json', 'head_names'))
   end
 
   def self.chest(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :chest, build_name('utilities/names.json', "chest_names"))
+    Wearable.new(stats_equipment(difficulty), :chest, build_name('utilities/names.json', 'chest_names'))
   end
 
   def self.boots(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :boots, build_name('utilities/names.json', "boots_names"))
+    Wearable.new(stats_equipment(difficulty), :boots, build_name('utilities/names.json', 'boots_names'))
   end
 
   def self.weapon(difficulty = 0)
-    Weapon.new(stats_equipment(difficulty), build_name('utilities/names.json', "weapon_names"))
+    Weapon.new(stats_equipment(difficulty), build_name('utilities/names.json', 'weapon_names'))
   end
 
   def self.stats_equipment(difficulty = 0)
@@ -120,11 +120,11 @@ module RandomCreator
   def self.build_name(json_file, key)
     json_obj = JSON.parse(File.read(json_file))
     data = json_obj[key]
-    "#{data["model"].sample} #{data["type"].sample.upcase} of #{data["aspect"].sample}"
+    "#{data['model'].sample} #{data['type'].sample.upcase} of #{data['aspect'].sample}"
   end
 
   def self.consumable_name
-    self.build_name('utilities/names.json', "consumable_names")
+    build_name('utilities/names.json', 'consumable_names')
   end
 
   def self.monster(hero, difficulty = 0)

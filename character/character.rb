@@ -19,7 +19,7 @@ class Character
     @stats.coins >= money
   end
 
-  def description(with_equipment = true)
+  def description(_with_equipment = true)
     "#{@name} has the following stats\n" + @stats.description
   end
 end

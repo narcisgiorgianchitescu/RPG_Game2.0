@@ -18,8 +18,8 @@ require 'test/unit'
 
 class TestGameRoom < Test::Unit::TestCase
   def setup; end
-#-------------------------------------------------------------------
-#RoomFactory
+  #-------------------------------------------------------------------
+  # RoomFactory
 
   def test_create_room
     r = RoomFactory.create(:room)
@@ -51,8 +51,8 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal(WinRoom, r.class, 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
-#Room
+  #-------------------------------------------------------------------
+  # Room
 
   def test_room_get_hidden
     assert_equal(true, Room.new.hidden, 'Wrong answer')
@@ -98,8 +98,8 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal(rez, room.items_description(room.input, false), 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
-#Shop
+  #-------------------------------------------------------------------
+  # Shop
 
   def test_shop_true_for_out_of_items?
     s = Shop.new(true, [])
@@ -126,15 +126,15 @@ class TestGameRoom < Test::Unit::TestCase
     rez = Hero.new.stats.attack + 10
     assert_equal(rez, h.stats.attack, 'Attack not modified')
   end
-  
+
   def test_shop_recalculate_supply
     s = Shop.new(true, [Item.new, Item.new])
     s.recalculate_supply(1)
     assert_equal(1, s.input.size, 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
-#Vault
+  #-------------------------------------------------------------------
+  # Vault
 
   def test_vault_give_item
     v = Vault.new(true, [Wearable.new])
@@ -163,8 +163,8 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal(true, v.output(h), 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
-#Hospital
+  #-------------------------------------------------------------------
+  # Hospital
 
   def test_hospital_heal_hero
     h = Hospital.new(true, [[5, 5]])
@@ -182,8 +182,8 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal(5, hero.stats.coins, 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
-#WinRoom
+  #-------------------------------------------------------------------
+  # WinRoom
 
   def test_winroom_action_rez_room_data
     w = WinRoom.new
@@ -191,5 +191,5 @@ class TestGameRoom < Test::Unit::TestCase
     assert_equal(w.you_win, w.action(h), 'Wrong answer')
   end
 
-#-------------------------------------------------------------------
+  #-------------------------------------------------------------------
 end

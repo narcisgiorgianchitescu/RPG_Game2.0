@@ -13,7 +13,7 @@ class TestCombat < Minitest::Test
       1
     end
 
-    def rand n
+    def rand(_n)
       1
     end
   end

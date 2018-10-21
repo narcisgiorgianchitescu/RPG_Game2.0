@@ -44,7 +44,8 @@ class Game
     loop do
       @device.puts_string "Input dificulty - between #{range.min} to #{range.max} - preferable #{recommended_difficulty}"
       option = @device.input
-      break if (range.include? option.to_i) && (string_is_number?(option.to_s))
+      break if (range.include? option.to_i) && string_is_number?(option.to_s)
+
       @device.clear
     end
     option.to_i
@@ -73,7 +74,8 @@ class Game
     loop do
       @device.puts_string 'Introduce the size of the map (between 8 and 20)'
       option = @device.input
-      break if ((8..20).include? option.to_i) && (string_is_number?(option.to_s.chomp))
+      break if ((8..20).cover? option.to_i) && string_is_number?(option.to_s.chomp)
+
       @device.clear
     end
     option.to_i
@@ -99,9 +101,11 @@ class Game
   def do_move
     option = parse
     return true if option == 'exit'
+
     direction = option
     next_position = @hero_cursor.next direction
     return false unless @map.valid_position? next_position
+
     @hero_cursor.move direction
     position = @hero_cursor.position
     room = @map.room position
