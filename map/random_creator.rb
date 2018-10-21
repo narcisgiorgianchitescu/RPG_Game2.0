@@ -71,10 +71,13 @@ module RandomCreator
   end
 
   def self.stats_consumable(difficulty = 0)
-    { attack: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
-      defence: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
+    attack = (rand(-1..2) * difficulty_multiplier(difficulty)).to_i
+    defence = (rand(-1..2) * difficulty_multiplier(difficulty)).to_i
+    hp = ( ( (attack == -1 || defence == -1) ? rand(1..5) : rand(-1..5) ) * difficulty_multiplier(difficulty)).to_i
+    { attack: attack,
+      defence: defence,
       coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
-      hp: ((attack == -1 || defence == -1) ? rand(1..5) : rand(-1..5) * difficulty_multiplier(difficulty)).to_i }
+      hp: hp }
   end
 
   def self.head(difficulty = 0)
