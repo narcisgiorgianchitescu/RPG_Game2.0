@@ -3,9 +3,9 @@ $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'hero'
 require 'monster'
-require 'minitest/autorun'
 require 'io_interface'
 require 'combat'
+require 'test_helper'
 
 class TestCombat < Minitest::Test
   def setup

@@ -1,14 +1,14 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'test/unit'
 require 'hero'
 require 'character'
 require 'stats'
 require 'weapon'
 require 'consumable'
+require 'test_helper'
 
-class TestHero < Test::Unit::TestCase
+class TestHero < Minitest::Test
   def test_use_consumable
     h = Hero.new
     cons = Consumable.new

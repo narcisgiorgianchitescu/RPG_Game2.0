@@ -11,16 +11,10 @@ require 'hero'
 require 'io_terminal'
 require 'item'
 require 'wearable'
-
 require 'room_factory'
+require 'test_helper'
 
-require 'test/unit'
-
-class TestGameRoom < Test::Unit::TestCase
-  def setup; end
-#-------------------------------------------------------------------
-#RoomFactory
-
+class TestGameRoom < Minitest::Test
   def test_create_room
     r = RoomFactory.create(:room)
     assert_equal(Room, r.class, 'Wrong answer')
@@ -126,7 +120,7 @@ class TestGameRoom < Test::Unit::TestCase
     rez = Hero.new.stats.attack + 10
     assert_equal(rez, h.stats.attack, 'Attack not modified')
   end
-  
+
   def test_shop_recalculate_supply
     s = Shop.new(true, [Item.new, Item.new])
     s.recalculate_supply(1)

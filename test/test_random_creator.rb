@@ -1,11 +1,11 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'test/unit'
 require 'random_creator'
 require 'position'
+require 'test_helper'
 
-class TestRandomCreator < Test::Unit::TestCase
+class TestRandomCreator < Minitest::Test
   def setup
     @difficulty1 = 1
     @difficulty2 = 0

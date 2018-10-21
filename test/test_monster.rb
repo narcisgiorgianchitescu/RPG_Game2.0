@@ -2,10 +2,10 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'stats'
-require 'test/unit'
 require 'monster'
+require 'test_helper'
 
-class TestMonster < Test::Unit::TestCase
+class TestMonster < Minitest::Test
   def test_escape_chance
     m = Monster.new
     assert_equal(m.escape_chance, 0)

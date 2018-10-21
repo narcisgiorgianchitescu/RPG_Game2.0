@@ -1,15 +1,14 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'minitest/autorun'
 require 'random_map'
 require 'custom_map'
 require 'map_generator'
 require 'hero'
 require 'room'
-require 'test/unit'
+require 'test_helper'
 
-class TestPosition < Test::Unit::TestCase
+class TestPosition < Minitest::Test
   def setup; end
 
   def test_mapgenerator_create_map
