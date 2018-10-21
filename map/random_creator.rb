@@ -109,9 +109,9 @@ module RandomCreator
   end
 
   def self.monster_name
-    bear_names = ['Angry Bear', 'Mad Bear', 'Stone Bear', 'Grizzly Bear']
-    wolf_names = ['Rabid Wold', 'Big Wolf', 'Mad Wolf', 'White Wolf']
-    bat_names  = ['Bloodsucking Bat', 'Giant Bat', 'Mutated Bat']
+    bear_names = ['Akakabuto', 'Baloo', 'Bobo', 'Grizzly Bear']
+    wolf_names = ['Fluffy', 'Raksha', 'White Fang', 'Leah']
+    bat_names  = ['Balto', 'Aleu', 'Jenna']
     other_monsters = %w[Zombie Ghost Mimic Werewolf Savage]
     [bear_names, wolf_names, bat_names, other_monsters].sample.sample
   end
