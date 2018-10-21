@@ -17,6 +17,8 @@ class Game
     @device = device
     @hero_cursor = Cursor.new(Position.new(0, 0))
     @hero_position = Position.new(0, 0)
+    @score = 0
+    @cnt = 0
   end
 
   def start_game
@@ -33,8 +35,9 @@ class Game
 
   def set_hero
     @device.clear
-    @device.puts_string 'Input the hero name'
-    stats = Stats.new(attack: 15, defence: 10, hp: 100, coins: 25)
+    @device.puts_string 'TIP: For a better experience, press F11 to go full-screen'
+    @device.puts_string 'Press any key to continue... '
+    stats = Stats.new(attack: 15, defence: 10, hp: 100, coins: 25, score: 0)
     Hero.new(stats, nil, @device.input.chomp)
   end
 
@@ -47,7 +50,7 @@ class Game
       break if (range.include? option.to_i) && (string_is_number?(option.to_s))
       @device.clear
     end
-    option.to_i
+    @difficulty = option.to_i
   end
 
   def set_map(difficulty, size)
@@ -71,9 +74,9 @@ class Game
     @device.clear
     option = 0
     loop do
-      @device.puts_string 'Introduce the size of the map (between 8 and 20)'
+      @device.puts_string 'Introduce the size of the map (between 8 and 16)'
       option = @device.input
-      break if ((8..20).include? option.to_i) && (string_is_number?(option.to_s.chomp))
+      break if ((8..16).include? option.to_i) && (string_is_number?(option.to_s.chomp))
       @device.clear
     end
     option.to_i
@@ -94,6 +97,9 @@ class Game
     @device.clear
     @device.puts_string 'End of the game. Here are your stats'
     @device.print_hero @hero
+    @score += @hero.stats.coins * 1000 + @difficulty * 100 + 100000 + @cnt * 10
+    @device.print_string("*************  SCORE: #{@score} *************")
+    @device.next_line
   end
 
   def do_move
@@ -122,6 +128,7 @@ class Game
       'd' => nil,
       'w' => nil
     }
+    @cnt = @cnt + 1
     Menu.new(directions, description, @device).choice(false)
   end
 end
