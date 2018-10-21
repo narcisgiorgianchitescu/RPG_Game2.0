@@ -11,6 +11,7 @@ require 'vault'
 require 'hero'
 require 'map'
 require 'win_room'
+require 'json'
 # TODO: Test
 module RandomCreator
   def self.difficulty_multiplier(difficulty = 0)
@@ -77,19 +78,19 @@ module RandomCreator
   end
 
   def self.head(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :head, head_name)
+    Wearable.new(stats_equipment(difficulty), :head, build_name('utilities/names.json', "head_names"))
   end
 
   def self.chest(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :chest, chest_name)
+    Wearable.new(stats_equipment(difficulty), :chest, build_name('utilities/names.json', "chest_names"))
   end
 
   def self.boots(difficulty = 0)
-    Wearable.new(stats_equipment(difficulty), :boots, boots_name)
+    Wearable.new(stats_equipment(difficulty), :boots, build_name('utilities/names.json', "boots_names"))
   end
 
   def self.weapon(difficulty = 0)
-    Weapon.new(stats_equipment(difficulty), weapon_name)
+    Weapon.new(stats_equipment(difficulty), build_name('utilities/names.json', "weapon_names"))
   end
 
   def self.stats_equipment(difficulty = 0)
@@ -116,39 +117,14 @@ module RandomCreator
     [bear_names, wolf_names, bat_names, other_monsters].sample.sample
   end
 
-  def self.head_name
-    model = ['Pointy', 'Neat', 'Shiny', 'Dirty', 'Normal', 'Boring']
-    type = ['helmet', 'mask', 'glasses']
-    aspect = ['beauty', 'lazyness', 'boredom']
-    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
-  end
-
-  def self.chest_name
-    model = ['Mail', 'Bronze', 'Steel', 'Iron', 'Normal']
-    type = ['armor', 'cuirass', 'breastplate']
-    aspect = ['resistence', 'awesomeness']
-    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
-  end
-
-  def self.boots_name
-    model = ['Mail', 'Leather', 'Steel', 'Normal']
-    type = ['boots', 'shoes', 'feets']
-    aspect = ['speed', 'the unseen', 'sneakiness']
-    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
-  end
-
-  def self.weapon_name
-    model = ['Short', 'Long', 'Double', 'Iron', 'Normal']
-    type = ['sword', 'saber', 'machete']
-    aspect = ['victory', 'battle', 'fighting']
-    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
+  def self.build_name(json_file, key)
+    json_obj = JSON.parse(File.read(json_file))
+    data = json_obj[key]
+    "#{data["model"].sample} #{data["type"].sample.upcase} of #{data["aspect"].sample}"
   end
 
   def self.consumable_name
-    model = ['Weak', 'Strong', 'Tasty', 'Sour', 'Sad']
-    type = ['potion', 'vial', 'flask', 'drink', 'tonic']
-    aspect = ['tomorrow', 'battle', 'dizziness', 'madness']
-    "#{model.sample} #{type.sample.upcase} of #{aspect.sample}"
+    self.build_name('utilities/names.json', "consumable_names")
   end
 
   def self.monster(hero, difficulty = 0)
