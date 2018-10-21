@@ -1,13 +1,12 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'test/unit'
 require 'character'
 require 'stats'
 require 'test_helper'
 
 
-class TestCharacter < Test::Unit::TestCase
+class TestCharacter < Minitest::Test
   def setup
     @ch = Character.new
   end

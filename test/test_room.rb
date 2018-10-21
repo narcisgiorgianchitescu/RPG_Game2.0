@@ -12,14 +12,9 @@ require 'io_terminal'
 require 'item'
 require 'wearable'
 require 'room_factory'
-require 'test/unit'
 require 'test_helper'
 
-class TestGameRoom < Test::Unit::TestCase
-  def setup; end
-#-------------------------------------------------------------------
-#RoomFactory
-
+class TestGameRoom < Minitest::Test
   def test_create_room
     r = RoomFactory.create(:room)
     assert_equal(Room, r.class, 'Wrong answer')

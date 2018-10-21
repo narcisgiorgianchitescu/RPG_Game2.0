@@ -2,10 +2,9 @@ binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
 require 'stats'
-require 'test/unit'
 require 'test_helper'
 
-class TestStats < Test::Unit::TestCase
+class TestStats < Minitest::Test
   def test_initialization_with_hash
     stats = Stats.new(attack: 5, defence: 7, hp: 9, coins: 11)
     assert_equal [5, 7, 9, 11],

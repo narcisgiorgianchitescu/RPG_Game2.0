@@ -1,12 +1,11 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'test/unit'
 require 'menu'
 require 'io_interface'
 require 'test_helper'
 
-class TestRandomCreator < Test::Unit::TestCase
+class TestRandomCreator < Minitest::Test
   def test_valid_input_array
     device = IOinterface.new
     def device.input

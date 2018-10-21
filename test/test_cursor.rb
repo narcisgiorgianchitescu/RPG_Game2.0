@@ -1,13 +1,10 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'minitest/autorun'
 require 'cursor'
-require 'test/unit'
 require 'test_helper'
 
-class TestPosition < Test::Unit::TestCase
-  # Cursor are Positions -> row,column
+class TestPosition < Minitest::Test
   def setup; end
 
   def test_next_up

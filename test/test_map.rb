@@ -1,14 +1,12 @@
 binpath = File.dirname(__FILE__)
 $LOAD_PATH.unshift File.expand_path(File.join(binpath, '..'))
 require 'require_file'
-require 'minitest/autorun'
 require 'map'
-require 'test/unit'
 require 'position'
 require 'test_helper'
 
 # test for Map class
-class TestMap  < Test::Unit::TestCase
+class TestMap < Minitest::Test
   def test_create_custom_size
     map = Map.new(5)
     assert_equal 5, map.size
