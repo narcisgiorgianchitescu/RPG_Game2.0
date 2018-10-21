@@ -110,11 +110,9 @@ module RandomCreator
   end
 
   def self.monster_name
-    bear_names = ['Angry Bear', 'Mad Bear', 'Stone Bear', 'Grizzly Bear']
-    wolf_names = ['Rabid Wold', 'Big Wolf', 'Mad Wolf', 'White Wolf']
-    bat_names  = ['Bloodsucking Bat', 'Giant Bat', 'Mutated Bat']
+    json_obj = JSON.parse(File.read('utilities/names.json'))
     other_monsters = %w[Zombie Ghost Mimic Werewolf Savage]
-    [bear_names, wolf_names, bat_names, other_monsters].sample.sample
+    [json_obj["bear_names"], json_obj["wolf_names"], json_obj["bat_names"], other_monsters].sample.sample
   end
 
   def self.build_name(json_file, key)

@@ -24,5 +24,8 @@
         "model" : ["Weak", "Strong", "Tasty", "Sour", "Sad"],
         "type" : ["potion", "vial", "flask", "drink", "tonic"],
         "aspect" : ["tomorrow", "battle", "dizziness", "madness"]
-    }
+    },
+    "bear_names" : ["Angry Bear", "Mad Bear", "Stone Bear", "Grizzly Bear"],
+    "wolf_names" : ["Rabid Wold", "Big Wolf", "Mad Wolf", "White Wolf"],
+    "bat_names"  : ["Bloodsucking Bat", "Giant Bat", "Mutated Bat"]
 }
