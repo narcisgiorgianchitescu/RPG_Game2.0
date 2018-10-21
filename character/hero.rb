@@ -31,7 +31,7 @@ class Hero < Character
     (super + @equipment.description)
   end
 
-  private
+  # private
 
   def use_consumable(consumable, free = true)
     @stats.change_stats(consumable.stats, :+)
