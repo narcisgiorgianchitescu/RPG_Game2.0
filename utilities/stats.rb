@@ -22,7 +22,7 @@ class Stats
   def change_stats(_other, sign)
     STATS.keys.each do |key|
       old_val = send key.to_s
-      other_val = eval "other.#{key}"
+      other_val = eval "_other.#{key}"
       new_val = old_val.send(sign, other_val)
       send "#{key}=", new_val
     end
