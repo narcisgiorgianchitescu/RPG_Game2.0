@@ -19,10 +19,10 @@ class Stats
     STATS.keys.each { |key| send "#{key}=", (stats[key] || 0) }
   end
 
-  def change_stats(_other, sign)
+  def change_stats(other, sign)
     STATS.keys.each do |key|
       old_val = send key.to_s
-      other_val = eval "_other.#{key}"
+      other_val = eval "other.#{key}"
       new_val = old_val.send(sign, other_val)
       send "#{key}=", new_val
     end
