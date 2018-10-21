@@ -110,7 +110,15 @@ class Game
 
   def parse
     # TODO: replace with a menu
-    description = 'Choose an option: '
+    description = 'M = Monster
+H = Hospital
+R = Room
+X = Where you are
+S = Shop
+V = Vault
+W = Win
+
+Choose an option: '
     directions = {
       'up' => 'or w to go up',
       'down' => 'or s to go down',
