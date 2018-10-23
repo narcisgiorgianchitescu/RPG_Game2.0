@@ -67,9 +67,6 @@ class Combat
     string = "\nHero chose to #{SYMBOLS[user_choice]} and dealt "\
              "#{monster_taken_damage}\nMonster chose to "\
              "#{SYMBOLS[monster_choice]} and dealt #{hero_taken_damage}\n"
-    @device.print_string string
-    continue_string = "\nPress Enter to continue...\n"
-    @device.print_string continue_string
     @device.input
   end
 
