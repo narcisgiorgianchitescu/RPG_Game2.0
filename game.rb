@@ -98,7 +98,7 @@ class Game
 
   def do_move
     option = parse
-    return true if option == 'exit'
+    return true if option == 'exit' || option == 'e'
     direction = option
     next_position = @hero_cursor.next direction
     return false unless @map.valid_position? next_position
@@ -116,11 +116,12 @@ class Game
       'down' => 'or s to go down',
       'left' => 'or a to go left',
       'right' => 'to or d go right',
-      'exit' => 'to exit',
+      'exit' => 'or e to exit',
       'a' => nil,
       's' => nil,
       'd' => nil,
-      'w' => nil
+      'w' => nil,
+      'e' => nil,
     }
     Menu.new(directions, description, @device).choice(false)
   end
