@@ -42,6 +42,7 @@ class Hospital < Room
                     @device)
     input = menu.choice
     return @game_on if input == menu.exit_value
+
     enough_money = hero.enough_money?(@input[input].last)
     proceed_with_healing(hero, input) if enough_money
     get_input(@insufficient_funds, hero) unless enough_money

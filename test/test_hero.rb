@@ -80,12 +80,12 @@ class TestHero < Test::Unit::TestCase
   end
 
   def test_change_weapon_effect
-      h = Hero.new
-      h.stats.attack = 4
-      w = Weapon.new
-      w.stats.attack = 7
-      h.change_weapon(w)
-      assert_equal(h.stats.attack, 11)
+    h = Hero.new
+    h.stats.attack = 4
+    w = Weapon.new
+    w.stats.attack = 7
+    h.change_weapon(w)
+    assert_equal(h.stats.attack, 11)
   end
 
   def test_change_wearable_boots_1
@@ -129,12 +129,12 @@ class TestHero < Test::Unit::TestCase
   end
 
   def test_change_weapon_use_item
-      h = Hero.new
-      h.stats.attack = 4
-      w = Weapon.new
-      w.stats.attack = 7
-      h.use_item(w)
-      assert_equal(h.stats.attack, 11)
+    h = Hero.new
+    h.stats.attack = 4
+    w = Weapon.new
+    w.stats.attack = 7
+    h.use_item(w)
+    assert_equal(h.stats.attack, 11)
   end
 
   def test_use_item_consumable_effect
@@ -148,15 +148,15 @@ class TestHero < Test::Unit::TestCase
   def test_initialize_stats
     stats = Stats.new
     stats.hp = 100
-    h = Hero.new(stats, "Narcis")
+    h = Hero.new(stats, 'Narcis')
     assert_equal(h.stats, stats)
   end
 
   def test_initialize_name
     stats = Stats.new
     stats.hp = 100
-    h = Hero.new(stats, nil , "Narcis")
-    assert_equal(h.name, "Narcis")
+    h = Hero.new(stats, nil, 'Narcis')
+    assert_equal(h.name, 'Narcis')
   end
 
   def test_initialize_equipment

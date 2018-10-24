@@ -26,8 +26,7 @@ class Hero < Character
     end
   end
 
-  def description(with_equipment = true)
-    return super unless with_equipment
+  def description()
     (super + @equipment.description)
   end
 
@@ -38,8 +37,7 @@ class Hero < Character
     @stats.coins -= consumable.stats.coins unless free
   end
 
-  def change_wearable(wearable, free = true)
-
+  def change_wearable(wearable, _free = true)
     case wearable.type.to_s
     when 'head'
       @stats.change_stats(@equipment.head.stats, :-)
@@ -60,7 +58,7 @@ class Hero < Character
       @stats.change_stats(equipment.boots.stats, :+)
       @stats.coins -= @equipment.boots.stats.coins
     end
-  #  @stats.coins -= wearable.stats.coins unless free
+    #  @stats.coins -= wearable.stats.coins unless free
   end
 
   def change_weapon(weapon, free = true)

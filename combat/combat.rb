@@ -49,6 +49,7 @@ class Combat
 
   def hero_ran?(user_choice)
     return false unless user_choice == 'r'
+
     @monster.escape_chance > rand(101)
   end
 
@@ -62,14 +63,14 @@ class Combat
                   monster_choice)
     @device.clear
     current_stats = "You are in a monster room\n\n"
-    current_stats += @hero.description(false) + "\n" + @monster.description
+    current_stats += @hero.description() + "\n" + @monster.description
     @device.print_string current_stats
     string = "\nHero chose to #{SYMBOLS[user_choice]} and dealt "\
              "#{monster_taken_damage}\nMonster chose to "\
              "#{SYMBOLS[monster_choice]} and dealt #{hero_taken_damage}\n"
     @device.print_string string
     @device.next_line
-    continue_string = "Press Enter to continue..."
+    continue_string = 'Press Enter to continue...'
     @device.print_string continue_string
     @device.next_line
     @device.input
@@ -106,7 +107,7 @@ class Combat
 
   def user_interaction
     description = "You are in a monster room\n\n"
-    description += @hero.description(false) + "\n" + @monster.description
+    description += @hero.description() + "\n" + @monster.description
     options = { 'a' => 'attack', 'd' => 'defend', 'r' => 'run' }
     Menu.new(options, description, @device).choice
   end

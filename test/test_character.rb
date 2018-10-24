@@ -5,7 +5,6 @@ require 'test/unit'
 require 'character'
 require 'stats'
 
-
 class TestCharacter < Test::Unit::TestCase
   def setup
     @ch = Character.new

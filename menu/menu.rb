@@ -62,12 +62,14 @@ class Menu
 
   def print_value_array(index, string_option)
     return unless string_option
+
     @device.print_string "#{index}. #{string_option}"
     @device.next_line
   end
 
   def print_value_hash(string_option)
     return unless string_option[1]
+
     @device.print_string "#{string_option[0]} #{string_option[1]}"
     @device.next_line
   end
@@ -83,6 +85,7 @@ class Menu
 
   def in_array_index?
     return false unless string_is_number?(@input)
+
     (-1..(@values.size - 1)).to_a.include? @input.to_i
   end
 

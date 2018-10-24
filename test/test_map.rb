@@ -7,7 +7,7 @@ require 'test/unit'
 require 'position'
 
 # test for Map class
-class TestMap  < Test::Unit::TestCase
+class TestMap < Test::Unit::TestCase
   def test_create_custom_size
     map = Map.new(5)
     assert_equal 5, map.size
