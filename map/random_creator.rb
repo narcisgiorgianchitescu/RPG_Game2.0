@@ -67,14 +67,17 @@ module RandomCreator
   end
 
   def self.consumable_stats(difficulty = 0)
-    Stats.new(consumable_stats_hash(difficulty))
+    Stats.new(stats_consumable(difficulty))
   end
 
-  def self.consumable_stats_hash(difficulty = 0)
-    { attack: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
-      defence: (rand(-1..2) * difficulty_multiplier(difficulty)).to_i,
+  def self.stats_consumable(difficulty = 0)
+    attack = (rand(-1..2) * difficulty_multiplier(difficulty)).to_i
+    defence = (rand(-1..2) * difficulty_multiplier(difficulty)).to_i
+    hp = ( ( (attack == -1 || defence == -1) ? rand(1..5) : rand(-1..5) ) * difficulty_multiplier(difficulty)).to_i
+    { attack: attack,
+      defence: defence,
       coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i,
-      hp: (rand(-1..5) * difficulty_multiplier(difficulty)).to_i }
+      hp: hp }
   end
 
   def self.head(difficulty = 0)
@@ -94,8 +97,8 @@ module RandomCreator
   end
 
   def self.stats_equipment(difficulty = 0)
-    Stats.new(attack: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
-              defence: (rand(0..5) * difficulty_multiplier(difficulty)).to_i,
+    Stats.new(attack: (rand(1..5) * difficulty_multiplier(difficulty)).to_i,
+              defence: (rand(1..5) * difficulty_multiplier(difficulty)).to_i,
               coins: (rand(10..30) * difficulty_multiplier(difficulty)).to_i)
   end
 
@@ -147,6 +150,6 @@ module RandomCreator
     Vault.new(true, items)
   end
 
-  # private :spawn_victory_room, :consumable_stats, :consumable_stats_hash
+  # private :spawn_victory_room, :consumable_stats, :stats_consumable
   # private :stats_monster, :stats_equipment, :monster_name
 end
